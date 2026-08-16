@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Practical guidance on user experience design, accessibility, web application security, website optimization, and responsive design — written for students and early-career web developers.">
+<link rel="stylesheet" href="styles.css">
+<!-- Applies saved accessibility settings before the first paint, so the
+     page never flashes in the wrong theme or text size. -->
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap">
+
+    <div class="hero">
+      <h1>Web Design Resource Hub</h1>
+      <p>This site collects practical guidance on the five areas that decide whether a
+      website is good: how it feels to use, who can use it, whether it is safe, how fast
+      it loads, and how it behaves on every screen size.</p>
+      <p>Each topic starts with a plain-language summary, explains why the topic matters,
+      and then gives you guidance you can apply today, with commented code you can copy.</p>
+      <p><a class="cta" href="#topics">Browse the five topics</a></p>
+    </div>
+
+    <h2 id="topics">Five core topics</h2>
+    <p>Pick the area you need. Every page follows the same three-layer shape, so you can
+    read the summary in a minute or work through the whole guide.</p>
+
+    <ul class="card-grid">
+      <li class="card">
+        <h3>User Experience Design</h3>
+        <p>Design principles, usability heuristics, research methods, and the artifacts —
+        personas, journey maps, wireframes — that turn research into a design.</p>
+        <p><a class="card-link" href="ux-design.html">Read the guide to user experience design</a></p>
+      </li>
+      <li class="card">
+        <h3>Accessibility &amp; Inclusive Design</h3>
+        <p>Semantic markup, keyboard operation, colour contrast, assistive technology, and
+        how to test against the Web Content Accessibility Guidelines.</p>
+        <p><a class="card-link" href="accessibility.html">Read the guide to accessibility and inclusive design</a></p>
+      </li>
+      <li class="card">
+        <h3>Web Application Security</h3>
+        <p>Encryption in transit, input validation, output encoding, cross-site scripting
+        and request forgery defences, security headers, and safer authentication.</p>
+        <p><a class="card-link" href="security.html">Read the guide to web application security</a></p>
+      </li>
+      <li class="card">
+        <h3>Website Optimization</h3>
+        <p>Performance budgets, image formats, caching, critical rendering path, and the
+        Core Web Vitals that measure what a visitor actually experiences.</p>
+        <p><a class="card-link" href="optimization.html">Read the guide to website optimization</a></p>
+      </li>
+      <li class="card">
+        <h3>Responsive Web Design</h3>
+        <p>The mobile-first method, fluid grids, content-driven breakpoints, responsive
+        images, and reflow at 320 pixels without side-scrolling.</p>
+        <p><a class="card-link" href="responsive-design.html">Read the guide to responsive web design</a></p>
+      </li>
+    </ul>
+
+    <h2 id="own-demo">This site is its own demonstration</h2>
+    <p>A hub that teaches accessibility has to be accessible. A hub that teaches responsive
+    design has to work on a phone. A hub that teaches optimization cannot ship a bloated
+    page. So every claim on this site is checkable by inspecting the site that makes it.</p>
+
+    <div class="callout">
+      <h3>What you can verify right now</h3>
+      <ul>
+        <li>Press <kbd>Tab</kbd> from the top of the page. The first stop is a
+        <strong>Skip to main content</strong> link that becomes visible when focused.</li>
+        <li>Every control has a visible focus outline that is never hidden behind a bar.</li>
+        <li>The menu control on narrow screens is a button labelled <strong>Menu</strong>,
+        not a bare icon, and it reports its open or closed state to screen readers.</li>
+        <li>Open <strong>Accessibility settings</strong> in the header to change text size,
+        theme, motion, and link underlines. Your choices are saved in this browser.</li>
+        <li>Narrow the window to 320 pixels. The page reflows to one column and never
+        scrolls sideways. Code samples scroll inside their own box instead.</li>
+        <li>There are no external requests: no content delivery network, no web fonts, no
+        frameworks, no tracking. The whole site is one stylesheet, one small script, and
+        hand-written HTML.</li>
+      </ul>
+    </div>
+
+    <h2 id="how-to-read">How to read these guides</h2>
+    <p>Each topic page is layered so that a beginner and a working developer can use the
+    same page differently:</p>
+    <ol>
+      <li><strong>In plain language</strong> — what the topic is, with no jargon. Read this
+      first if the subject is new to you.</li>
+      <li><strong>Why it matters</strong> — the cost of getting it wrong, and who pays that
+      cost.</li>
+      <li><strong>Core guidance</strong> — the practices themselves, each with a commented
+      code sample.</li>
+      <li><strong>Going further</strong> — specification references and the harder edge
+      cases, placed last so they never block a first read.</li>
+    </ol>
+    <p>Acronyms are spelled out the first time they appear on each page, because most
+    readers arrive from a search engine and land in the middle of the site rather than
+    here. Definitions for recurring terms are collected in the
+    <a href="about.html#glossary">glossary on the About page</a>.</p>
+
+    <h2 id="start">Where to start</h2>
+    <ul class="related-list">
+      <li><a href="accessibility.html">New to the subject? Start with accessibility</a></li>
+      <li><a href="responsive-design.html">Building your first layout? Start with responsive design</a></li>
+      <li><a href="about.html">Read the scope and accessibility statement</a></li>
+      <li><a href="contact.html">Ask a question or report a problem</a></li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

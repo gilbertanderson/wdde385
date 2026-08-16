@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Ask a question, suggest a correction, or report an accessibility barrier. An accessible, responsive contact form with no CAPTCHA.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap">
+
+    <h1>Contact</h1>
+    <p>Use this form to ask a question about anything on this site, suggest a correction, or
+    report an accessibility barrier. There is no time limit, nothing you type is lost if the
+    form finds a problem, and there is no CAPTCHA.</p>
+    <p>Replies are normally sent within three working days (times shown are US Eastern).</p>
+
+    <div class="callout">
+      <h2>Please read: this is a demonstration form</h2>
+      <p>This site is hosted as static files, so it has no server-side code and nothing is
+      transmitted anywhere. The form validates your entries in the browser and then shows the
+      confirmation you would see on a live site. <strong>No message is actually sent, and no
+      data leaves your device.</strong></p>
+      <p>On a live deployment, submitting this form would post the fields over HTTPS to an
+      endpoint that revalidates every value on the server, rejects submissions that fill in
+      the hidden honeypot field, rate-limits by address, stores the message, and emails an
+      acknowledgement. Client-side validation, on its own, is a convenience for honest users —
+      never a security control. See
+      <a href="security.html#injection">input handling on the security page</a> for why.</p>
+    </div>
+
+    <!-- Error summary. Empty and hidden until validation fails; the
+         script fills it, unhides it, and moves focus to its heading. -->
+    <div id="error-summary" class="error-summary" hidden></div>
+
+    <!-- Success confirmation. role="status" is a polite live region, so
+         the confirmation is announced as well as shown. -->
+    <div id="form-success" class="form-success" role="status" hidden>
+      <h2 id="form-success-heading" tabindex="-1">Your message has been validated</h2>
+      <p>Reference <strong id="success-ref"></strong>. On a live deployment this is the point
+      at which the message would be sent and an acknowledgement emailed to you within three
+      working days.</p>
+      <p>Because this site is static, nothing was transmitted. Nothing you typed left your
+      browser.</p>
+      <p><a href="index.html">Return to the home page</a> or
+      <a href="accessibility.html">read the accessibility guide</a>.</p>
+    </div>
+
+    <form id="contact-form" novalidate>
+
+      <fieldset>
+        <legend>About you</legend>
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <span class="hint" id="name-hint">Enter your name in whatever form you normally
+          write it. There is no separate first and last name field.</span>
+          <input type="text" id="name" name="name"
+                 autocomplete="name"
+                 aria-describedby="name-hint name-error">
+          <span class="field-error" id="name-error" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <span class="hint" id="email-hint">We use this only to reply. Format:
+          name@example.com</span>
+          <input type="email" id="email" name="email"
+                 autocomplete="email" inputmode="email" spellcheck="false"
+                 aria-describedby="email-hint email-error">
+          <span class="field-error" id="email-error" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="organisation">Organisation <span class="optional">(optional)</span></label>
+          <span class="hint" id="organisation-hint">School, employer, or leave this
+          blank.</span>
+          <input type="text" id="organisation" name="organisation"
+                 autocomplete="organization"
+                 aria-describedby="organisation-hint">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your message</legend>
+
+        <div class="field">
+          <label for="category">What is this about?</label>
+          <span class="hint" id="category-hint">Choosing a category sends your message to the
+          right place. Accessibility reports are triaged first.</span>
+          <select id="category" name="category"
+                  aria-describedby="category-hint category-error">
+            <option value="">Select a category</option>
+            <option value="accessibility">Report an accessibility barrier</option>
+            <option value="question">Question about the content</option>
+            <option value="correction">Correction or broken link</option>
+            <option value="suggestion">Suggest a topic</option>
+            <option value="other">Something else</option>
+          </select>
+          <span class="field-error" id="category-error" hidden></span>
+        </div>
+
+        <div class="field">
+          <label for="message">Your message</label>
+          <span class="hint" id="message-hint">Include the page address if your message is
+          about a specific page. At least 10 characters. There is no maximum length and no
+          countdown.</span>
+          <textarea id="message" name="message" rows="7"
+                    aria-describedby="message-hint message-error"></textarea>
+          <span class="field-error" id="message-error" hidden></span>
+        </div>
+      </fieldset>
+
+      <!-- Honeypot. Positioned off-screen, removed from the accessibility
+           tree, and skipped by the keyboard, so no human ever meets it.
+           A value here means an automated submission. This is why the
+           form needs no CAPTCHA. -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p><button type="submit" class="btn-primary">Send message</button></p>
+      <p class="hint">Your entries are checked in this browser. If anything needs fixing you
+      will be taken to a summary at the top of the form, and nothing you typed will be
+      cleared.</p>
+    </form>
+
+    <div class="callout">
+      <h2 id="alternatives">Cannot use this form?</h2>
+      <p>Anyone blocked by this form needs another way to say so, so there is more than one
+      route:</p>
+      <ul>
+        <li><strong>Email:</strong>
+        <a href="mailto:ganderson58@student.umgc.edu">ganderson58@student.umgc.edu</a></li>
+        <li><strong>Issue tracker:</strong> open an issue on the project's GitHub repository,
+        which is useful if you can supply steps to reproduce a problem.</li>
+        <li><strong>Course channel:</strong> message the instructor through the CMST 387
+        classroom, which reaches a person who can escalate a barrier report.</li>
+      </ul>
+      <p>Accessibility reports are acknowledged and, where a fix is made, recorded in the
+      changelog on the <a href="about.html#accessibility-statement">accessibility
+      statement</a>. Reports that vanish without acknowledgement teach people to stop
+      reporting.</p>
+    </div>
+
+    <h2>What this form demonstrates</h2>
+    <p>The form above is the site's main worked example of accessible interaction design.
+    Submitting it empty is the quickest way to see it work.</p>
+    <ul>
+      <li>Every input has a real <code>&lt;label&gt;</code> tied to it, not a placeholder
+      standing in for one.</li>
+      <li>Related inputs are grouped in <code>&lt;fieldset&gt;</code> elements with a
+      <code>&lt;legend&gt;</code>.</li>
+      <li>Format hints are attached with <code>aria-describedby</code>, so they are announced
+      before you type rather than only after you fail.</li>
+      <li>Failed fields get <code>aria-invalid="true"</code> and a message that names the fix,
+      preceded by a symbol so colour is never the only signal.</li>
+      <li>An error summary appears at the top, receives focus, and links to each problem
+      field.</li>
+      <li><code>autocomplete</code> attributes let the browser fill known values, which
+      matters a great deal for people with motor and cognitive disabilities.</li>
+      <li>Correct input types and <code>inputmode</code> mean phones show the right keyboard.</li>
+      <li>A honeypot field replaces a CAPTCHA.</li>
+      <li>At 320 pixels wide, every field is full width and nothing scrolls sideways.</li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

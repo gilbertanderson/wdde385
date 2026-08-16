@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About this hub | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Scope of the CMST 387 Web Design Resource Hub, its accessibility statement, a glossary of recurring terms, and the site map.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About this hub</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#scope">Scope</a></li>
+          <li><a href="#audience">Who this is for</a></li>
+          <li><a href="#how-built">How the site is built</a></li>
+          <li><a href="#accessibility-statement">Accessibility statement</a></li>
+          <li><a href="#glossary">Glossary</a></li>
+          <li><a href="#sitemap">Site map</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>About this hub</h1>
+
+      <section>
+        <h2 id="scope">Scope</h2>
+        <p>The CMST 387 Web Design Resource Hub is an educational reference covering five
+        areas: user experience design, accessibility and inclusive design, web application
+        security, website optimization, and responsive web design. It was built for
+        <em>CMST 387: Principles of Web Design and Technology III</em> at the University of
+        Maryland Global Campus.</p>
+        <p><strong>What is in scope.</strong> Introductory guidance on each of the five
+        topics, written in plain language, with commented code samples and pointers to the
+        authoritative specifications. A contact and feedback form. This About page, which
+        holds the accessibility statement, the glossary, and the site map.</p>
+        <p><strong>What is out of scope.</strong> The site is not a substitute for the
+        specifications it summarises, and it is not a certification. It contains no user
+        accounts, no analytics, no advertising, and no tracking of any kind. No user testing
+        was carried out for this project; the testing methods described across the site are
+        methods that <em>would</em> be used, identified as appropriate rather than performed.</p>
+        <p>The content was written in August 2026 and reflects WCAG 2.2, the Core Web Vitals
+        thresholds current at that date, and the OWASP guidance current at that date. Standards
+        move; check the linked specifications before relying on a detail.</p>
+      </section>
+
+      <section>
+        <h2 id="audience">Who this is for</h2>
+        <p>Students in web development programmes, people changing career into front-end
+        development, and working developers who want a quick reference. That audience is
+        global and reads English as a second language in large numbers, so the writing here
+        avoids idioms, expands acronyms on first use on every page, and states dates
+        unambiguously — "March 4, 2026" rather than 3/4/26, which reads as April 3 in much of
+        the world.</p>
+        <p>It also includes developers with disabilities, who are badly served by technical
+        documentation that is itself inaccessible. That is the reason for the constraint the
+        whole site is built around.</p>
+      </section>
+
+      <section>
+        <h2 id="how-built">How the site is built</h2>
+        <p>Hand-written HTML, one stylesheet, and one small JavaScript file. There is no build
+        step, no package manager, no framework, no content delivery network, no web font, and
+        no third-party request of any kind. The deployment pipeline is a GitHub Actions
+        workflow that zips the repository and publishes it to Azure App Service.</p>
+        <p>That is a deliberate demonstration rather than an aesthetic preference. A hub that
+        teaches optimization should not ship a bloated page, and a hub that teaches security
+        should be able to point at its own dependency count.</p>
+        <p>All content on the site works without JavaScript. The script adds the collapsible
+        navigation, the accessibility settings panel, the copy buttons on code samples, and
+        the contact form's validation. With scripting switched off the navigation list simply
+        stays expanded and the form falls back to the browser's own validation.</p>
+      </section>
+
+      <section>
+        <h2 id="accessibility-statement">Accessibility statement</h2>
+
+        <h3>Our commitment</h3>
+        <p>This site aims to conform to the Web Content Accessibility Guidelines
+        (<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>) 2.2 at Level AA. That
+        target is stated because the site's subject matter makes anything less
+        self-contradicting.</p>
+
+        <h3>What has been implemented</h3>
+        <ul>
+          <li>Semantic HTML with banner, navigation, main, and contentinfo landmarks on every
+          page, and a heading hierarchy that never skips a level.</li>
+          <li>A "Skip to main content" link as the first focusable element on every page,
+          visible when it receives focus.</li>
+          <li>Full keyboard operability, with a three-pixel focus outline that is offset from
+          the element so it is never clipped, and no sticky header that could obscure it.</li>
+          <li>Text contrast of at least 4.5 to 1 and user interface contrast of at least 3 to
+          1, in every theme. Ratios were calculated for each palette rather than estimated.</li>
+          <li>Mobile-first responsive layout using CSS Grid and Flexbox with
+          <code>rem</code>, <code>ch</code>, <code>fr</code>, and <code>clamp()</code>. Usable
+          at 320 CSS pixels and at 400 per cent zoom with no horizontal page scrolling; code
+          samples scroll inside their own containers, which are keyboard operable.</li>
+          <li>Navigation that collapses on narrow screens into a button labelled
+          <strong>Menu</strong>, with <code>aria-expanded</code> reporting its state.</li>
+          <li>Support for <code>prefers-color-scheme</code>, <code>prefers-contrast</code>,
+          and <code>prefers-reduced-motion</code>, so operating-system settings are honoured
+          without any site-level configuration.</li>
+          <li>An accessibility settings panel for text size, theme and contrast, reduced
+          motion, and link underlining, saved in this browser and applied across the site,
+          with a reset control.</li>
+          <li>A contact form with associated labels, fieldsets and legends,
+          <code>aria-describedby</code> hints, <code>aria-invalid</code> on failure, a focused
+          error summary that links to each problem field, error messages that name the fix,
+          <code>autocomplete</code> attributes, and no CAPTCHA.</li>
+          <li>Breadcrumbs on every interior page, and a "Report an accessibility barrier" link
+          in the footer of every page.</li>
+        </ul>
+
+        <h3>Known limitations</h3>
+        <p>Stating limitations honestly is part of an accessibility statement. As of the last
+        review:</p>
+        <ul>
+          <li>The site has <strong>not</strong> been tested with real screen readers. Testing
+          with NVDA and Firefox, JAWS and Chrome, VoiceOver and Safari, and TalkBack on
+          Android is the next planned step, and no claim of screen reader conformance is made
+          until it is done.</li>
+          <li>No usability testing with disabled participants has been carried out. Automated
+          and expert methods find violations; only testing with people who use assistive
+          technology daily shows whether the site is genuinely usable.</li>
+          <li>Automated scanning with axe, WAVE, or Pa11y is not yet wired into the deployment
+          pipeline. Doing so is described in the project proposal and remains outstanding.</li>
+          <li>The site has not been tested in Windows High Contrast Mode.</li>
+          <li>The "Was this page helpful?" control records nothing, because there is no
+          server. It demonstrates the interaction pattern only.</li>
+          <li>Content is available in English only.</li>
+        </ul>
+
+        <h3>Reporting a barrier</h3>
+        <p>If anything on this site blocks you, please say so. Use the
+        <a href="contact.html#category">contact form with the "Report an accessibility
+        barrier" category</a>, or email
+        <a href="mailto:ganderson58@student.umgc.edu">ganderson58@student.umgc.edu</a> if the
+        form itself is the problem. Reports are acknowledged within three working days
+        (US Eastern), and fixes are recorded here.</p>
+        <p>Statement last reviewed: August 16, 2026.</p>
+      </section>
+
+      <section>
+        <h2 id="glossary">Glossary</h2>
+        <p>Terms that recur across the site. Each is also defined at its first use on each
+        page, because most readers arrive from a search engine rather than from the home
+        page.</p>
+        <dl>
+          <dt>ARIA (Accessible Rich Internet Applications)</dt>
+          <dd>A set of HTML attributes that describe roles, states, and properties to
+          assistive technology. It changes what is announced, never what an element does.</dd>
+
+          <dt>CLS (Cumulative Layout Shift)</dt>
+          <dd>A measure of how much visible content moves unexpectedly while a page loads. A
+          score of 0.1 or less is the target.</dd>
+
+          <dt>CSRF (cross-site request forgery)</dt>
+          <dd>An attack in which another site causes a visitor's browser to send an
+          authenticated request to yours without the visitor intending it.</dd>
+
+          <dt>INP (Interaction to Next Paint)</dt>
+          <dd>A measure of how quickly a page responds visibly to a tap, click, or key press.
+          200 milliseconds or less is the target.</dd>
+
+          <dt>LCP (Largest Contentful Paint)</dt>
+          <dd>The moment the largest piece of content in the viewport becomes visible. 2.5
+          seconds or less is the target.</dd>
+
+          <dt>Landmark</dt>
+          <dd>A region of a page — banner, navigation, main, contentinfo — that assistive
+          technology can jump to directly.</dd>
+
+          <dt>POUR</dt>
+          <dd>The four WCAG principles: Perceivable, Operable, Understandable, Robust.</dd>
+
+          <dt>Reflow (WCAG 1.4.10)</dt>
+          <dd>The requirement that content remain usable at 320 CSS pixels wide without
+          scrolling in two directions.</dd>
+
+          <dt>TLS (Transport Layer Security)</dt>
+          <dd>The encryption that turns HTTP into HTTPS, protecting traffic from being read or
+          altered in transit.</dd>
+
+          <dt>WCAG (Web Content Accessibility Guidelines)</dt>
+          <dd>The World Wide Web Consortium's accessibility standard. Version 2.2, Level AA,
+          is the target for this site.</dd>
+
+          <dt>XSS (cross-site scripting)</dt>
+          <dd>An attack in which text supplied by a user is written into a page in a way that
+          lets the browser run it as code.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2 id="sitemap">Site map</h2>
+        <p>Every page on this site, in one list. Nothing is more than two clicks from the home
+        page.</p>
+        <ul>
+          <li><a href="index.html">Home</a> — introduction and entry points to all five topics
+            <ul>
+              <li><a href="ux-design.html">User Experience Design</a> — principles,
+              heuristics, research methods, artifacts</li>
+              <li><a href="accessibility.html">Accessibility &amp; Inclusive Design</a> —
+              semantic HTML, keyboard, contrast, text alternatives, forms</li>
+              <li><a href="security.html">Web Application Security</a> — HTTPS, cross-site
+              scripting, request forgery, injection, authentication</li>
+              <li><a href="optimization.html">Website Optimization</a> — Core Web Vitals,
+              budgets, images, rendering path, caching</li>
+              <li><a href="responsive-design.html">Responsive Web Design</a> — mobile-first,
+              fluid units, breakpoints, media, touch</li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a> — accessible, responsive feedback form</li>
+          <li><a href="about.html">About this hub</a> — scope, accessibility statement,
+          glossary, site map</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="references">References</h2>
+        <p>The guidance on this site draws on the following sources, listed in the format used
+        for the course.</p>
+        <ul>
+          <li>Gilbert, R. M. (2019). <em>Inclusive design for a digital world: Designing with
+          accessibility in mind</em>. Apress.</li>
+          <li>Nielsen, J. (1994). <em>10 usability heuristics for user interface design</em>.
+          Nielsen Norman Group.</li>
+          <li>Rohr, C. (2022). <em>When to use which user-experience research methods</em>.
+          Nielsen Norman Group.</li>
+          <li>WebAIM. (n.d.). <em>Web accessibility in mind</em>. Utah State University.</li>
+          <li>World Wide Web Consortium. (2023). <em>Web Content Accessibility Guidelines
+          (WCAG) 2.2</em>.</li>
+          <li>World Wide Web Consortium. (n.d.). <em>ARIA authoring practices guide</em>.</li>
+          <li>Open Worldwide Application Security Project. (n.d.). <em>OWASP Top Ten</em> and
+          <em>Cheat Sheet Series</em>.</li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

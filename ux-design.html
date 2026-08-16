@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Experience Design | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Design principles, usability heuristics, user research methods, and UX artifacts — a practical introduction for students and early-career web developers.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html" aria-current="page">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ux-design.html" aria-current="page">User Experience Design</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#summary">In plain language</a></li>
+          <li><a href="#why">Why it matters</a></li>
+          <li><a href="#guidance">Core guidance</a>
+            <ul>
+              <li><a href="#heuristics">Usability heuristics</a></li>
+              <li><a href="#research">User research methods</a></li>
+              <li><a href="#artifacts">UX artifacts</a></li>
+              <li><a href="#writing">Interface writing</a></li>
+            </ul>
+          </li>
+          <li><a href="#further">Going further</a></li>
+          <li><a href="#related">Related topics</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>User Experience Design</h1>
+
+      <div class="layer-summary">
+        <h2 id="summary">In plain language</h2>
+        <p>User experience design, usually shortened to UX, is the work of making a website
+        easy and pleasant to use. It asks a simple question about every screen: can the
+        person in front of it do what they came to do, without confusion and without help?</p>
+        <p>UX is not decoration. Colour and typography matter, but they sit on top of
+        decisions about what the site contains, how it is organised, what each page asks the
+        visitor to do, and what happens when something goes wrong.</p>
+      </div>
+
+      <section>
+        <h2 id="why">Why it matters</h2>
+        <p>Bad user experience is expensive and mostly invisible. A visitor who cannot find
+        the answer does not file a bug report. They leave, and the only trace is a number in
+        an analytics dashboard that says nothing about why.</p>
+        <p>The cost is not shared evenly. A confusing checkout is a small annoyance for a
+        practised shopper and a hard stop for someone using the site in a second language,
+        on an old phone, on a train, with a screen reader, or under time pressure. Good UX
+        widens the group of people who can complete the task; poor UX quietly narrows it.</p>
+        <p>UX work is also cheapest early. Changing a wireframe costs minutes, changing a
+        built page costs hours, and changing a shipped product costs a release cycle plus the
+        confusion of every user who learned the old version.</p>
+      </section>
+
+      <section>
+        <h2 id="guidance">Core guidance</h2>
+
+        <h3 id="heuristics">Usability heuristics</h3>
+        <p>Jakob Nielsen's ten usability heuristics remain the most useful short checklist in
+        the field. Four of them carry most of the weight on a typical website:</p>
+        <ul>
+          <li><strong>Visibility of system status.</strong> The interface always tells the
+          user what is happening. A saved form says it saved. A slow operation shows
+          progress. Silence is interpreted as failure.</li>
+          <li><strong>Match between the system and the real world.</strong> Use the words
+          your readers use. "Website Optimization" is more findable than "Performance
+          Engineering" because it is the phrase people actually search for.</li>
+          <li><strong>Recognition rather than recall.</strong> Show the options instead of
+          expecting people to remember them. Breadcrumbs, a visible current-page marker, and
+          link text that describes its destination all remove memory work.</li>
+          <li><strong>Help users recognise, diagnose, and recover from errors.</strong> An
+          error message names the field, states the problem in plain words, and says how to
+          fix it. "Invalid input" fails all three tests.</li>
+        </ul>
+        <p>The heuristics are a review tool, not a design method. Walk an interface against
+        them and you will find real problems fast, but they will not tell you what to build.</p>
+
+        <h3 id="research">User research methods</h3>
+        <p>Research methods differ along three dimensions: whether they capture what people
+        <em>say</em> or what people <em>do</em>, whether they produce numbers or explanations,
+        and the context in which they are run. No single method covers all three, which is
+        why programmes that rely only on analytics keep being surprised.</p>
+        <ul>
+          <li><strong>Interviews and contextual inquiry</strong> explain motivation and
+          reveal the workarounds people have already invented. Small samples; deep insight.</li>
+          <li><strong>Usability testing</strong> — five participants attempting real tasks
+          while thinking aloud — is the highest-yield method per hour invested. It shows what
+          people do, not what they believe they do.</li>
+          <li><strong>Surveys</strong> scale to thousands but record opinions, which
+          routinely diverge from behaviour.</li>
+          <li><strong>Analytics</strong> show where people struggle at scale — high exit
+          pages, abandoned forms, searches that return nothing — but never why. Analytics
+          generate questions; they do not answer them.</li>
+          <li><strong>Card sorting and tree testing</strong> validate information
+          architecture before any visual design exists.</li>
+        </ul>
+        <p>Recruit participants who match the real audience, including people who use
+        assistive technology and people reading in a second language. A convenience sample of
+        colleagues tests whether the design works for people who already know the design.</p>
+
+        <h3 id="artifacts">UX artifacts</h3>
+        <p>Artifacts exist to make thinking visible and arguable before code is written.
+        <strong>Personas</strong> summarise research into a small number of goal-driven
+        profiles. <strong>Journey maps</strong> lay out the whole path to a goal, including
+        the steps that happen off the website, and expose the gaps between them.
+        <strong>Wireframes</strong> settle layout and hierarchy while they are still cheap to
+        change, deliberately in grey boxes so that reviewers argue about structure instead of
+        colour. <strong>Prototypes</strong> make a flow clickable so it can be tested with
+        people before it is built.</p>
+        <p>An artifact nobody reads is waste. Produce the smallest one that answers the
+        question currently in dispute.</p>
+
+        <h3 id="writing">Interface writing</h3>
+        <p>Most of a user interface is text, so most UX problems are writing problems. Front-load
+        the point, keep sentences to roughly fifteen to twenty words, use the active voice, and
+        prefer the common word over the formal one. Avoid idioms entirely: phrases like
+        "out of the box" or "down to the wire" are exactly what fails readers whose first
+        language is not English, and they defeat translation tools.</p>
+        <p>Link text is the highest-value writing on a page. Screen reader users often pull up
+        a list of every link on the page and read it out of context, so "click here" appears
+        as a list of identical, meaningless entries.</p>
+
+        <figure class="code-sample">
+          <figcaption>Link text and error text carry the meaning. The first version of each
+          pair forces the reader to reconstruct context that the page could simply have
+          provided.</figcaption>
+          <div class="code-head"><span class="code-lang">HTML</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: descriptive link text and error messages"><code>&lt;!-- Poor: the link says nothing when read out of context. --&gt;
+&lt;p&gt;For guidance on responsive images, &lt;a href="/responsive"&gt;click here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- Better: the link text alone describes its destination. --&gt;
+&lt;p&gt;&lt;a href="/responsive"&gt;Read the guide to responsive images&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;!-- Poor: names the fault, not the fix, and is only red. --&gt;
+&lt;span class="error"&gt;Invalid input&lt;/span&gt;
+
+&lt;!-- Better: names the field, the problem, and the correction.
+     The leading symbol means colour is not the only signal. --&gt;
+&lt;span class="field-error" id="email-error"&gt;
+  &#x2715; Enter an email address in the format name@example.com
+&lt;/span&gt;</code></pre>
+        </figure>
+      </section>
+
+      <section>
+        <h2 id="further">Going further</h2>
+        <p>Three ideas repay study once the basics are in place.</p>
+        <p><strong>Progressive disclosure.</strong> Show the common case first and let the
+        reader open the detail. Every page on this site is built that way: a plain-language
+        summary, then motivation, then implementation. It serves a first-semester student and
+        a working developer from the same page without forcing either to read the other's
+        version.</p>
+        <p><strong>Forgiveness.</strong> Assume people will make mistakes and design the
+        recovery, not just the happy path. Preserve what the user typed when validation
+        fails. Never make a form time out. Never leave a page as a dead end.</p>
+        <p><strong>Consistency.</strong> People build a model of a site in the first two or
+        three pages. Moving the navigation, renaming a section, or changing what a button
+        does destroys that model, and the damage falls hardest on people with cognitive
+        disabilities and on screen reader users who navigate by landmark.</p>
+        <p>Two references worth keeping open: Nielsen's ten heuristics from the Nielsen
+        Norman Group, and the plain-language guidance published at plainlanguage.gov.</p>
+      </section>
+
+      <section>
+        <h2 id="related">Related topics</h2>
+        <p>Usability and accessibility are the same problem seen from two angles, and both
+        depend on the page arriving quickly enough to be used at all.</p>
+        <ul class="related-list">
+          <li><a href="accessibility.html">Accessibility &amp; Inclusive Design</a></li>
+          <li><a href="responsive-design.html">Responsive Web Design</a></li>
+          <li><a href="optimization.html">Website Optimization</a></li>
+          <li><a href="contact.html">See these ideas applied to a real form</a></li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

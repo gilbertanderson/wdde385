@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsive Web Design | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="The mobile-first method, fluid grids, content-driven breakpoints, responsive media, and reflow at 320 pixels — a practical introduction to responsive web design.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html" aria-current="page">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="responsive-design.html" aria-current="page">Responsive Web Design</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#summary">In plain language</a></li>
+          <li><a href="#why">Why it matters</a></li>
+          <li><a href="#guidance">Core guidance</a>
+            <ul>
+              <li><a href="#mobile-first">Start with the small screen</a></li>
+              <li><a href="#units">Fluid units, not fixed pixels</a></li>
+              <li><a href="#breakpoints">Content-driven breakpoints</a></li>
+              <li><a href="#media">Responsive media and code blocks</a></li>
+              <li><a href="#touch">Touch, hover, and target size</a></li>
+            </ul>
+          </li>
+          <li><a href="#further">Going further</a></li>
+          <li><a href="#related">Related topics</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>Responsive Web Design</h1>
+
+      <div class="layer-summary">
+        <h2 id="summary">In plain language</h2>
+        <p>Responsive web design means one website that rearranges itself to suit whatever
+        screen it is shown on — a phone held in one hand, a tablet, a laptop, a large desktop
+        monitor, or a browser zoomed to four times its normal size.</p>
+        <p>The method is simpler than it sounds. Write the layout for the narrow screen first,
+        use flexible sizes instead of fixed pixel widths, and add rules for wider screens only
+        where the narrow layout stops looking right.</p>
+      </div>
+
+      <section>
+        <h2 id="why">Why it matters</h2>
+        <p>More than half of all web traffic is on phones, and for many readers a phone is the
+        only device they use. A layout that assumes a wide screen does not merely look
+        cramped; it produces horizontal scrolling, overlapping text, and controls that cannot
+        be reached.</p>
+        <p>Responsive design is also an accessibility requirement, not a separate concern.
+        WCAG success criterion 1.4.10, Reflow, requires content to be usable at 320 CSS pixels
+        wide without scrolling in two directions. That is the same requirement as supporting
+        400 per cent zoom on a 1280-pixel desktop display, because zooming to 400 per cent
+        leaves a 320-pixel viewport. One technical solution serves a low-vision desktop user
+        and every phone visitor at once — a clear example of the curb-cut effect.</p>
+        <p>The alternative — a separate mobile site — means two codebases, two sets of
+        content, and two places for things to fall out of date. Responsive design was invented
+        to avoid exactly that.</p>
+      </section>
+
+      <section>
+        <h2 id="guidance">Core guidance</h2>
+
+        <h3 id="mobile-first">Start with the small screen</h3>
+        <p>Write the single-column, small-screen layout as your base styles, then add
+        <code>min-width</code> media queries to enhance upward. Doing it the other way round —
+        desktop first, with <code>max-width</code> queries subtracting things — produces more
+        code and more special cases.</p>
+        <p>Mobile-first also enforces honest prioritisation. If a module cannot justify its
+        place in a 375-pixel column, it rarely deserves prominence at 1440. The narrow layout
+        is where you find out what the page is actually about.</p>
+        <p>None of this works without the viewport meta tag. Without it, mobile browsers
+        pretend to be about 980 pixels wide and scale the result down, so your media queries
+        never fire and your text is unreadable.</p>
+
+        <h3 id="units">Fluid units, not fixed pixels</h3>
+        <p>Set type in <code>rem</code> rather than <code>px</code>, so a reader who has
+        raised their browser's default text size gets larger text everywhere. Size layout in
+        percentages, <code>fr</code> units, and <code>minmax()</code> so containers adapt.
+        Reach for <code>clamp()</code> when you want a value to scale smoothly between a
+        sensible floor and ceiling.</p>
+        <p>Constrain the reading measure. Lines longer than roughly 75 characters are hard to
+        track back to the start, which affects everyone and affects dyslexic readers most. A
+        <code>max-width</code> in <code>ch</code> units expresses that directly.</p>
+
+        <figure class="code-sample">
+          <figcaption>The mobile-first pattern used throughout this site. The base rules
+          describe the phone; the media query adds columns only once there is room for them.
+          Note that nothing has a fixed pixel width.</figcaption>
+          <div class="code-head"><span class="code-lang">CSS</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: mobile-first CSS with fluid units and grid"><code>/* BASE = the narrow screen. No media query needed: this is what
+   every device gets before any enhancement applies. */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* one column at 320px */
+  gap: 1.25rem;
+}
+
+/* Type scales smoothly between a floor and a ceiling.
+   The floor is never below 1rem, so body text stays at least 16px. */
+h2 { font-size: clamp(1.55rem, 1.35rem + 0.9vw, 2.1rem); }
+
+/* 60-75 characters is the comfortable reading measure. Expressing it
+   in ch ties it to the font, not to a guess in pixels. */
+p  { max-width: 68ch; }
+
+/* ENHANCEMENT. em units in the query mean the breakpoint also responds
+   to the reader's text-size setting, not only to the viewport.
+   The value was chosen because the cards stop looking right below it -
+   not because some phone happens to be that wide. */
+@media (min-width: 34em) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 62em) {
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* An intrinsically responsive grid needs no breakpoints at all:
+   fit as many 16rem columns as will go, then wrap. */
+.auto-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}</code></pre>
+        </figure>
+
+        <h3 id="breakpoints">Content-driven breakpoints</h3>
+        <p>Put breakpoints where your content breaks, not at the width of whichever phone was
+        popular the year you built the site. Widen the browser slowly and watch: the moment a
+        line of text gets too long, a card gets too narrow, or a table stops fitting, that is a
+        breakpoint. Device-named breakpoints age badly because devices change and your content
+        does not.</p>
+        <p>Write media queries in <code>em</code> rather than <code>px</code>, so the
+        breakpoint moves when a reader increases their default text size. And keep the number
+        small: three or four well-chosen breakpoints usually beat a dozen.</p>
+
+        <h3 id="media">Responsive media and code blocks</h3>
+        <p>The baseline rule for images is <code>max-width: 100%</code> with
+        <code>height: auto</code>, so nothing overflows its container. Beyond that, use
+        <code>srcset</code> and <code>sizes</code> to let the browser download the smallest
+        file that will still look sharp, and always declare <code>width</code> and
+        <code>height</code> so space is reserved and the page does not jump.</p>
+        <p>Some content genuinely cannot reflow. Code samples are the clearest example: wrap a
+        line of code in a different place and you can change what it means. The answer is to
+        let the code block scroll horizontally inside its own container while the page itself
+        never scrolls sideways. That container needs <code>tabindex="0"</code> so a keyboard
+        user can scroll it without a mouse. Wide tables are handled the same way.</p>
+
+        <figure class="code-sample">
+          <figcaption>Keeping a wide code sample inside its own box. This is the exact rule
+          this page uses — the block you are reading scrolls independently while the page
+          around it does not.</figcaption>
+          <div class="code-head"><span class="code-lang">CSS and HTML</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: containing horizontal scroll inside a code block"><code>/* The scroll stays inside the box. Without overflow-x here, a long
+   line of code widens the whole document and the page scrolls
+   sideways - which fails WCAG 1.4.10 Reflow. */
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Grid and flex children default to min-width: auto, which lets wide
+   content push a column wider than its track. minmax(0, 1fr) is the
+   fix, and it is the single most common cause of unexpected
+   horizontal page scroll. */
+.topic-layout {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+}
+
+&lt;!-- tabindex="0" makes the scrolling region reachable from the
+     keyboard. role and aria-label give it a name when it is focused,
+     so a screen reader user knows what they have landed on. --&gt;
+&lt;pre tabindex="0" role="region" aria-label="Code sample: fetch request"&gt;
+  &lt;code&gt;...&lt;/code&gt;
+&lt;/pre&gt;</code></pre>
+        </figure>
+
+        <h3 id="touch">Touch, hover, and target size</h3>
+        <p>Hover does not exist on a touchscreen. Anything revealed on hover must also be
+        reachable by focus and by tap, or it is invisible to a large share of your audience.
+        Drop-down menus that open on hover are the classic failure here.</p>
+        <p>Targets need to be big enough to hit. WCAG 2.5.8 sets a minimum of 24 by 24 CSS
+        pixels; 44 by 44 is the practical target for anything important, with enough space
+        between neighbouring controls that a mis-tap is unlikely. On this site, navigation
+        collapses on narrow screens into a button labelled <strong>Menu</strong> — a word,
+        not a bare hamburger icon, because unlabelled icons are guesswork for anyone who has
+        not learned that particular convention.</p>
+      </section>
+
+      <section>
+        <h2 id="further">Going further</h2>
+        <p><strong>Container queries</strong> ask how much room a component has, rather than
+        how wide the window is. That is usually the question you actually meant: a card in a
+        narrow sidebar should stack even on a wide screen. Support is now broad enough to use
+        with a viewport-query fallback.</p>
+        <p><strong>Logical properties</strong> — <code>margin-inline</code>,
+        <code>padding-block</code>, <code>inset-inline-start</code> — describe position
+        relative to the reading direction rather than to the physical screen. They make
+        right-to-left support close to free, and they cost nothing to adopt.</p>
+        <p><strong>Test the extremes.</strong> Set the browser to 320 pixels wide and confirm
+        there is no horizontal scrollbar. Zoom to 400 per cent and confirm the same. Increase
+        the browser's default font size and check that nothing clips. Then check whether text
+        containers still work when the words get 30 per cent longer, as they do in German or
+        Spanish translations.</p>
+        <p><strong>Reference material.</strong> The Mozilla Developer Network guide to
+        responsive design and the WCAG 2.2 Reflow criterion at the World Wide Web Consortium
+        together cover almost everything on this page in more depth.</p>
+      </section>
+
+      <section>
+        <h2 id="related">Related topics</h2>
+        <p>Responsive layout, reflow, and image delivery are the same subject viewed from
+        three of this site's five sections.</p>
+        <ul class="related-list">
+          <li><a href="accessibility.html#contrast">Reflow, zoom, and user preferences</a></li>
+          <li><a href="optimization.html#images">Responsive image delivery</a></li>
+          <li><a href="ux-design.html">User Experience Design</a></li>
+          <li><a href="contact.html">A form that works at 320 pixels</a></li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

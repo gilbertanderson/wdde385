@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Application Security | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="HTTPS and TLS, input validation, output encoding, cross-site scripting and request forgery defences, security headers, and safer authentication — a practical introduction.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html" aria-current="page">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="security.html" aria-current="page">Web Application Security</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#summary">In plain language</a></li>
+          <li><a href="#why">Why it matters</a></li>
+          <li><a href="#guidance">Core guidance</a>
+            <ul>
+              <li><a href="#https">Encrypt everything in transit</a></li>
+              <li><a href="#xss">Cross-site scripting</a></li>
+              <li><a href="#csrf">Cross-site request forgery</a></li>
+              <li><a href="#injection">Injection and input handling</a></li>
+              <li><a href="#auth">Authentication and sessions</a></li>
+            </ul>
+          </li>
+          <li><a href="#further">Going further</a></li>
+          <li><a href="#related">Related topics</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>Web Application Security</h1>
+
+      <div class="layer-summary">
+        <h2 id="summary">In plain language</h2>
+        <p>Web application security is the work of stopping other people from reading,
+        changing, or destroying things they should not touch. Most attacks are not clever.
+        They rely on an application trusting something it should not have trusted — a form
+        field, a URL, a cookie, a file upload.</p>
+        <p>The single idea underneath almost everything on this page: <strong>never trust
+        input, and never mix data with code</strong>. If you remember nothing else, remember
+        that.</p>
+      </div>
+
+      <section>
+        <h2 id="why">Why it matters</h2>
+        <p>A security failure is not like a layout bug. A misaligned button annoys someone
+        for a moment. A leaked password database follows your users for years, because people
+        reuse passwords, so your failure becomes their bank's failure.</p>
+        <p>The people harmed are rarely the people who wrote the bug. That asymmetry is what
+        makes security an ethical obligation rather than a technical preference. When you
+        collect data, you accept responsibility for protecting it — which is also the
+        strongest argument for collecting as little as possible. Data you never stored cannot
+        leak.</p>
+        <p>Security also interacts with accessibility in ways that are easy to get wrong.
+        CAPTCHA is the standard example: it is a security control that locks out many blind
+        users, many users with cognitive disabilities, and plenty of people with neither.
+        There are better options, covered below.</p>
+      </section>
+
+      <section>
+        <h2 id="guidance">Core guidance</h2>
+
+        <h3 id="https">Encrypt everything in transit</h3>
+        <p>Serve every page over HTTPS, which is HTTP carried inside
+        <abbr title="Transport Layer Security">TLS</abbr> encryption. Without it, anyone
+        between the visitor and your server — a shared network, an internet provider, a
+        compromised router — can read and alter the traffic, including session cookies.
+        Certificates are free from Let's Encrypt, so cost is no longer an excuse.</p>
+        <p>Redirect all plain HTTP to HTTPS, and then send an HTTP Strict Transport Security
+        header so browsers refuse to use plain HTTP for your domain in future. Mark session
+        cookies <code>Secure</code> so they are never sent unencrypted, and
+        <code>HttpOnly</code> so scripts cannot read them.</p>
+
+        <h3 id="xss">Cross-site scripting</h3>
+        <p>Cross-site scripting, abbreviated <abbr title="cross-site scripting">XSS</abbr>,
+        happens when text supplied by a user is written into a page in a way that lets the
+        browser treat it as code. An attacker submits a comment containing a script tag; every
+        later visitor runs that script with the full privileges of your site, which means it
+        can read their session and act as them.</p>
+        <p>The defence is context-aware output encoding: escape data at the moment you put it
+        into the page, using the escaping appropriate to where it lands, because HTML
+        escaping, attribute escaping, URL escaping, and JavaScript escaping are different
+        rules. Modern template engines do this automatically — the vulnerabilities appear
+        where developers deliberately switch it off. In plain JavaScript, the practical rule
+        is to use <code>textContent</code> instead of <code>innerHTML</code> for anything a
+        user supplied.</p>
+
+        <figure class="code-sample">
+          <figcaption>The same untrusted comment handled two ways. The first line is a
+          working cross-site scripting vulnerability; the second is safe because the browser
+          is told the value is text, never markup.</figcaption>
+          <div class="code-head"><span class="code-lang">JavaScript</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: preventing cross-site scripting with textContent"><code>// Untrusted value, as if it arrived from a comment form.
+const comment = '&lt;img src=x onerror="stealSession()"&gt;';
+
+// VULNERABLE. innerHTML parses the string as markup, so the browser
+// builds a real &lt;img&gt; element and runs the onerror handler.
+document.getElementById('output').innerHTML = comment;
+
+// SAFE. textContent sets a text node. The angle brackets are shown
+// to the reader as characters and are never parsed as markup.
+document.getElementById('output').textContent = comment;
+
+// Building an element rather than a string is safe for the same
+// reason: nothing here is ever parsed as HTML.
+const item = document.createElement('li');
+item.textContent = comment;              // text, not markup
+item.setAttribute('data-author', name);  // attribute API, not string concatenation
+list.append(item);
+
+// A Content-Security-Policy response header is the second layer.
+// Even if an injection slips through, the browser refuses to run
+// inline script that the policy did not authorise:
+//   Content-Security-Policy: default-src 'self'; object-src 'none'</code></pre>
+        </figure>
+
+        <h3 id="csrf">Cross-site request forgery</h3>
+        <p>Cross-site request forgery, abbreviated
+        <abbr title="cross-site request forgery">CSRF</abbr>, exploits the fact that browsers
+        attach your cookies to requests automatically. A user who is signed in to your site
+        visits an attacker's page; that page silently submits a form to your site; the
+        browser attaches the session cookie; your server sees a perfectly authenticated
+        request to change an email address or transfer money.</p>
+        <p>Two defences, used together. First, a synchroniser token: the server puts an
+        unpredictable value in each form and rejects any state-changing request that does not
+        return it, which an attacker's page cannot read because of the same-origin policy.
+        Second, set <code>SameSite=Lax</code> or <code>SameSite=Strict</code> on session
+        cookies so the browser will not attach them to cross-site form posts at all. Also make
+        sure that requests which change state use POST rather than GET, since a GET can be
+        triggered by an image tag.</p>
+
+        <h3 id="injection">Injection and input handling</h3>
+        <p>SQL injection is the same mistake as cross-site scripting in a different place:
+        untrusted text is concatenated into a database query and the database interprets part
+        of it as instructions. The fix is parameterised queries, also called prepared
+        statements, which send the query and the values on separate channels so the values can
+        never become syntax.</p>
+        <p>Validate input on the server as well as in the browser. Client-side validation is a
+        usability feature that helps honest users correct mistakes quickly; it is not a
+        security control, because an attacker simply does not use your form. Prefer allow-lists
+        that describe what is acceptable over deny-lists that try to enumerate every bad
+        thing, because you will never finish the second list.</p>
+
+        <figure class="code-sample">
+          <figcaption>The same lookup written unsafely and safely. In the parameterised
+          version, whatever the visitor typed is treated as a single value, so quotation marks
+          and SQL keywords inside it are meaningless.</figcaption>
+          <div class="code-head"><span class="code-lang">JavaScript (server side)</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: parameterised database queries"><code>// VULNERABLE: the user's text becomes part of the query's syntax.
+// An email of  ' OR '1'='1  turns this into "match every row".
+const sql = "SELECT * FROM users WHERE email = '" + input + "'";
+await db.query(sql);
+
+// SAFE: the placeholder keeps data and code on separate channels.
+// The driver never lets the value change the shape of the query.
+await db.query(
+  'SELECT id, display_name FROM users WHERE email = $1',
+  [input]
+);
+
+// Validate on the server too. The browser check is a courtesy to
+// honest users; an attacker never opens your form.
+// Allow-list what is acceptable rather than guessing at what is not.
+if (typeof input !== 'string' || input.length &gt; 254) {
+  return respond(400, 'Email address is too long.');
+}</code></pre>
+        </figure>
+
+        <h3 id="auth">Authentication and sessions</h3>
+        <p>Never store passwords, even encrypted. Store a hash produced by a slow,
+        purpose-built algorithm — bcrypt, scrypt, or Argon2 — with a unique salt per user, so
+        that a stolen database is expensive rather than instantly useful. Never invent your
+        own scheme here.</p>
+        <p>Length beats complexity. Current guidance from the United States National Institute
+        of Standards and Technology favours long passphrases, checked against lists of known
+        breached passwords, over forced symbol rules and mandatory expiry, both of which push
+        people towards predictable patterns. Offer multi-factor authentication and give session
+        cookies a sensible lifetime, regenerating the session identifier at sign-in.</p>
+        <p>Finally, make error messages uninformative to attackers but useful to users. "The
+        email address or password is incorrect" avoids confirming which accounts exist, while
+        still telling an honest visitor what to try next.</p>
+
+        <div class="callout">
+          <h3>Why this site uses no CAPTCHA</h3>
+          <p>CAPTCHA is a security control with a serious accessibility cost. Distorted-text
+          puzzles are unusable for many blind users and hard for many users with dyslexia or
+          cognitive disabilities; audio alternatives are frequently worse.</p>
+          <p>The alternatives are usually adequate and sometimes better: a hidden honeypot
+          field that only automated submissions fill in, a check on how quickly the form was
+          completed, rate limiting by address, and thorough server-side validation. The
+          <a href="contact.html">contact form on this site</a> uses a honeypot and no CAPTCHA.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="further">Going further</h2>
+        <p><strong>Security headers</strong> are a large improvement for a small amount of
+        configuration. <code>Content-Security-Policy</code> limits where scripts, styles, and
+        images may load from, and is the strongest second line of defence against cross-site
+        scripting. <code>Strict-Transport-Security</code> forces HTTPS.
+        <code>X-Content-Type-Options: nosniff</code> stops the browser guessing content types.
+        <code>Referrer-Policy</code> limits what your URLs leak to other sites.</p>
+        <p><strong>Defence in depth</strong> assumes each control will eventually fail. Encode
+        output <em>and</em> set a content security policy. Validate in the browser
+        <em>and</em> on the server. Least privilege applies as well: a database account used
+        by a public web page rarely needs permission to drop tables.</p>
+        <p><strong>Dependencies are your attack surface.</strong> Most applications ship far
+        more third-party code than their own. Keep a dependency inventory, patch promptly, and
+        prefer fewer dependencies — which is one reason this site has none at all.</p>
+        <p><strong>Reference material.</strong> The OWASP Top Ten is the standard survey of
+        the most common categories of web application risk, and the OWASP Cheat Sheet Series
+        gives specific, implementable guidance for each one.</p>
+      </section>
+
+      <section>
+        <h2 id="related">Related topics</h2>
+        <p>Security decisions are rarely free: they trade against usability, accessibility,
+        and sometimes performance. The pages below cover the other sides of those trades.</p>
+        <ul class="related-list">
+          <li><a href="accessibility.html#forms">Accessible form validation</a></li>
+          <li><a href="ux-design.html#writing">Writing error messages</a></li>
+          <li><a href="optimization.html">Website Optimization</a></li>
+          <li><a href="contact.html">A form with no CAPTCHA</a></li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

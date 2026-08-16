@@ -1,0 +1,836 @@
+/* =============================================================
+   CMST 387 Web Design Resource Hub — shared stylesheet
+   Hand-written. No frameworks, no CDN links, no web fonts.
+
+   Organisation:
+     1. Design tokens (light default, dark / high-contrast overrides)
+     2. Base elements
+     3. Layout helpers
+     4. Skip link, header, navigation, accessibility panel
+     5. Page furniture: breadcrumbs, hero, cards, layers, code, TOC
+     6. Forms
+     7. Footer
+     8. Responsive enhancements (mobile-first: min-width queries only)
+     9. User-preference media queries
+   ============================================================= */
+
+/* ---------- 1. Design tokens ------------------------------- */
+/* Contrast ratios noted against their intended background.
+   Verified with the WCAG 2.x relative-luminance formula.        */
+
+:root {
+  /* Light palette (default) */
+  --bg:            #ffffff;
+  --surface:       #f4f6f8;
+  --surface-2:     #eef1f4;
+  --text:          #16202b;   /* 15.9:1 on --bg   */
+  --text-muted:    #4a5866;   /*  7.3:1 on --bg   */
+  --link:          #0b4f9e;   /*  8.0:1 on --bg   */
+  --link-visited:  #6b2d8f;   /*  8.1:1 on --bg   */
+  --border:        #5b6b7a;   /*  5.5:1 on --bg (UI components need 3:1) */
+  --border-soft:   #c3ccd4;
+  --accent:        #8a3b00;   /*  7.0:1 on --bg   */
+  --on-accent:     #ffffff;   /*  7.8:1 on --accent — text drawn on accent fills */
+  --accent-soft:   #fff6ee;
+  --focus:         #8a3b00;
+  --error:         #b3261e;   /*  6.5:1 on --bg   */
+  --error-bg:      #fdecea;
+  --success:       #146c43;   /*  6.4:1 on --bg   */
+  --success-bg:    #e8f5ee;
+  --code-bg:       #eef1f4;
+  --code-text:     #16202b;
+
+  /* Typography scale — clamp() so type is fluid but never below 16px */
+  --step--1: clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
+  --step-0:  clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --step-1:  clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem);
+  --step-2:  clamp(1.3rem, 1.2rem + 0.5vw, 1.6rem);
+  --step-3:  clamp(1.55rem, 1.35rem + 0.9vw, 2.1rem);
+  --step-4:  clamp(1.85rem, 1.5rem + 1.5vw, 2.75rem);
+
+  --measure: 68ch;            /* 60–75 character reading measure */
+  --radius: 0.375rem;
+  --gap: 1.25rem;
+  --shell: 75rem;
+
+  --motion: 160ms;
+
+  /* Adjusted by the accessibility settings panel */
+  --text-scale: 1;
+  --link-decoration: none;
+}
+
+/* Dark palette. Applied when the user's OS asks for dark and the
+   site has not been explicitly forced to light, OR when the panel
+   sets data-theme="dark". Every token is redefined as a real,
+   contrast-checked colour — not an inverted filter. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="contrast"]) {
+    --bg:           #10161d;
+    --surface:      #18212b;
+    --surface-2:    #1e2934;
+    --text:         #e6edf3;  /* 15.0:1 on --bg */
+    --text-muted:   #a9b8c6;  /*  9.1:1 on --bg */
+    --link:         #7fb6ff;  /*  8.9:1 on --bg */
+    --link-visited: #d3a9f5;
+    --border:       #7d8d9c;  /*  6.1:1 on --bg */
+    --border-soft:  #34424f;
+    --accent:       #ffb27a;  /* 10.1:1 on --bg */
+    --on-accent:    #1a1000;  /* 10.5:1 on --accent */
+    --accent-soft:  #221a12;
+    --focus:        #ffb27a;
+    --error:        #ff9a90;  /*  9.2:1 on --bg */
+    --error-bg:     #2b1614;
+    --success:      #78d9a6;
+    --success-bg:   #12251b;
+    --code-bg:      #0a0f14;
+    --code-text:    #e6edf3;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:           #10161d;
+  --surface:      #18212b;
+  --surface-2:    #1e2934;
+  --text:         #e6edf3;
+  --text-muted:   #a9b8c6;
+  --link:         #7fb6ff;
+  --link-visited: #d3a9f5;
+  --border:       #7d8d9c;
+  --border-soft:  #34424f;
+  --accent:       #ffb27a;
+  --on-accent:    #1a1000;
+  --accent-soft:  #221a12;
+  --focus:        #ffb27a;
+  --error:        #ff9a90;
+  --error-bg:     #2b1614;
+  --success:      #78d9a6;
+  --success-bg:   #12251b;
+  --code-bg:      #0a0f14;
+  --code-text:    #e6edf3;
+}
+
+/* High-contrast theme: pure black on pure white, 21:1, heavier borders. */
+:root[data-theme="contrast"] {
+  --bg:           #ffffff;
+  --surface:      #ffffff;
+  --surface-2:    #ffffff;
+  --text:         #000000;
+  --text-muted:   #000000;
+  --link:         #0000c8;
+  --link-visited: #5c0099;
+  --border:       #000000;
+  --border-soft:  #000000;
+  --accent:       #6b2200;
+  --on-accent:    #ffffff;   /* 11.3:1 on --accent */
+  --accent-soft:  #ffffff;
+  --focus:        #000000;
+  --error:        #8f0000;
+  --error-bg:     #ffffff;
+  --success:      #00532f;
+  --success-bg:   #ffffff;
+  --code-bg:      #ffffff;
+  --code-text:    #000000;
+  --link-decoration: underline;
+}
+
+:root[data-theme="contrast"] * {
+  border-color: #000000;
+}
+
+/* Users who ask their OS for more contrast get the stronger borders
+   without having to find the settings panel. */
+@media (prefers-contrast: more) {
+  :root:not([data-theme]) {
+    --text-muted: var(--text);
+    --border-soft: var(--border);
+    --link-decoration: underline;
+  }
+}
+
+/* Text-size steps set by the settings panel. */
+:root[data-textsize="large"]   { --text-scale: 1.125; }
+:root[data-textsize="larger"]  { --text-scale: 1.25; }
+:root[data-underline="on"]     { --link-decoration: underline; }
+
+/* ---------- 2. Base elements -------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* The hidden attribute must win over any display value set below. */
+[hidden] { display: none !important; }
+
+html {
+  /* rem-based sizing: browser text-size preferences still apply. */
+  font-size: calc(100% * var(--text-scale));
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  text-align: left;             /* never justified — rivers hurt dyslexic readers */
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  max-width: var(--measure);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--step-4); margin-top: 0; }
+h2 { font-size: var(--step-3); margin-top: 2rem; }
+h3 { font-size: var(--step-2); margin-top: 1.75rem; }
+h4 { font-size: var(--step-1); margin-top: 1.5rem; }
+
+p, ul, ol, dl, table { max-width: var(--measure); }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.4rem; }
+li > ul, li > ol { margin-top: 0.4rem; }
+
+a {
+  color: var(--link);
+  text-decoration: var(--link-decoration);
+  text-underline-offset: 0.15em;
+}
+a:visited { color: var(--link-visited); }
+a:hover   { text-decoration: underline; }
+
+/* Focus indicator: 3px solid, offset so it is never clipped or
+   obscured, and drawn in a colour with >3:1 against every surface. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Fallback for browsers without :focus-visible support. */
+:focus:not(:focus-visible) { outline: none; }
+
+/* Anything linked from the table of contents or the error summary
+   is scrolled clear of the top edge. */
+[id] { scroll-margin-top: 1.5rem; }
+
+img, svg, video { max-width: 100%; height: auto; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-soft);
+  margin: 2.5rem 0;
+}
+
+abbr[title] { text-decoration: underline dotted; cursor: help; }
+
+dl { margin: 0 0 1.5rem; }
+dt { font-weight: 700; margin-top: 1rem; }
+dd { margin: 0.25rem 0 0; padding-left: 1rem; border-left: 3px solid var(--border-soft); }
+
+blockquote {
+  margin: 0 0 1rem;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 4px solid var(--accent);
+  color: var(--text-muted);
+  max-width: var(--measure);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+caption { text-align: left; color: var(--text-muted); padding-bottom: 0.5rem; }
+th, td {
+  border: 1px solid var(--border-soft);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--surface); }
+
+/* Visually hidden but available to assistive technology. */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 3. Layout helpers ------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.page {
+  flex: 1 0 auto;
+  padding-block: 1.5rem 3rem;
+}
+
+.stack > * + * { margin-top: 1rem; }
+
+/* ---------- 4. Skip link, header, nav, settings panel -------- */
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -100px;
+  z-index: 100;
+  background: var(--bg);
+  color: var(--link);
+  border: 2px solid var(--focus);
+  border-radius: var(--radius);
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  transition: top var(--motion) ease;
+}
+.skip-link:focus {
+  top: 0.5rem;              /* visible on focus, never obscured */
+}
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border-soft);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.2;
+  display: block;
+}
+.brand:visited { color: var(--text); }
+.brand .brand-course { display: block; font-size: var(--step--1); color: var(--text-muted); font-weight: 600; }
+.brand .brand-name   { display: block; font-size: var(--step-1); }
+.brand:hover .brand-name { text-decoration: underline; }
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* All buttons carry text labels — never an icon alone. */
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+  min-height: 2.75rem;      /* 44px primary target */
+  cursor: pointer;
+}
+button:hover { background: var(--surface-2); }
+
+/* --on-accent is redefined alongside --accent in every theme, so text
+   drawn on an accent fill stays legible without any per-theme override
+   rules here. */
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+.btn-primary:hover { text-decoration: underline; }
+
+.btn-quiet {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.7rem;
+  font-size: var(--step--1);
+}
+
+.primary-nav {
+  width: 100%;
+}
+.primary-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.primary-nav a {
+  display: block;
+  padding: 0.7rem 0.5rem;   /* comfortably over the 24x24 minimum */
+  color: var(--text);
+  text-decoration: var(--link-decoration);
+  border-radius: var(--radius);
+  border-left: 4px solid transparent;
+}
+.primary-nav a:hover { background: var(--surface-2); text-decoration: underline; }
+.primary-nav a[aria-current="page"] {
+  font-weight: 700;
+  border-left-color: var(--accent);
+  background: var(--surface-2);
+}
+
+/* When JavaScript is available the nav collapses behind the "Menu"
+   button on small screens. Without JavaScript the .js class is never
+   added, so the full list simply stays on the page. */
+.js .primary-nav { display: none; }
+.js .site-header[data-nav-open="true"] .primary-nav { display: block; }
+
+.a11y-panel {
+  background: var(--accent-soft);
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-block: 1rem;
+}
+.a11y-panel h2 { font-size: var(--step-1); margin-top: 0; }
+.a11y-panel fieldset {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem 1rem;
+  min-width: 0;
+}
+.a11y-panel legend { font-weight: 700; padding-inline: 0.35rem; }
+.a11y-panel .opt-grid {
+  display: grid;
+  gap: 0.4rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+.a11y-panel label { display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0; }
+.a11y-panel input { width: 1.15rem; height: 1.15rem; accent-color: var(--accent); }
+.a11y-settings-grid {
+  display: grid;
+  gap: 0 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+/* ---------- 5. Page furniture ------------------------------- */
+
+.breadcrumbs {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-soft);
+  font-size: var(--step--1);
+}
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.6rem 0;
+  max-width: none;
+}
+.breadcrumbs li { margin: 0; }
+.breadcrumbs li + li::before {
+  content: "\203A";           /* › */
+  padding-right: 0.35rem;
+  color: var(--text-muted);
+}
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  margin-bottom: 2rem;
+}
+.hero p { font-size: var(--step-1); color: var(--text); }
+
+.cta {
+  display: inline-block;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  border-radius: var(--radius);
+  text-decoration: none;
+  border: 2px solid var(--accent);
+}
+.cta:visited { color: var(--on-accent); }
+.cta:hover { text-decoration: underline; }
+
+/* Topic cards: one column by default, more when the content allows. */
+.card-grid {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  max-width: none;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.15rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.card h3 { margin-top: 0; font-size: var(--step-1); }
+.card p { color: var(--text-muted); flex: 1 0 auto; }
+.card .card-link { font-weight: 700; text-decoration: underline; }
+
+/* Layered content: summary / why it matters / core guidance. */
+.layer-summary {
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.15rem;
+  margin-bottom: 1.5rem;
+}
+.layer-summary h2 { margin-top: 0; font-size: var(--step-2); }
+.layer-summary p:last-child { margin-bottom: 0; }
+
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.callout h3, .callout h2 { margin-top: 0; }
+.callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
+
+/* Code samples. The block scrolls inside itself; the page never
+   scrolls sideways. tabindex="0" in the markup makes the scroll
+   container reachable and operable from the keyboard. */
+.code-sample { margin: 0 0 1.5rem; max-width: var(--measure); }
+.code-sample figcaption {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+.code-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 0.35rem 0.6rem;
+  font-size: var(--step--1);
+}
+.code-head .code-lang { font-weight: 700; }
+pre {
+  margin: 0;
+  background: var(--code-bg);
+  color: var(--code-text);
+  border: 1px solid var(--border-soft);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 0.9rem;
+  overflow-x: auto;          /* horizontal scroll stays in this box */
+  font-size: var(--code-scale, 0.95em);
+  line-height: 1.55;
+  tab-size: 2;
+}
+pre:focus-visible { outline-offset: -3px; }
+code, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+}
+p code, li code, td code {
+  background: var(--code-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  padding: 0.05em 0.3em;
+  font-size: 0.92em;
+}
+
+/* Table of contents. <details> so it is a native accordion with no
+   custom ARIA. Open by default; the script collapses it on narrow
+   screens and re-opens it on wide ones. */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem 0.9rem;
+  margin-bottom: 1.5rem;
+}
+/* Left as a normal list-item so the browser keeps its own disclosure
+   triangle. That marker is the only affordance telling a sighted user
+   the section can be opened and closed, so it is not styled away. */
+.toc > summary {
+  font-weight: 700;
+  font-size: var(--step-1);
+  cursor: pointer;
+  padding: 0.6rem 0.25rem;
+}
+.toc ul { list-style: none; padding-left: 0; margin: 0.5rem 0 0; max-width: none; }
+.toc li { margin-bottom: 0.15rem; }
+.toc ul ul { padding-left: 1rem; }
+.toc a { display: block; padding: 0.35rem 0.25rem; }
+
+.related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.related-list li { margin: 0; }
+.related-list a {
+  display: inline-block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  text-decoration: var(--link-decoration);
+  min-height: 2.5rem;
+}
+.related-list a:hover { background: var(--surface-2); text-decoration: underline; }
+
+.helpful {
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.helpful p { margin: 0; font-weight: 700; }
+.helpful [role="status"] { flex-basis: 100%; margin: 0; font-weight: 400; }
+
+/* ---------- 6. Forms ---------------------------------------- */
+
+form { max-width: 44rem; }
+
+.field { margin-bottom: 1.5rem; }
+.field > label,
+fieldset > legend {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.hint {
+  display: block;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  margin-bottom: 0.4rem;
+}
+.optional { font-weight: 400; color: var(--text-muted); }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  width: 100%;
+  max-width: 32rem;
+  padding: 0.6rem 0.7rem;
+  min-height: 2.75rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+textarea { max-width: 44rem; min-height: 9rem; resize: vertical; }
+select { max-width: 32rem; }
+
+[aria-invalid="true"] {
+  border-color: var(--error);
+  border-width: 3px;
+}
+
+.field-error {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--error);
+  font-weight: 700;
+}
+.field-error::before { content: "\2715\00a0"; }  /* ✕ — paired with text, never colour alone */
+
+.error-summary {
+  background: var(--error-bg);
+  border: 3px solid var(--error);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.error-summary h2 { margin-top: 0; font-size: var(--step-1); color: var(--error); }
+.error-summary ul { margin-bottom: 0; }
+.error-summary a { color: var(--error); font-weight: 700; text-decoration: underline; }
+
+.form-success {
+  background: var(--success-bg);
+  border: 3px solid var(--success);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.form-success h2 { margin-top: 0; font-size: var(--step-1); color: var(--success); }
+.form-success p:last-child { margin-bottom: 0; }
+
+fieldset {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem 1rem;
+  margin: 0 0 1.5rem;
+  min-width: 0;
+}
+
+/* Honeypot: off-screen, hidden from assistive technology, skipped by
+   the keyboard. A real person never encounters it — which is why this
+   site needs no CAPTCHA. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- 7. Footer --------------------------------------- */
+
+.site-footer {
+  flex-shrink: 0;
+  background: var(--surface);
+  border-top: 2px solid var(--border-soft);
+  padding-block: 1.5rem;
+  font-size: var(--step--1);
+}
+.site-footer nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  padding: 0;
+  margin: 0 0 1rem;
+  max-width: none;
+}
+.site-footer li { margin: 0; }
+.site-footer a { padding-block: 0.4rem; display: inline-block; }
+.barrier-link {
+  display: inline-block;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.85rem;
+  color: var(--accent) !important;
+  font-weight: 700;
+  text-decoration: underline;
+  min-height: 2.5rem;
+}
+.barrier-link:hover { background: var(--accent-soft); }
+.site-footer .colophon { color: var(--text-muted); margin: 1rem 0 0; max-width: var(--measure); }
+
+/* ---------- 8. Responsive enhancements ----------------------- */
+/* Mobile-first: the rules above describe the small screen. Breakpoints
+   below are placed where the content stops working, not at device
+   widths. At 320px nothing here has applied yet. */
+
+@media (min-width: 34em) {          /* ~544px — two cards fit */
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .card-grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 48em) {          /* ~768px — nav fits on one row */
+  .js .primary-nav { display: block; width: auto; }
+  .btn-menu { display: none !important; }
+  .primary-nav ul { flex-direction: row; flex-wrap: wrap; gap: 0.1rem; }
+  .primary-nav a {
+    border-left: 0;
+    border-bottom: 4px solid transparent;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 0.6rem 0.6rem;
+  }
+  .primary-nav a[aria-current="page"] {
+    border-left: 0;
+    border-bottom-color: var(--accent);
+  }
+  .header-inner { flex-wrap: wrap; }
+  .hero { padding: 2rem 1.75rem; }
+}
+
+@media (min-width: 62em) {          /* ~992px — three cards fit */
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 64em) {          /* ~1024px — room for a sidebar TOC */
+  .topic-layout {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .topic-layout .toc {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .code-sample, p, ul, ol, dl { max-width: var(--measure); }
+}
+
+/* ---------- 9. User-preference media queries ----------------- */
+
+/* Honour the operating-system setting first, and the site panel
+   setting second, so a user who has already configured their machine
+   never has to configure this site. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root[data-motion="reduced"] { scroll-behavior: auto; }
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media print {
+  .site-header, .site-footer, .skip-link, .helpful, .toc { display: none; }
+  body { color: #000; background: #fff; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility &amp; Inclusive Design | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Semantic HTML, keyboard operation, colour contrast, assistive technology, and WCAG 2.2 conformance — a practical introduction to accessible and inclusive web design.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="accessibility.html" aria-current="page">Accessibility &amp; Inclusive Design</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#summary">In plain language</a></li>
+          <li><a href="#why">Why it matters</a></li>
+          <li><a href="#guidance">Core guidance</a>
+            <ul>
+              <li><a href="#semantic">Semantic HTML first</a></li>
+              <li><a href="#keyboard">Keyboard operation</a></li>
+              <li><a href="#contrast">Colour and contrast</a></li>
+              <li><a href="#images">Text alternatives</a></li>
+              <li><a href="#forms">Forms and errors</a></li>
+            </ul>
+          </li>
+          <li><a href="#further">Going further</a></li>
+          <li><a href="#related">Related topics</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>Accessibility &amp; Inclusive Design</h1>
+
+      <div class="layer-summary">
+        <h2 id="summary">In plain language</h2>
+        <p>Web accessibility means building sites that people with disabilities can use.
+        That includes people who are blind or have low vision, people who are deaf or hard of
+        hearing, people who cannot use a mouse, and people with cognitive or learning
+        disabilities.</p>
+        <p>Inclusive design is the wider habit behind it: design for the widest range of
+        people from the start, rather than fixing exclusions later. Most of the work is not
+        exotic. It is using the right HTML element, making sure everything works from the
+        keyboard, choosing readable colours, and writing clearly.</p>
+      </div>
+
+      <section>
+        <h2 id="why">Why it matters</h2>
+        <p>Roughly one person in six lives with a significant disability. If your site
+        excludes them, it excludes a share of your audience larger than most browsers you
+        bother to test.</p>
+        <p>It is also a legal requirement in a growing number of places. Public bodies and
+        educational institutions in the United States are expected to meet Section 508, which
+        is aligned with the Web Content Accessibility Guidelines, usually written
+        <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>. Similar obligations
+        exist across the European Union and elsewhere. But compliance is a floor, not a goal.
+        A site can pass every automated check and still be miserable to use.</p>
+        <p>The strongest argument is the curb-cut effect. Accommodations built for a
+        permanent disability serve far more people than they were designed for. Captions
+        serve a deaf viewer, a commuter in a noisy carriage, and a learner reading in a second
+        language. Large touch targets serve someone with a tremor and anyone holding a phone
+        one-handed. A layout that reflows at 320 pixels serves a low-vision user at 400 per
+        cent zoom and every phone visitor you have.</p>
+      </section>
+
+      <section>
+        <h2 id="guidance">Core guidance</h2>
+        <p>WCAG organises its criteria under four principles, remembered as POUR: content
+        must be <strong>Perceivable</strong>, <strong>Operable</strong>,
+        <strong>Understandable</strong>, and <strong>Robust</strong>. The guidance below is
+        the short version of what that means in practice.</p>
+
+        <h3 id="semantic">Semantic HTML first</h3>
+        <p>The single highest-value decision in accessibility is to use the HTML element that
+        already means what you want. A <code>&lt;button&gt;</code> is focusable, operable with
+        both <kbd>Enter</kbd> and <kbd>Space</kbd>, and announced as a button, with no extra
+        work. A <code>&lt;div&gt;</code> styled to look like a button is none of those things
+        until a large amount of ARIA and JavaScript rebuilds what the browser gave you for
+        free — and that rebuild is where bugs live.</p>
+        <p>Landmark elements let screen reader users jump straight to a region instead of
+        reading from the top. Headings do the same job inside the page, which is why the
+        hierarchy must never skip a level: an <code>&lt;h4&gt;</code> directly after an
+        <code>&lt;h2&gt;</code> tells a screen reader user that a section is missing.</p>
+
+        <figure class="code-sample">
+          <figcaption>The page skeleton this site uses. Each landmark element gives assistive
+          technology a named region to jump to, and the skip link is the first item in the tab
+          order so keyboard users can bypass the navigation.</figcaption>
+          <div class="code-head"><span class="code-lang">HTML</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: semantic page skeleton with landmarks"><code>&lt;body&gt;
+  &lt;!-- First focusable element on the page. Positioned off-screen
+       until it receives focus, then it becomes visible. --&gt;
+  &lt;a class="skip-link" href="#main"&gt;Skip to main content&lt;/a&gt;
+
+  &lt;header&gt;                          &lt;!-- role="banner" --&gt;
+    &lt;!-- aria-label distinguishes this nav from the footer nav,
+         so a screen reader's landmark list is not two "navigation"
+         entries with no way to tell them apart. --&gt;
+    &lt;nav aria-label="Primary"&gt;
+      &lt;ul&gt;
+        &lt;!-- aria-current marks the page you are on. It is a state,
+             not a style, so it is announced as well as shown. --&gt;
+        &lt;li&gt;&lt;a href="/accessibility" aria-current="page"&gt;Accessibility&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;!-- tabindex="-1" lets the skip link move focus here.
+       Without it, some browsers scroll but leave focus behind. --&gt;
+  &lt;main id="main" tabindex="-1"&gt;
+    &lt;h1&gt;One h1 per page, describing this page only&lt;/h1&gt;
+    &lt;h2&gt;Never skip from h1 straight to h3&lt;/h2&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;&lt;/footer&gt;              &lt;!-- role="contentinfo" --&gt;
+&lt;/body&gt;</code></pre>
+        </figure>
+
+        <h3 id="keyboard">Keyboard operation</h3>
+        <p>Everything that works with a mouse must work with a keyboard. This is the baseline
+        for people with motor disabilities, for screen reader users, and for anyone whose
+        pointing device has failed. Test it by putting the mouse down and pressing
+        <kbd>Tab</kbd> through the whole page.</p>
+        <ul>
+          <li>Every interactive element must be reachable and operable.</li>
+          <li>Focus order must follow the visual order.</li>
+          <li>The focus indicator must be clearly visible and never hidden behind a sticky
+          header or overlay.</li>
+          <li>There must be no keyboard trap: if <kbd>Tab</kbd> gets you in, <kbd>Tab</kbd>
+          or <kbd>Escape</kbd> must get you out.</li>
+          <li>Content that scrolls, such as a wide code block, needs
+          <code>tabindex="0"</code> so a keyboard user can scroll it.</li>
+        </ul>
+        <p>Never remove the focus outline without replacing it with something better.
+        <code>outline: none</code> with no substitute is the most common accessibility defect
+        on the web.</p>
+
+        <h3 id="contrast">Colour and contrast</h3>
+        <p>Body text needs a contrast ratio of at least 4.5 to 1 against its background. Large
+        text — 24 pixels, or 19 pixels bold — needs 3 to 1. User interface components and the
+        parts of graphics you must see to understand them also need 3 to 1. Check ratios with
+        a contrast checker while you are choosing the palette, not after the site is built.</p>
+        <p>Colour must never be the only signal. A form field marked as wrong by turning red
+        says nothing to a user with a colour vision deficiency, or to a screen reader user.
+        Pair the colour with a symbol, a border change, and text.</p>
+        <p>Respect the settings people already have. Honour
+        <code>prefers-color-scheme</code>, <code>prefers-contrast</code>, and
+        <code>prefers-reduced-motion</code>, so someone who has configured their operating
+        system gets the right experience with no per-site setup.</p>
+
+        <figure class="code-sample">
+          <figcaption>How this site responds to operating-system preferences. Each theme is a
+          separate, contrast-checked palette rather than an inverting filter, which would
+          produce unpredictable ratios.</figcaption>
+          <div class="code-head"><span class="code-lang">CSS</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: honouring operating system colour and motion preferences"><code>/* Light palette is the default, defined on bare :root so it always
+   exists. Only the values change in the blocks below. */
+:root {
+  --bg:   #ffffff;
+  --text: #16202b;   /* 15.9:1 against --bg */
+  --link: #0b4f9e;   /*  8.0:1 against --bg */
+}
+
+/* Dark palette when the operating system asks for it, unless the
+   visitor has explicitly forced light in the settings panel. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:   #10161d;
+    --text: #e6edf3; /* 15.0:1 against --bg */
+    --link: #7fb6ff; /*  8.9:1 against --bg */
+  }
+}
+
+/* Some people get motion sickness or migraines from movement.
+   This query is a medical accommodation, not a style preference. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus must be obvious. 3px, offset so it is never clipped, in a
+   colour with at least 3:1 contrast against every surface it sits on. */
+:focus-visible {
+  outline: 3px solid #8a3b00;
+  outline-offset: 2px;
+}</code></pre>
+        </figure>
+
+        <h3 id="images">Text alternatives</h3>
+        <p>Every image needs an <code>alt</code> attribute. What goes in it depends on the
+        job the image does. An informative image gets a short description of the information
+        it carries. A decorative image gets <code>alt=""</code>, which tells a screen reader
+        to skip it — leaving the attribute off entirely makes some screen readers read the
+        file name instead. An image used as a link describes the destination, not the picture.
+        A complex diagram gets a short <code>alt</code> plus a full description in the
+        surrounding text, because one line cannot carry an architecture diagram.</p>
+
+        <h3 id="forms">Forms and errors</h3>
+        <p>Forms are where accessibility most often fails, because errors are the hard part.
+        Every input needs a real <code>&lt;label&gt;</code> tied to it by
+        <code>for</code> and <code>id</code>. Placeholder text is not a label: it disappears
+        when typing starts and usually fails contrast. Related controls belong in a
+        <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code>. Format hints belong
+        in <code>aria-describedby</code> so they are announced <em>before</em> the visitor
+        types, not only after they fail.</p>
+        <p>When validation fails, mark each bad field with <code>aria-invalid="true"</code>,
+        put a summary of every problem at the top of the form, move focus to that summary, and
+        link each item to its field. The <a href="contact.html">contact form on this site</a>
+        does exactly that — submit it empty to see the pattern work.</p>
+      </section>
+
+      <section>
+        <h2 id="further">Going further</h2>
+        <p><strong>Automated tools find about a third of the problems.</strong> axe DevTools,
+        WAVE, and the Lighthouse accessibility audit reliably catch missing alternative text,
+        low contrast, missing labels, and invalid ARIA. They cannot judge whether alternative
+        text is <em>meaningful</em> or whether a heading structure is <em>logical</em>. A
+        clean scan is a starting point, not a certificate.</p>
+        <p><strong>Manual testing finds the rest.</strong> Keyboard-only testing is the
+        highest-yield manual test per hour. Beyond that, test with real screen readers, and
+        test more than one: NVDA with Firefox, JAWS with Chrome, VoiceOver with Safari, and
+        TalkBack on Android differ meaningfully in their ARIA support. Add 400 per cent zoom,
+        Windows High Contrast Mode, and a colour-blindness simulator.</p>
+        <p><strong>The first rule of ARIA is not to use ARIA.</strong> Accessible Rich
+        Internet Applications markup describes semantics the browser cannot infer. It changes
+        nothing about behaviour: <code>role="button"</code> on a <code>&lt;div&gt;</code> does
+        not make it focusable or make <kbd>Enter</kbd> work. Incorrect ARIA is worse than
+        none, because it actively lies to assistive technology. When a custom widget is
+        genuinely necessary, follow the ARIA Authoring Practices Guide for the expected
+        keyboard behaviour.</p>
+        <p><strong>Reference material.</strong> WCAG 2.2 at the World Wide Web Consortium is
+        the normative standard; the WebAIM site at Utah State University is the friendliest
+        practical explanation of it.</p>
+      </section>
+
+      <section>
+        <h2 id="related">Related topics</h2>
+        <p>Accessibility overlaps with every other topic on this site. Reflow is a responsive
+        design problem, page weight is an accessibility problem for people on slow
+        connections, and CAPTCHA is where security and accessibility collide.</p>
+        <ul class="related-list">
+          <li><a href="responsive-design.html">Reflow and responsive layout</a></li>
+          <li><a href="ux-design.html">Usability heuristics</a></li>
+          <li><a href="security.html">Security without CAPTCHA</a></li>
+          <li><a href="optimization.html">Performance as an accessibility concern</a></li>
+          <li><a href="about.html#accessibility-statement">This site's accessibility statement</a></li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

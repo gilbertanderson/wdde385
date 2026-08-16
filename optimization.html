@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Optimization | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="Performance budgets, image optimization, caching, the critical rendering path, and Core Web Vitals — a practical introduction to making websites fast.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html" aria-current="page">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="optimization.html" aria-current="page">Website Optimization</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#summary">In plain language</a></li>
+          <li><a href="#why">Why it matters</a></li>
+          <li><a href="#guidance">Core guidance</a>
+            <ul>
+              <li><a href="#vitals">Measure what users feel</a></li>
+              <li><a href="#budget">Set a performance budget</a></li>
+              <li><a href="#images">Images are the biggest win</a></li>
+              <li><a href="#critical">The critical rendering path</a></li>
+              <li><a href="#caching">Caching and compression</a></li>
+            </ul>
+          </li>
+          <li><a href="#further">Going further</a></li>
+          <li><a href="#related">Related topics</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>Website Optimization</h1>
+
+      <div class="layer-summary">
+        <h2 id="summary">In plain language</h2>
+        <p>Website optimization is the work of making pages appear and become usable quickly.
+        It is mostly about sending less: fewer files, smaller files, and nothing that blocks
+        the browser from drawing the page.</p>
+        <p>Speed is not a luxury feature. On a slow connection or an old phone, a heavy page
+        is not merely slower — it is unusable. Optimization is what decides whether people on
+        modest hardware get to use your site at all.</p>
+      </div>
+
+      <section>
+        <h2 id="why">Why it matters</h2>
+        <p>Developers test on fast laptops on fast networks, which is the least representative
+        environment available. Much of the world reads the web on mid-range Android phones
+        over congested mobile networks, sometimes on metered data where every extra megabyte
+        has a price.</p>
+        <p>The consequences are measurable. Slow pages lose visitors before the content ever
+        appears, and the visitors lost first are the ones with the worst connections — which
+        makes performance a fairness problem, not only a business one. Treat it as an
+        accessibility concern: a page nobody can wait for is a page nobody can perceive.</p>
+        <p>Performance also tends to decay. Every sprint adds a script, a font, a tracker, an
+        embed, and none of them individually looks expensive. Without a stated budget and a
+        check in the build pipeline, the page gets slower every month and nobody is
+        responsible.</p>
+      </section>
+
+      <section>
+        <h2 id="guidance">Core guidance</h2>
+
+        <h3 id="vitals">Measure what users feel</h3>
+        <p>Total page weight is a useful proxy, but the metrics that matter describe the
+        experience. Google's Core Web Vitals are the common vocabulary:</p>
+        <ul>
+          <li><strong>Largest Contentful Paint</strong>
+          (<abbr title="Largest Contentful Paint">LCP</abbr>) — when the main content becomes
+          visible. Aim for 2.5 seconds or less.</li>
+          <li><strong>Interaction to Next Paint</strong>
+          (<abbr title="Interaction to Next Paint">INP</abbr>) — how quickly the page responds
+          when you tap or click. Aim for 200 milliseconds or less.</li>
+          <li><strong>Cumulative Layout Shift</strong>
+          (<abbr title="Cumulative Layout Shift">CLS</abbr>) — how much the page jumps around
+          while loading. Aim for 0.1 or less. This one is also an accessibility issue: content
+          that moves under a reader's finger or cursor causes mis-taps.</li>
+        </ul>
+        <p>Measure both in the laboratory and in the field. Lighthouse in Chrome DevTools
+        gives a repeatable score you can act on; real-user monitoring tells you what your
+        actual visitors experience on their actual devices. Laboratory numbers are for
+        debugging, field numbers are for deciding.</p>
+
+        <h3 id="budget">Set a performance budget</h3>
+        <p>A budget is a number written down before the work starts: for example, no more than
+        150 kilobytes of JavaScript, no more than 500 kilobytes total for a first visit,
+        Largest Contentful Paint under 2.5 seconds on a simulated mid-range phone. Wire the
+        budget into continuous integration so the build fails when a change exceeds it. A
+        budget nobody enforces is a wish.</p>
+        <p>The most effective optimization is deletion. Ask what a script is for before asking
+        how to make it smaller. Carousels, chat widgets, analytics suites, and font loaders
+        routinely cost more than the whole rest of the page.</p>
+
+        <h3 id="images">Images are the biggest win</h3>
+        <p>Images are usually the majority of a page's bytes, so they are where effort pays
+        best. Four rules cover most of it: choose a modern format such as WebP or AVIF, which
+        are typically 25 to 50 per cent smaller than the equivalent JPEG; never send a
+        2000-pixel-wide file to display it at 400 pixels; always set <code>width</code> and
+        <code>height</code> so the browser can reserve the space and avoid a layout shift; and
+        lazy-load anything below the fold while eagerly loading the main image.</p>
+
+        <figure class="code-sample">
+          <figcaption>A responsive, layout-stable image. The browser picks the smallest file
+          that will still look sharp on the reader's screen, and the dimensions let it reserve
+          the space before the image arrives.</figcaption>
+          <div class="code-head"><span class="code-lang">HTML</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: responsive image with srcset and sizes"><code>&lt;!-- srcset lists the versions that exist, with their real pixel widths.
+     sizes tells the browser how wide the image will be displayed, so it
+     can choose before layout is complete. width and height reserve the
+     space and prevent Cumulative Layout Shift.
+     loading="lazy" is correct below the fold; use "eager" for the main
+     image, because lazy-loading it delays Largest Contentful Paint. --&gt;
+&lt;img
+  src="diagram-800.webp"
+  srcset="diagram-400.webp 400w,
+          diagram-800.webp 800w,
+          diagram-1600.webp 1600w"
+  sizes="(min-width: 64em) 40rem, 100vw"
+  width="800" height="450"
+  loading="lazy" decoding="async"
+  alt="Request flow from browser to server, with the cache between them"&gt;
+
+&lt;!-- A decorative image takes an empty alt so screen readers skip it.
+     Omitting alt entirely makes some screen readers read the filename. --&gt;
+&lt;img src="divider.svg" alt="" width="600" height="8"&gt;</code></pre>
+        </figure>
+
+        <h3 id="critical">The critical rendering path</h3>
+        <p>Before a browser can paint, it must build the document tree from the HTML and the
+        style tree from the CSS. CSS therefore blocks rendering by design, and a script in the
+        document head blocks parsing while it downloads and runs.</p>
+        <p>Keep the CSS small and send it early. Give scripts <code>defer</code> so they
+        download in parallel and run after the document is parsed, or <code>async</code> for
+        independent scripts where order does not matter. Self-host fonts if you use them, and
+        set <code>font-display: swap</code> so text is readable while the font loads — or, as
+        on this site, use the system font stack and download no font files at all.</p>
+
+        <h3 id="caching">Caching and compression</h3>
+        <p>The fastest request is the one that never happens. Compress text responses with
+        Brotli or gzip, which typically removes 70 to 80 per cent of the bytes of HTML, CSS,
+        and JavaScript. Then cache aggressively: give files a content hash in the name and
+        serve them with a one-year <code>Cache-Control</code> lifetime, because a name that
+        changes when the content changes makes long caching safe. HTML itself usually needs a
+        short lifetime with revalidation, since its URL does not change.</p>
+
+        <figure class="code-sample">
+          <figcaption>Cache headers for two different kinds of file. The hashed asset can be
+          cached for a year because a new version arrives under a new name; the HTML must be
+          rechecked because its address stays the same.</figcaption>
+          <div class="code-head"><span class="code-lang">HTTP</span></div>
+<pre tabindex="0" role="region" aria-label="Code sample: HTTP cache-control headers"><code># Fingerprinted asset: the filename changes whenever the bytes change,
+# so it can be cached for a year and never revalidated.
+# immutable tells the browser not to bother asking, even on reload.
+GET /styles.8f3c1a.css
+Cache-Control: public, max-age=31536000, immutable
+
+# HTML lives at a stable address, so it must be rechecked. no-cache
+# does NOT mean "do not store" — it means "store, but revalidate".
+# The ETag makes that revalidation cheap: unchanged content comes back
+# as a 304 with no body.
+GET /index.html
+Cache-Control: no-cache
+ETag: "a1b2c3"</code></pre>
+        </figure>
+      </section>
+
+      <section>
+        <h2 id="further">Going further</h2>
+        <p><strong>Measure before optimising.</strong> Intuition about what is slow is
+        unreliable. Record a performance profile, find the actual bottleneck, change one
+        thing, and measure again. Optimising the wrong thing costs time and adds complexity
+        for nothing.</p>
+        <p><strong>Perceived performance is real performance.</strong> A page that shows
+        meaningful content at one second and finishes at three feels faster than one that
+        shows nothing until two and a half. Stream HTML, render the text before the
+        decoration, and reserve space so nothing jumps.</p>
+        <p><strong>Progressive enhancement is a performance strategy.</strong> Server-rendered
+        HTML that works without JavaScript is fast on weak hardware and resilient when a
+        script fails to load. Every feature you build on top of it should be an addition, not
+        a prerequisite.</p>
+        <p><strong>This site as a worked example.</strong> One stylesheet, one deferred
+        script, no images in the page furniture, no web fonts, no analytics, and no
+        third-party requests at all. That is not minimalism for its own sake — it is what a
+        performance budget looks like when it is actually enforced.</p>
+        <p><strong>Reference material.</strong> web.dev publishes the current Core Web Vitals
+        thresholds and measurement guidance; the HTTP Archive's annual Web Almanac shows how
+        real sites compare.</p>
+      </section>
+
+      <section>
+        <h2 id="related">Related topics</h2>
+        <p>Performance work overlaps heavily with responsive images, and layout stability is
+        as much an accessibility question as a speed one.</p>
+        <ul class="related-list">
+          <li><a href="responsive-design.html#media">Responsive images</a></li>
+          <li><a href="accessibility.html">Accessibility &amp; Inclusive Design</a></li>
+          <li><a href="security.html#further">Dependencies as attack surface</a></li>
+          <li><a href="ux-design.html">User Experience Design</a></li>
+        </ul>
+      </section>
+
+      <div class="helpful" hidden>
+        <p id="helpful-q">Was this page helpful?</p>
+        <button type="button" class="btn-quiet" data-answer="yes" aria-describedby="helpful-q">Yes</button>
+        <button type="button" class="btn-quiet" data-answer="no" aria-describedby="helpful-q">No</button>
+        <p role="status"></p>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
+    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
+    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
