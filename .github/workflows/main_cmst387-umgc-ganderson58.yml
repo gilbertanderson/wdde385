@@ -36,6 +36,28 @@ jobs:
           name: node-app
           path: release.zip
 
+  # Automated WCAG 2.2 AA scanning, per Section 5 of the project proposal.
+  # Deliberately NOT a dependency of `deploy` — a11y findings surface as a failed
+  # check without blocking a release. To gate deploys on it, add `accessibility`
+  # to the deploy job's `needs` list below.
+  accessibility:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Serve the site
+        run: |
+          python3 -m http.server 8080 &
+          npx --yes wait-on http://localhost:8080/index.html --timeout 30000
+
+      - name: Run pa11y-ci (WCAG 2.2 AA)
+        run: npx --yes pa11y-ci --config .github/pa11yci.json
+
   deploy:
     runs-on: ubuntu-latest
     needs: build

@@ -1,0 +1,21 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 500,
+    "concurrency": 1,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    }
+  },
+  "urls": [
+    "http://localhost:8080/index.html",
+    "http://localhost:8080/ux-design.html",
+    "http://localhost:8080/accessibility.html",
+    "http://localhost:8080/security.html",
+    "http://localhost:8080/optimization.html",
+    "http://localhost:8080/responsive-design.html",
+    "http://localhost:8080/contact.html",
+    "http://localhost:8080/about.html"
+  ]
+}
