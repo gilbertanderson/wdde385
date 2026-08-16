@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900" width="1120" height="900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1120" height="900" fill="#ffffff"/>
+
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 2 — Interior Topic Page</text>
+  <text x="40" y="60" font-size="13" fill="#555">Example: "Accessibility &amp; Inclusive Design" · demonstrates layered content structure (Section 11)</text>
+
+  <!-- ================= DESKTOP ================= -->
+  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP — 1280px and above</text>
+  <rect x="40" y="102" width="700" height="762" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <!-- header -->
+  <rect x="52" y="112" width="676" height="46" fill="#eee" stroke="#666"/>
+  <rect x="64" y="124" width="110" height="22" fill="#ddd" stroke="#888"/>
+  <text x="70" y="139" font-size="9.5" fill="#444">LOGO / Site name</text>
+  <text x="300" y="132" font-size="10" fill="#444">UX</text>
+  <text x="336" y="132" font-size="10" font-weight="bold" fill="#111">Accessibility</text>
+  <text x="416" y="132" font-size="10" fill="#444">Security</text>
+  <text x="476" y="132" font-size="10" fill="#444">Optimization</text>
+  <text x="556" y="132" font-size="10" fill="#444">Responsive</text>
+  <text x="632" y="132" font-size="10" fill="#444">Contact</text>
+  <rect x="332" y="140" width="72" height="3" fill="#e8710a"/>
+
+  <!-- breadcrumb -->
+  <rect x="52" y="166" width="676" height="24" fill="#f4f4f4" stroke="#ccc"/>
+  <text x="62" y="182" font-size="9.5" fill="#666">Home  ›  Accessibility &amp; Inclusive Design</text>
+  <text x="440" y="182" font-size="8.5" fill="#b35505">breadcrumb — WCAG 2.4.5 Multiple Ways</text>
+
+  <!-- sidebar TOC -->
+  <rect x="52" y="200" width="176" height="404" fill="#f2f2f2" stroke="#666"/>
+  <text x="62" y="220" font-size="10" font-weight="bold" fill="#333">On this page</text>
+  <text x="62" y="242" font-size="9" fill="#b35505">▸ What this covers</text>
+  <text x="62" y="262" font-size="9" fill="#555">▸ Why it matters</text>
+  <text x="62" y="282" font-size="9" fill="#555">▸ Core guidance</text>
+  <text x="72" y="300" font-size="8.5" fill="#777">– Semantic HTML</text>
+  <text x="72" y="316" font-size="8.5" fill="#777">– Keyboard access</text>
+  <text x="72" y="332" font-size="8.5" fill="#777">– Contrast</text>
+  <text x="62" y="352" font-size="9" fill="#555">▸ Advanced detail</text>
+  <text x="62" y="372" font-size="9" fill="#555">▸ Spec references</text>
+  <text x="62" y="392" font-size="9" fill="#555">▸ Related topics</text>
+  <text x="62" y="424" font-size="8" fill="#888">Sticky sidebar;</text>
+  <text x="62" y="437" font-size="8" fill="#888">desktop only.</text>
+  <text x="62" y="450" font-size="8" fill="#888">Built from the</text>
+  <text x="62" y="463" font-size="8" fill="#888">page's real h2/h3</text>
+  <text x="62" y="476" font-size="8" fill="#888">headings, so the</text>
+  <text x="62" y="489" font-size="8" fill="#888">outline screen</text>
+  <text x="62" y="502" font-size="8" fill="#888">readers navigate</text>
+  <text x="62" y="515" font-size="8" fill="#888">and the visible</text>
+  <text x="62" y="528" font-size="8" fill="#888">TOC cannot drift</text>
+  <text x="62" y="541" font-size="8" fill="#888">apart.</text>
+
+  <!-- main content -->
+  <text x="244" y="216" font-size="15" font-weight="bold" fill="#333">H1 — Accessibility &amp; Inclusive Design</text>
+
+  <!-- LAYER 1 -->
+  <rect x="244" y="228" width="484" height="88" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="254" y="246" font-size="10" font-weight="bold" fill="#b35505">LAYER 1 — Plain-language summary</text>
+  <rect x="254" y="256" width="458" height="8" fill="#e0d5c5"/>
+  <rect x="254" y="270" width="440" height="8" fill="#e0d5c5"/>
+  <rect x="254" y="284" width="410" height="8" fill="#e0d5c5"/>
+  <text x="254" y="308" font-size="8.5" fill="#a06030">~8th grade reading level · answers "what is this" before any jargon</text>
+
+  <!-- LAYER 2 -->
+  <rect x="244" y="326" width="484" height="76" fill="#f7f7f7" stroke="#666"/>
+  <text x="254" y="344" font-size="10" font-weight="bold" fill="#333">LAYER 2 — Why it matters</text>
+  <rect x="254" y="354" width="458" height="8" fill="#d8d8d8"/>
+  <rect x="254" y="368" width="430" height="8" fill="#d8d8d8"/>
+  <text x="254" y="392" font-size="8.5" fill="#888">Motivation and context before implementation detail</text>
+
+  <!-- LAYER 3 -->
+  <rect x="244" y="412" width="484" height="192" fill="#f7f7f7" stroke="#666"/>
+  <text x="254" y="430" font-size="10" font-weight="bold" fill="#333">LAYER 3 — Core guidance (H2)</text>
+  <rect x="254" y="440" width="458" height="8" fill="#d8d8d8"/>
+  <rect x="254" y="454" width="420" height="8" fill="#d8d8d8"/>
+
+  <!-- code block -->
+  <rect x="254" y="470" width="458" height="72" fill="#eaeaea" stroke="#999"/>
+  <text x="264" y="486" font-size="8.5" fill="#666">Plain-language statement of what this code does ↓</text>
+  <rect x="264" y="494" width="300" height="6" fill="#bbb"/>
+  <rect x="264" y="506" width="360" height="6" fill="#bbb"/>
+  <rect x="264" y="518" width="270" height="6" fill="#bbb"/>
+  <rect x="628" y="476" width="76" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="636" y="490" font-size="8.5" fill="#b35505">Copy code</text>
+  <text x="264" y="536" font-size="8" fill="#888">Code scrolls horizontally inside its own container — page never side-scrolls</text>
+
+  <rect x="254" y="552" width="458" height="8" fill="#d8d8d8"/>
+  <rect x="254" y="566" width="400" height="8" fill="#d8d8d8"/>
+  <text x="254" y="592" font-size="8.5" fill="#888">Advanced detail + spec references disclosed below (progressive disclosure)</text>
+
+  <!-- related -->
+  <rect x="52" y="616" width="676" height="66" fill="#f2f2f2" stroke="#666"/>
+  <text x="62" y="636" font-size="10" font-weight="bold" fill="#333">Related topics — cross-links for cross-cutting subjects</text>
+  <rect x="62" y="646" width="150" height="24" fill="#fff" stroke="#888"/>
+  <text x="70" y="662" font-size="9" fill="#555">Responsive images</text>
+  <rect x="222" y="646" width="150" height="24" fill="#fff" stroke="#888"/>
+  <text x="230" y="662" font-size="9" fill="#555">Contrast &amp; color</text>
+  <rect x="382" y="646" width="150" height="24" fill="#fff" stroke="#888"/>
+  <text x="390" y="662" font-size="9" fill="#555">Form validation</text>
+  <text x="546" y="662" font-size="8" fill="#888">no page is a dead end</text>
+
+  <!-- feedback + footer -->
+  <rect x="52" y="694" width="676" height="34" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="62" y="715" font-size="9.5" fill="#b35505">Was this page helpful?</text>
+  <rect x="200" y="702" width="46" height="20" fill="#fff" stroke="#888"/>
+  <text x="214" y="716" font-size="9" fill="#555">Yes</text>
+  <rect x="254" y="702" width="46" height="20" fill="#fff" stroke="#888"/>
+  <text x="270" y="716" font-size="9" fill="#555">No</text>
+  <text x="320" y="716" font-size="8" fill="#a06030">inline, not modal · keyboard operable (Section 7)</text>
+
+  <rect x="52" y="738" width="676" height="60" fill="#eee" stroke="#666"/>
+  <text x="62" y="758" font-size="9" fill="#555">About · Contact · Glossary · Sitemap</text>
+  <rect x="62" y="768" width="210" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="70" y="782" font-size="9" fill="#b35505">Report an accessibility barrier</text>
+
+  <text x="52" y="822" font-size="9" fill="#888">Heading hierarchy h1 → h2 → h3, never skipped · unique descriptive page title (WCAG 2.4.2, 2.4.6)</text>
+
+  <!-- ================= MOBILE ================= -->
+  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE — 375px</text>
+  <rect x="790" y="102" width="290" height="700" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <rect x="802" y="114" width="266" height="36" fill="#eee" stroke="#666"/>
+  <rect x="810" y="122" width="80" height="20" fill="#ddd" stroke="#888"/>
+  <text x="816" y="136" font-size="8.5" fill="#444">LOGO</text>
+  <rect x="1002" y="120" width="58" height="24" fill="#fff" stroke="#555" stroke-width="1.5"/>
+  <text x="1010" y="136" font-size="9" fill="#333">☰ Menu</text>
+
+  <rect x="802" y="158" width="266" height="22" fill="#f4f4f4" stroke="#ccc"/>
+  <text x="810" y="173" font-size="8.5" fill="#666">Home › Accessibility</text>
+
+  <text x="802" y="200" font-size="12" font-weight="bold" fill="#333">H1 — Accessibility &amp;</text>
+  <text x="802" y="214" font-size="12" font-weight="bold" fill="#333">Inclusive Design</text>
+
+  <!-- collapsed TOC -->
+  <rect x="802" y="226" width="266" height="30" fill="#f2f2f2" stroke="#666"/>
+  <text x="812" y="245" font-size="9.5" fill="#333">▸ On this page (6)</text>
+  <text x="990" y="245" font-size="9" fill="#666">expand</text>
+  <text x="802" y="268" font-size="8" fill="#b35505">sidebar collapses to accordion — aria-expanded</text>
+
+  <rect x="802" y="278" width="266" height="82" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="812" y="296" font-size="9" font-weight="bold" fill="#b35505">LAYER 1 — Summary</text>
+  <rect x="812" y="306" width="240" height="7" fill="#e0d5c5"/>
+  <rect x="812" y="318" width="230" height="7" fill="#e0d5c5"/>
+  <rect x="812" y="330" width="210" height="7" fill="#e0d5c5"/>
+  <rect x="812" y="342" width="180" height="7" fill="#e0d5c5"/>
+
+  <rect x="802" y="370" width="266" height="66" fill="#f7f7f7" stroke="#666"/>
+  <text x="812" y="388" font-size="9" font-weight="bold" fill="#333">LAYER 2 — Why it matters</text>
+  <rect x="812" y="398" width="240" height="7" fill="#d8d8d8"/>
+  <rect x="812" y="410" width="220" height="7" fill="#d8d8d8"/>
+  <rect x="812" y="422" width="190" height="7" fill="#d8d8d8"/>
+
+  <rect x="802" y="446" width="266" height="164" fill="#f7f7f7" stroke="#666"/>
+  <text x="812" y="464" font-size="9" font-weight="bold" fill="#333">LAYER 3 — Core guidance</text>
+  <rect x="812" y="474" width="240" height="7" fill="#d8d8d8"/>
+  <rect x="812" y="486" width="215" height="7" fill="#d8d8d8"/>
+  <rect x="812" y="502" width="246" height="62" fill="#eaeaea" stroke="#999"/>
+  <text x="820" y="518" font-size="8" fill="#666">code sample →</text>
+  <rect x="820" y="526" width="200" height="5" fill="#bbb"/>
+  <rect x="820" y="536" width="220" height="5" fill="#bbb"/>
+  <rect x="820" y="546" width="170" height="5" fill="#bbb"/>
+  <text x="812" y="580" font-size="8" fill="#888">horizontal scroll inside block only</text>
+  <rect x="812" y="588" width="240" height="7" fill="#d8d8d8"/>
+
+  <rect x="802" y="622" width="266" height="52" fill="#f2f2f2" stroke="#666"/>
+  <text x="812" y="640" font-size="9" font-weight="bold" fill="#333">Related topics</text>
+  <rect x="812" y="648" width="110" height="18" fill="#fff" stroke="#888"/>
+  <text x="818" y="661" font-size="8" fill="#555">Responsive images</text>
+  <rect x="930" y="648" width="110" height="18" fill="#fff" stroke="#888"/>
+  <text x="936" y="661" font-size="8" fill="#555">Contrast &amp; color</text>
+
+  <rect x="802" y="686" width="266" height="28" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="812" y="704" font-size="9" fill="#b35505">Was this page helpful?  Yes / No</text>
+
+  <rect x="802" y="726" width="266" height="60" fill="#eee" stroke="#666"/>
+  <text x="812" y="746" font-size="8.5" fill="#555">About · Contact · Glossary</text>
+  <rect x="812" y="756" width="200" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="820" y="770" font-size="8.5" fill="#b35505">Report an accessibility barrier</text>
+
+  <text x="790" y="826" font-size="9" fill="#888">Sidebar TOC → accordion · single column ·</text>
+  <text x="790" y="840" font-size="9" fill="#888">same content, same order, no truncation</text>
+
+  <!-- legend -->
+  <rect x="40" y="856" width="1040" height="30" fill="#fcfcfc" stroke="#ccc"/>
+  <rect x="52" y="864" width="16" height="12" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="76" y="874" font-size="9.5" fill="#555">Accessibility-specific feature</text>
+  <rect x="272" y="864" width="16" height="12" fill="#eaeaea" stroke="#999"/>
+  <text x="296" y="874" font-size="9.5" fill="#555">Code sample block</text>
+  <text x="440" y="874" font-size="9.5" fill="#555">Layered content lets a beginner and a practitioner use the same page differently (Section 11).</text>
+</svg>

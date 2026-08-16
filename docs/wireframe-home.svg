@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900" width="1120" height="900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1120" height="900" fill="#ffffff"/>
+
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 1 — Home Page</text>
+  <text x="40" y="60" font-size="13" fill="#555">CMST 387 Web Design Resource Hub · low-fidelity structural wireframe</text>
+
+  <!-- ================= DESKTOP ================= -->
+  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP — 1280px and above</text>
+  <rect x="40" y="102" width="700" height="762" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <!-- skip link -->
+  <rect x="52" y="112" width="150" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="60" y="126" font-size="10" fill="#b35505">Skip to main content</text>
+  <text x="212" y="126" font-size="9" fill="#888">(visible on focus)</text>
+
+  <!-- header -->
+  <rect x="52" y="140" width="676" height="52" fill="#eee" stroke="#666"/>
+  <rect x="64" y="155" width="120" height="22" fill="#ddd" stroke="#888"/>
+  <text x="72" y="170" font-size="10" fill="#444">LOGO / Site name</text>
+  <text x="300" y="163" font-size="10" fill="#444">UX</text>
+  <text x="336" y="163" font-size="10" fill="#444">Accessibility</text>
+  <text x="416" y="163" font-size="10" fill="#444">Security</text>
+  <text x="476" y="163" font-size="10" fill="#444">Optimization</text>
+  <text x="556" y="163" font-size="10" fill="#444">Responsive</text>
+  <text x="632" y="163" font-size="10" fill="#444">Contact</text>
+  <rect x="296" y="172" width="26" height="3" fill="#e8710a"/>
+  <text x="300" y="187" font-size="8" fill="#b35505">current page indicator</text>
+  <rect x="640" y="150" width="76" height="18" fill="#fff" stroke="#888"/>
+  <text x="646" y="163" font-size="9" fill="#666">Search</text>
+
+  <!-- a11y settings button -->
+  <rect x="52" y="200" width="150" height="22" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="60" y="215" font-size="9.5" fill="#b35505">Accessibility settings</text>
+
+  <!-- hero -->
+  <rect x="52" y="232" width="676" height="150" fill="#f2f2f2" stroke="#666"/>
+  <text x="70" y="266" font-size="17" font-weight="bold" fill="#333">H1 — Web Design Resource Hub</text>
+  <rect x="70" y="282" width="470" height="9" fill="#d8d8d8"/>
+  <rect x="70" y="298" width="420" height="9" fill="#d8d8d8"/>
+  <text x="70" y="322" font-size="9" fill="#888">Plain-language statement of purpose (2 sentences, ~8th grade)</text>
+  <rect x="70" y="334" width="140" height="30" fill="#ddd" stroke="#555" stroke-width="1.5"/>
+  <text x="82" y="353" font-size="10" fill="#333">Browse topics →</text>
+  <text x="222" y="353" font-size="8" fill="#888">44×44 min target</text>
+
+  <!-- five topic cards -->
+  <text x="52" y="404" font-size="11" font-weight="bold" fill="#333">H2 — Five core topics</text>
+  <g stroke="#666" fill="#f7f7f7">
+    <rect x="52" y="414" width="212" height="118"/>
+    <rect x="284" y="414" width="212" height="118"/>
+    <rect x="516" y="414" width="212" height="118"/>
+    <rect x="52" y="544" width="212" height="118"/>
+    <rect x="284" y="544" width="212" height="118"/>
+  </g>
+  <g font-size="10.5" font-weight="bold" fill="#333">
+    <text x="64" y="440">UX Design</text>
+    <text x="296" y="440">Accessibility &amp;</text>
+    <text x="296" y="453">Inclusive Design</text>
+    <text x="528" y="440">Web App Security</text>
+    <text x="64" y="570">Website Optimization</text>
+    <text x="296" y="570">Responsive Design</text>
+  </g>
+  <g fill="#d8d8d8">
+    <rect x="64" y="452" width="180" height="7"/><rect x="64" y="464" width="150" height="7"/>
+    <rect x="296" y="464" width="180" height="7"/><rect x="296" y="476" width="150" height="7"/>
+    <rect x="528" y="452" width="180" height="7"/><rect x="528" y="464" width="150" height="7"/>
+    <rect x="64" y="582" width="180" height="7"/><rect x="64" y="594" width="150" height="7"/>
+    <rect x="296" y="582" width="180" height="7"/><rect x="296" y="594" width="150" height="7"/>
+  </g>
+  <g font-size="9" fill="#666">
+    <text x="64" y="512">Read UX guides →</text>
+    <text x="296" y="512">Read a11y guides →</text>
+    <text x="528" y="512">Read security guides →</text>
+    <text x="64" y="642">Read optimization →</text>
+    <text x="296" y="642">Read responsive →</text>
+  </g>
+  <rect x="516" y="544" width="212" height="118" fill="#fff" stroke="#aaa" stroke-dasharray="5 4"/>
+  <text x="528" y="596" font-size="9" fill="#999">Cards reflow 3→2→1 col</text>
+  <text x="528" y="610" font-size="9" fill="#999">by content, not device</text>
+
+  <!-- footer -->
+  <rect x="52" y="676" width="676" height="86" fill="#eee" stroke="#666"/>
+  <text x="64" y="698" font-size="10" font-weight="bold" fill="#444">Footer</text>
+  <text x="64" y="716" font-size="9" fill="#555">About</text>
+  <text x="120" y="716" font-size="9" fill="#555">Contact</text>
+  <text x="184" y="716" font-size="9" fill="#555">Glossary</text>
+  <text x="252" y="716" font-size="9" fill="#555">Sitemap</text>
+  <rect x="60" y="726" width="210" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="68" y="740" font-size="9" fill="#b35505">Report an accessibility barrier</text>
+  <text x="284" y="740" font-size="8.5" fill="#888">present on every page (Section 7)</text>
+
+  <text x="52" y="794" font-size="9" fill="#888">Reading measure constrained to 60–75 characters · all text ≥16px · contrast ≥4.5:1</text>
+  <text x="52" y="810" font-size="9" fill="#888">Landmarks: banner · nav · main · contentinfo</text>
+
+  <!-- ================= MOBILE ================= -->
+  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE — 375px</text>
+  <rect x="790" y="102" width="290" height="640" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <rect x="802" y="114" width="266" height="40" fill="#eee" stroke="#666"/>
+  <rect x="810" y="124" width="90" height="20" fill="#ddd" stroke="#888"/>
+  <text x="816" y="138" font-size="9" fill="#444">LOGO</text>
+  <rect x="1000" y="122" width="60" height="24" fill="#fff" stroke="#555" stroke-width="1.5"/>
+  <text x="1008" y="138" font-size="9.5" fill="#333">☰ Menu</text>
+  <text x="802" y="168" font-size="8" fill="#b35505">labeled "Menu" — not icon-only</text>
+
+  <rect x="802" y="178" width="266" height="112" fill="#f2f2f2" stroke="#666"/>
+  <text x="812" y="202" font-size="12" font-weight="bold" fill="#333">H1 — Resource Hub</text>
+  <rect x="812" y="212" width="230" height="8" fill="#d8d8d8"/>
+  <rect x="812" y="226" width="200" height="8" fill="#d8d8d8"/>
+  <rect x="812" y="246" width="130" height="30" fill="#ddd" stroke="#555" stroke-width="1.5"/>
+  <text x="822" y="265" font-size="9.5" fill="#333">Browse topics →</text>
+
+  <g stroke="#666" fill="#f7f7f7">
+    <rect x="802" y="302" width="266" height="62"/>
+    <rect x="802" y="372" width="266" height="62"/>
+    <rect x="802" y="442" width="266" height="62"/>
+    <rect x="802" y="512" width="266" height="62"/>
+    <rect x="802" y="582" width="266" height="62"/>
+  </g>
+  <g font-size="10" font-weight="bold" fill="#333">
+    <text x="814" y="324">UX Design</text>
+    <text x="814" y="394">Accessibility &amp; Inclusive</text>
+    <text x="814" y="464">Web App Security</text>
+    <text x="814" y="534">Website Optimization</text>
+    <text x="814" y="604">Responsive Design</text>
+  </g>
+  <g fill="#d8d8d8">
+    <rect x="814" y="334" width="200" height="7"/><rect x="814" y="346" width="160" height="7"/>
+    <rect x="814" y="404" width="200" height="7"/><rect x="814" y="416" width="160" height="7"/>
+    <rect x="814" y="474" width="200" height="7"/><rect x="814" y="486" width="160" height="7"/>
+    <rect x="814" y="544" width="200" height="7"/><rect x="814" y="556" width="160" height="7"/>
+    <rect x="814" y="614" width="200" height="7"/><rect x="814" y="626" width="160" height="7"/>
+  </g>
+
+  <rect x="802" y="654" width="266" height="76" fill="#eee" stroke="#666"/>
+  <text x="814" y="674" font-size="9" fill="#555">About · Contact · Glossary</text>
+  <rect x="812" y="686" width="200" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="820" y="700" font-size="8.5" fill="#b35505">Report an accessibility barrier</text>
+
+  <text x="790" y="762" font-size="9" fill="#888">Single column · nav collapses to</text>
+  <text x="790" y="776" font-size="9" fill="#888">labeled button · no hover-only content</text>
+  <text x="790" y="790" font-size="9" fill="#888">Usable at 320px without side-scroll</text>
+  <text x="790" y="804" font-size="9" fill="#888">(WCAG 1.4.10 Reflow)</text>
+
+  <!-- legend -->
+  <rect x="40" y="836" width="1040" height="44" fill="#fcfcfc" stroke="#ccc"/>
+  <rect x="52" y="850" width="16" height="12" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
+  <text x="76" y="860" font-size="9.5" fill="#555">Accessibility-specific feature</text>
+  <rect x="252" y="850" width="16" height="12" fill="#d8d8d8"/>
+  <text x="276" y="860" font-size="9.5" fill="#555">Placeholder body text</text>
+  <rect x="432" y="850" width="16" height="12" fill="#f7f7f7" stroke="#666"/>
+  <text x="456" y="860" font-size="9.5" fill="#555">Content block / card</text>
+  <text x="636" y="860" font-size="9.5" fill="#555">Low-fidelity: layout and hierarchy only — no final color, type, or imagery.</text>
+</svg>

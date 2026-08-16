@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 980" width="1180" height="980" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1180" height="980" fill="#ffffff"/>
+
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Site Map &amp; User Flow — Web Design Resource Hub</text>
+  <text x="40" y="60" font-size="13" fill="#555">Page inventory, hierarchy, and the three primary paths users take through the site</text>
+
+  <!-- ============ SITE MAP ============ -->
+  <text x="40" y="96" font-size="14" font-weight="bold" fill="#333">A. SITE MAP — page hierarchy</text>
+
+  <!-- home -->
+  <rect x="470" y="112" width="180" height="46" rx="4" fill="#e8710a" stroke="#b35505" stroke-width="2"/>
+  <text x="520" y="134" font-size="13" font-weight="bold" fill="#fff">HOME</text>
+  <text x="490" y="149" font-size="9" fill="#ffe8d0">Introduces the hub · entry to all topics</text>
+
+  <!-- connectors down to topic row -->
+  <g stroke="#666" stroke-width="1.6" fill="none">
+    <path d="M560 158 L560 186"/>
+    <path d="M110 186 L1070 186"/>
+    <path d="M110 186 L110 212"/>
+    <path d="M302 186 L302 212"/>
+    <path d="M494 186 L494 212"/>
+    <path d="M686 186 L686 212"/>
+    <path d="M878 186 L878 212"/>
+    <path d="M1070 186 L1070 212"/>
+  </g>
+
+  <!-- five topic pages + contact -->
+  <g stroke="#333" stroke-width="1.6" fill="#f2f2f2">
+    <rect x="40" y="212" width="140" height="66" rx="4"/>
+    <rect x="232" y="212" width="140" height="66" rx="4"/>
+    <rect x="424" y="212" width="140" height="66" rx="4"/>
+    <rect x="616" y="212" width="140" height="66" rx="4"/>
+    <rect x="808" y="212" width="140" height="66" rx="4"/>
+  </g>
+  <rect x="1000" y="212" width="140" height="66" rx="4" fill="#fff8ee" stroke="#e8710a" stroke-width="2"/>
+
+  <g font-size="10.5" font-weight="bold" fill="#222">
+    <text x="52" y="234">UX Design</text>
+    <text x="244" y="234">Accessibility &amp;</text>
+    <text x="244" y="247">Inclusive Design</text>
+    <text x="436" y="234">Web Application</text>
+    <text x="436" y="247">Security</text>
+    <text x="628" y="234">Website</text>
+    <text x="628" y="247">Optimization</text>
+    <text x="820" y="234">Responsive</text>
+    <text x="820" y="247">Web Design</text>
+    <text x="1012" y="234" fill="#b35505">Contact</text>
+  </g>
+  <g font-size="8.5" fill="#666">
+    <text x="52" y="252">Principles, heuristics,</text>
+    <text x="52" y="264">research methods</text>
+    <text x="244" y="262">WCAG, assistive tech</text>
+    <text x="436" y="262">XSS, CSRF, TLS</text>
+    <text x="628" y="262">Core Web Vitals</text>
+    <text x="820" y="262">Mobile-first, grids</text>
+  </g>
+  <text x="1012" y="252" font-size="8.5" fill="#a06030">Responsive form</text>
+  <text x="1012" y="264" font-size="8.5" fill="#a06030">+ feedback channel</text>
+
+  <!-- third level -->
+  <g stroke="#999" stroke-width="1.3" fill="none" stroke-dasharray="4 3">
+    <path d="M110 278 L110 300"/>
+    <path d="M302 278 L302 300"/>
+    <path d="M494 278 L494 300"/>
+    <path d="M686 278 L686 300"/>
+    <path d="M878 278 L878 300"/>
+  </g>
+  <g stroke="#aaa" fill="#fafafa" stroke-dasharray="4 3">
+    <rect x="40" y="300" width="140" height="52" rx="3"/>
+    <rect x="232" y="300" width="140" height="52" rx="3"/>
+    <rect x="424" y="300" width="140" height="52" rx="3"/>
+    <rect x="616" y="300" width="140" height="52" rx="3"/>
+    <rect x="808" y="300" width="140" height="52" rx="3"/>
+  </g>
+  <g font-size="8.5" fill="#777">
+    <text x="52" y="318">Individual guide</text><text x="52" y="331">pages (3–5 each)</text><text x="52" y="344">Depth: 3 clicks max</text>
+    <text x="244" y="318">Individual guide</text><text x="244" y="331">pages (3–5 each)</text>
+    <text x="436" y="318">Individual guide</text><text x="436" y="331">pages (3–5 each)</text>
+    <text x="628" y="318">Individual guide</text><text x="628" y="331">pages (3–5 each)</text>
+    <text x="820" y="318">Individual guide</text><text x="820" y="331">pages (3–5 each)</text>
+  </g>
+
+  <!-- utility pages -->
+  <rect x="1000" y="300" width="140" height="52" rx="3" fill="#f2f2f2" stroke="#333" stroke-width="1.4"/>
+  <text x="1012" y="320" font-size="10" font-weight="bold" fill="#222">Utility pages</text>
+  <text x="1012" y="335" font-size="8.5" fill="#666">About · Glossary</text>
+  <text x="1012" y="347" font-size="8.5" fill="#666">Sitemap · A11y statement</text>
+
+  <!-- cross-link note -->
+  <path d="M302 352 C 380 386, 560 386, 686 352" stroke="#3b7dd8" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+  <path d="M494 352 C 560 400, 780 400, 878 352" stroke="#3b7dd8" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+  <text x="430" y="404" font-size="9" fill="#3b7dd8">Cross-links for cross-cutting topics (e.g. image optimization spans three sections)</text>
+
+  <!-- persistent nav band -->
+  <rect x="40" y="420" width="1100" height="30" fill="#f4f4f4" stroke="#999"/>
+  <text x="52" y="439" font-size="9.5" fill="#555">Persistent on every page: header nav · search · breadcrumbs · footer utility links · "Report an accessibility barrier" · accessibility settings panel</text>
+
+  <!-- ============ USER FLOWS ============ -->
+  <text x="40" y="490" font-size="14" font-weight="bold" fill="#333">B. USER FLOWS — three primary paths</text>
+
+  <!-- FLOW 1 -->
+  <text x="40" y="518" font-size="11" font-weight="bold" fill="#b35505">Flow 1 — The browser: "I want to learn about accessibility"</text>
+  <g font-size="9">
+    <rect x="40" y="528" width="118" height="40" rx="3" fill="#e8710a" stroke="#b35505"/>
+    <text x="60" y="544" fill="#fff" font-size="9.5" font-weight="bold">Lands on Home</text>
+    <text x="52" y="558" fill="#ffe8d0" font-size="8">direct or referral</text>
+
+    <rect x="198" y="528" width="118" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="210" y="544" fill="#222" font-size="9.5">Scans 5 topic</text>
+    <text x="210" y="557" fill="#222" font-size="9.5">cards</text>
+
+    <rect x="356" y="528" width="118" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="368" y="544" fill="#222" font-size="9.5">Opens topic</text>
+    <text x="368" y="557" fill="#222" font-size="9.5">landing page</text>
+
+    <rect x="514" y="528" width="118" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="526" y="544" fill="#222" font-size="9.5">Reads Layer 1</text>
+    <text x="526" y="557" fill="#222" font-size="9.5">summary</text>
+
+    <rect x="672" y="528" width="118" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="684" y="544" fill="#222" font-size="9.5">Drills into a</text>
+    <text x="684" y="557" fill="#222" font-size="9.5">guide page</text>
+
+    <rect x="830" y="528" width="130" height="40" rx="3" fill="#fff8ee" stroke="#e8710a"/>
+    <text x="842" y="544" fill="#b35505" font-size="9.5">Follows related</text>
+    <text x="842" y="557" fill="#b35505" font-size="9.5">cross-link →</text>
+  </g>
+  <g stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#ah)">
+    <path d="M158 548 L196 548"/><path d="M316 548 L354 548"/><path d="M474 548 L512 548"/>
+    <path d="M632 548 L670 548"/><path d="M790 548 L828 548"/>
+  </g>
+  <path d="M960 548 C 1010 548, 1020 590, 900 590 L 480 590" stroke="#3b7dd8" stroke-width="1.4" fill="none" stroke-dasharray="5 3" marker-end="url(#ahb)"/>
+  <text x="500" y="604" font-size="8.5" fill="#3b7dd8">loops back into another topic — no dead ends</text>
+
+  <!-- FLOW 2 -->
+  <text x="40" y="642" font-size="11" font-weight="bold" fill="#b35505">Flow 2 — The searcher: "I need to fix a specific problem"</text>
+  <g font-size="9">
+    <rect x="40" y="652" width="130" height="40" rx="3" fill="#ddd" stroke="#333"/>
+    <text x="52" y="668" fill="#222" font-size="9.5">Arrives from</text>
+    <text x="52" y="681" fill="#222" font-size="9.5">search engine</text>
+
+    <rect x="210" y="652" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="222" y="668" fill="#222" font-size="9.5">Deep-lands on</text>
+    <text x="222" y="681" fill="#222" font-size="9.5">interior guide</text>
+
+    <rect x="380" y="652" width="130" height="40" rx="3" fill="#fff8ee" stroke="#e8710a"/>
+    <text x="392" y="668" fill="#b35505" font-size="9.5">Breadcrumb tells</text>
+    <text x="392" y="681" fill="#b35505" font-size="9.5">them where</text>
+
+    <rect x="550" y="652" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="562" y="668" fill="#222" font-size="9.5">Uses on-page</text>
+    <text x="562" y="681" fill="#222" font-size="9.5">TOC to jump</text>
+
+    <rect x="720" y="652" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="732" y="668" fill="#222" font-size="9.5">Copies code</text>
+    <text x="732" y="681" fill="#222" font-size="9.5">sample</text>
+
+    <rect x="890" y="652" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="902" y="668" fill="#222" font-size="9.5">Site search for</text>
+    <text x="902" y="681" fill="#222" font-size="9.5">next question</text>
+  </g>
+  <g stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#ah)">
+    <path d="M170 672 L208 672"/><path d="M340 672 L378 672"/><path d="M510 672 L548 672"/>
+    <path d="M680 672 L718 672"/><path d="M850 672 L888 672"/>
+  </g>
+  <text x="40" y="712" font-size="8.5" fill="#888">Most traffic to a reference site lands mid-hierarchy, never on Home — orientation on interior pages is a primary design requirement, not an afterthought.</text>
+
+  <!-- FLOW 3 -->
+  <text x="40" y="750" font-size="11" font-weight="bold" fill="#b35505">Flow 3 — The contact / feedback path</text>
+  <g font-size="9">
+    <rect x="40" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="52" y="776" fill="#222" font-size="9.5">Any page —</text>
+    <text x="52" y="789" fill="#222" font-size="9.5">nav or footer</text>
+
+    <rect x="210" y="760" width="130" height="40" rx="3" fill="#fff8ee" stroke="#e8710a"/>
+    <text x="222" y="776" fill="#b35505" font-size="9.5">Contact page</text>
+    <text x="222" y="789" fill="#b35505" font-size="9.5">(responsive form)</text>
+
+    <rect x="380" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="392" y="776" fill="#222" font-size="9.5">Selects category:</text>
+    <text x="392" y="789" fill="#222" font-size="9.5">question / a11y</text>
+
+    <rect x="550" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="562" y="776" fill="#222" font-size="9.5">Client + server</text>
+    <text x="562" y="789" fill="#222" font-size="9.5">validation</text>
+
+    <rect x="720" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="732" y="776" fill="#222" font-size="9.5">Confirmation</text>
+    <text x="732" y="789" fill="#222" font-size="9.5">(ARIA live)</text>
+
+    <rect x="890" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
+    <text x="902" y="776" fill="#222" font-size="9.5">Onward links —</text>
+    <text x="902" y="789" fill="#222" font-size="9.5">not a dead end</text>
+  </g>
+  <g stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#ah)">
+    <path d="M170 780 L208 780"/><path d="M340 780 L378 780"/><path d="M510 780 L548 780"/>
+    <path d="M680 780 L718 780"/><path d="M850 780 L888 780"/>
+  </g>
+  <path d="M615 800 C 615 826, 470 826, 470 806" stroke="#c62828" stroke-width="1.4" fill="none" stroke-dasharray="5 3" marker-end="url(#ahr)"/>
+  <text x="480" y="840" font-size="8.5" fill="#c62828">On error: focus moves to error summary, entered data preserved, field named + fix explained (WCAG 3.3.1, 3.3.3)</text>
+
+  <!-- legend -->
+  <rect x="40" y="866" width="1100" height="86" fill="#fcfcfc" stroke="#ccc"/>
+  <text x="52" y="886" font-size="10" font-weight="bold" fill="#333">Legend</text>
+  <rect x="52" y="896" width="16" height="12" fill="#e8710a" stroke="#b35505"/>
+  <text x="76" y="906" font-size="9" fill="#555">Entry point</text>
+  <rect x="170" y="896" width="16" height="12" fill="#f2f2f2" stroke="#333"/>
+  <text x="194" y="906" font-size="9" fill="#555">Standard page / step</text>
+  <rect x="330" y="896" width="16" height="12" fill="#fff8ee" stroke="#e8710a"/>
+  <text x="354" y="906" font-size="9" fill="#555">Accessibility-critical step</text>
+  <rect x="520" y="896" width="16" height="12" fill="#fafafa" stroke="#aaa" stroke-dasharray="4 3"/>
+  <text x="544" y="906" font-size="9" fill="#555">Expandable content level</text>
+  <line x1="712" y1="902" x2="748" y2="902" stroke="#3b7dd8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="756" y="906" font-size="9" fill="#555">Cross-link / loop back</text>
+  <line x1="900" y1="902" x2="936" y2="902" stroke="#c62828" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="944" y="906" font-size="9" fill="#555">Error / recovery path</text>
+  <text x="52" y="932" font-size="9" fill="#777">Maximum depth: 3 clicks from Home to any guide page · every page reachable by navigation, search, and sitemap (WCAG 2.4.5 Multiple Ways)</text>
+
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#666"/>
+    </marker>
+    <marker id="ahb" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#3b7dd8"/>
+    </marker>
+    <marker id="ahr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#c62828"/>
+    </marker>
+  </defs>
+</svg>
