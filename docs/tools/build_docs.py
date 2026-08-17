@@ -84,6 +84,10 @@ def parse_blocks(md_text):
     kinds: heading (level, text) | para (text) | bullet (text) |
            table (rows) | rule | fence (text)
     """
+    # Strip HTML comments first: an entry template inside <!-- --> would
+    # otherwise be parsed as real headings and land in the output.
+    md_text = re.sub(r"<!--.*?-->", "", md_text, flags=re.S)
+
     lines = md_text.split("\n")
     blocks = []
     i = 0
