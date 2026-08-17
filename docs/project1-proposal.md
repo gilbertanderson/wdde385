@@ -31,7 +31,7 @@ coding, and on phones while commuting or away from a desk.
 
 **Site scope.** A homepage introducing the hub, five topic sections corresponding to the
 course areas above, and a responsive contact form. Full page inventory appears in the Site
-Structure section, with wireframes and a site map in Sections 13 and 14.
+Structure section, with wireframes and a site map in the Wireframes and Site Map section.
 
 Accessibility targets throughout are stated against **WCAG 2.2 Level AA**, the current W3C
 Recommendation and the standard aligned with Section 508 expectations for educational
