@@ -113,6 +113,66 @@ working with tools that produce output faster than it can be reviewed.
 
 ---
 
+## 2026-08-16 — The site outgrew its own proposal, and that was scope creep
+
+**What happened.** The proposal describes eight pages. The site now has nine. A self-audit
+page — publishing this site's own accessibility scan results and, more importantly, what has
+*not* been tested — was added after the proposal was written and after the site was already
+deployed.
+
+I could frame that as discovery, and there is a version of that argument: the page only became
+possible once there were real scan results to publish. But the honest read is that it was
+**scope creep**. The assignment asked for a homepage, five topic sections, and a contact form.
+I built those, and then kept building. The extra page is genuinely useful and I am glad it
+exists, but "useful" and "in scope" are different questions, and I did not stop to ask the
+second one.
+
+**What it changed.** Two things worth carrying forward.
+
+First, the site map diagram silently became wrong the moment the ninth page shipped. Nothing
+flagged it. A diagram is a claim about the system, and it decays the instant the system moves
+— so it needs the same upkeep as the code, or it starts actively misleading whoever reads it.
+I updated it, and labelled the new page "added post-proposal" rather than quietly folding it
+in, because hiding the divergence would misrepresent when the decision was made.
+
+Second, and more usefully: scope creep did not feel like scope creep while it was happening. It
+felt like finishing the job properly. Each addition was individually defensible. That is
+exactly why it is worth naming — the failure mode is not one obviously bad decision, it is a
+sequence of reasonable ones with nobody checking the total against the brief.
+
+**Feeds:** Reflection Q1 (challenges), and any question about project management, scoping, or
+keeping documentation aligned with what was actually built.
+
+---
+
+## 2026-08-16 — One wrong sentence, three published copies
+
+**What happened.** The proposal claimed that the wireframes and site map appeared "in Sections
+13 and 14." There are no Sections 13 or 14 — the proposal runs 1 through 12, then a conclusion,
+then the figures. 13 and 14 are the *rubric's* criteria numbers, for the storyboard and the
+reflection. Two different numbering systems, confused for each other.
+
+The error was small. Its reach was not. By the time it was caught, that sentence existed in the
+Markdown source, in the Word document, and in the Google Doc — three published artifacts, two
+of which are what an instructor would actually open.
+
+**What it changed.** This is the argument for a single source of truth, made concretely rather
+than in the abstract. Because the Markdown is canonical and everything else is generated from
+it, the fix was one line and a rebuild. Had I edited the Word file directly, or fixed the
+Google Doc by hand, the copies would have silently diverged and I would have had three
+documents to keep straight instead of one.
+
+The other half of the lesson is that nothing in the process would ever have surfaced this. It
+was found by deliberately going back and auditing. Spell-check does not catch a factually
+wrong cross-reference; neither does a passing build. An internal reference is a *claim about
+the document itself*, and the only thing that verifies it is someone checking whether the thing
+being pointed at actually exists.
+
+**Feeds:** Reflection Q1 (challenges), and any question about documentation practice, version
+control, or quality assurance.
+
+---
+
 <!-- Template for new entries:
 
 ## YYYY-MM-DD — Short title
