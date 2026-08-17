@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900" width="1120" height="900" font-family="Helvetica, Arial, sans-serif">
   <rect width="1120" height="900" fill="#ffffff"/>
 
-  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 1 — Home Page</text>
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 1: Home Page</text>
   <text x="40" y="60" font-size="13" fill="#555">CMST 387 Web Design Resource Hub · low-fidelity structural wireframe</text>
 
   <!-- ================= DESKTOP ================= -->
-  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP — 1280px and above</text>
+  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP: 1280px and above</text>
   <rect x="40" y="102" width="700" height="762" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <!-- skip link -->
@@ -34,7 +34,7 @@
 
   <!-- hero -->
   <rect x="52" y="232" width="676" height="150" fill="#f2f2f2" stroke="#666"/>
-  <text x="70" y="266" font-size="17" font-weight="bold" fill="#333">H1 — Web Design Resource Hub</text>
+  <text x="70" y="266" font-size="17" font-weight="bold" fill="#333">H1: Web Design Resource Hub</text>
   <rect x="70" y="282" width="470" height="9" fill="#d8d8d8"/>
   <rect x="70" y="298" width="420" height="9" fill="#d8d8d8"/>
   <text x="70" y="322" font-size="9" fill="#888">Plain-language statement of purpose (2 sentences, ~8th grade)</text>
@@ -43,7 +43,7 @@
   <text x="222" y="353" font-size="8" fill="#888">44×44 min target</text>
 
   <!-- five topic cards -->
-  <text x="52" y="404" font-size="11" font-weight="bold" fill="#333">H2 — Five core topics</text>
+  <text x="52" y="404" font-size="11" font-weight="bold" fill="#333">H2: Five core topics</text>
   <g stroke="#666" fill="#f7f7f7">
     <rect x="52" y="414" width="212" height="118"/>
     <rect x="284" y="414" width="212" height="118"/>
@@ -92,7 +92,7 @@
   <text x="52" y="810" font-size="9" fill="#888">Landmarks: banner · nav · main · contentinfo</text>
 
   <!-- ================= MOBILE ================= -->
-  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE — 375px</text>
+  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE: 375px</text>
   <rect x="790" y="102" width="290" height="640" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <rect x="802" y="114" width="266" height="40" fill="#eee" stroke="#666"/>
@@ -100,10 +100,10 @@
   <text x="816" y="138" font-size="9" fill="#444">LOGO</text>
   <rect x="1000" y="122" width="60" height="24" fill="#fff" stroke="#555" stroke-width="1.5"/>
   <text x="1008" y="138" font-size="9.5" fill="#333">☰ Menu</text>
-  <text x="802" y="168" font-size="8" fill="#b35505">labeled "Menu" — not icon-only</text>
+  <text x="802" y="168" font-size="8" fill="#b35505">labeled "Menu", not icon-only</text>
 
   <rect x="802" y="178" width="266" height="112" fill="#f2f2f2" stroke="#666"/>
-  <text x="812" y="202" font-size="12" font-weight="bold" fill="#333">H1 — Resource Hub</text>
+  <text x="812" y="202" font-size="12" font-weight="bold" fill="#333">H1: Resource Hub</text>
   <rect x="812" y="212" width="230" height="8" fill="#d8d8d8"/>
   <rect x="812" y="226" width="200" height="8" fill="#d8d8d8"/>
   <rect x="812" y="246" width="130" height="30" fill="#ddd" stroke="#555" stroke-width="1.5"/>
@@ -149,5 +149,5 @@
   <text x="276" y="860" font-size="9.5" fill="#555">Placeholder body text</text>
   <rect x="432" y="850" width="16" height="12" fill="#f7f7f7" stroke="#666"/>
   <text x="456" y="860" font-size="9.5" fill="#555">Content block / card</text>
-  <text x="636" y="860" font-size="9.5" fill="#555">Low-fidelity: layout and hierarchy only — no final color, type, or imagery.</text>
+  <text x="636" y="860" font-size="9.5" fill="#555">Low-fidelity: layout and hierarchy only. No final color, type, or imagery.</text>
 </svg>

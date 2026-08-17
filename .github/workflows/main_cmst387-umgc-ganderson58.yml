@@ -24,7 +24,7 @@ jobs:
             npm install
             npm run build --if-present
           else
-            echo "No package.json — deploying static files as-is."
+            echo "No package.json, deploying static files as-is."
           fi
 
       - name: Zip artifact for deployment
@@ -37,7 +37,7 @@ jobs:
           path: release.zip
 
   # Automated WCAG 2.2 AA scanning, per Section 5 of the project proposal.
-  # Deliberately NOT a dependency of `deploy` — a11y findings surface as a failed
+  # Deliberately NOT a dependency of `deploy`: a11y findings surface as a failed
   # check without blocking a release. To gate deploys on it, add `accessibility`
   # to the deploy job's `needs` list below.
   accessibility:

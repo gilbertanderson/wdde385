@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900" width="1120" height="900" font-family="Helvetica, Arial, sans-serif">
   <rect width="1120" height="900" fill="#ffffff"/>
 
-  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 2 — Interior Topic Page</text>
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 2: Interior Topic Page</text>
   <text x="40" y="60" font-size="13" fill="#555">Example: "Accessibility &amp; Inclusive Design" · demonstrates layered content structure (Section 11)</text>
 
   <!-- ================= DESKTOP ================= -->
-  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP — 1280px and above</text>
+  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP: 1280px and above</text>
   <rect x="40" y="102" width="700" height="762" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <!-- header -->
@@ -23,7 +23,7 @@
   <!-- breadcrumb -->
   <rect x="52" y="166" width="676" height="24" fill="#f4f4f4" stroke="#ccc"/>
   <text x="62" y="182" font-size="9.5" fill="#666">Home  ›  Accessibility &amp; Inclusive Design</text>
-  <text x="440" y="182" font-size="8.5" fill="#b35505">breadcrumb — WCAG 2.4.5 Multiple Ways</text>
+  <text x="440" y="182" font-size="8.5" fill="#b35505">breadcrumb (WCAG 2.4.5 Multiple Ways)</text>
 
   <!-- sidebar TOC -->
   <rect x="52" y="200" width="176" height="404" fill="#f2f2f2" stroke="#666"/>
@@ -49,11 +49,11 @@
   <text x="62" y="541" font-size="8" fill="#888">apart.</text>
 
   <!-- main content -->
-  <text x="244" y="216" font-size="15" font-weight="bold" fill="#333">H1 — Accessibility &amp; Inclusive Design</text>
+  <text x="244" y="216" font-size="15" font-weight="bold" fill="#333">H1: Accessibility &amp; Inclusive Design</text>
 
   <!-- LAYER 1 -->
   <rect x="244" y="228" width="484" height="88" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
-  <text x="254" y="246" font-size="10" font-weight="bold" fill="#b35505">LAYER 1 — Plain-language summary</text>
+  <text x="254" y="246" font-size="10" font-weight="bold" fill="#b35505">LAYER 1: Plain-language summary</text>
   <rect x="254" y="256" width="458" height="8" fill="#e0d5c5"/>
   <rect x="254" y="270" width="440" height="8" fill="#e0d5c5"/>
   <rect x="254" y="284" width="410" height="8" fill="#e0d5c5"/>
@@ -61,14 +61,14 @@
 
   <!-- LAYER 2 -->
   <rect x="244" y="326" width="484" height="76" fill="#f7f7f7" stroke="#666"/>
-  <text x="254" y="344" font-size="10" font-weight="bold" fill="#333">LAYER 2 — Why it matters</text>
+  <text x="254" y="344" font-size="10" font-weight="bold" fill="#333">LAYER 2: Why it matters</text>
   <rect x="254" y="354" width="458" height="8" fill="#d8d8d8"/>
   <rect x="254" y="368" width="430" height="8" fill="#d8d8d8"/>
   <text x="254" y="392" font-size="8.5" fill="#888">Motivation and context before implementation detail</text>
 
   <!-- LAYER 3 -->
   <rect x="244" y="412" width="484" height="192" fill="#f7f7f7" stroke="#666"/>
-  <text x="254" y="430" font-size="10" font-weight="bold" fill="#333">LAYER 3 — Core guidance (H2)</text>
+  <text x="254" y="430" font-size="10" font-weight="bold" fill="#333">LAYER 3: Core guidance (H2)</text>
   <rect x="254" y="440" width="458" height="8" fill="#d8d8d8"/>
   <rect x="254" y="454" width="420" height="8" fill="#d8d8d8"/>
 
@@ -80,7 +80,7 @@
   <rect x="264" y="518" width="270" height="6" fill="#bbb"/>
   <rect x="628" y="476" width="76" height="20" fill="#fff" stroke="#e8710a" stroke-width="1.5"/>
   <text x="636" y="490" font-size="8.5" fill="#b35505">Copy code</text>
-  <text x="264" y="536" font-size="8" fill="#888">Code scrolls horizontally inside its own container — page never side-scrolls</text>
+  <text x="264" y="536" font-size="8" fill="#888">Code scrolls horizontally inside its own container; page never side-scrolls</text>
 
   <rect x="254" y="552" width="458" height="8" fill="#d8d8d8"/>
   <rect x="254" y="566" width="400" height="8" fill="#d8d8d8"/>
@@ -88,7 +88,7 @@
 
   <!-- related -->
   <rect x="52" y="616" width="676" height="66" fill="#f2f2f2" stroke="#666"/>
-  <text x="62" y="636" font-size="10" font-weight="bold" fill="#333">Related topics — cross-links for cross-cutting subjects</text>
+  <text x="62" y="636" font-size="10" font-weight="bold" fill="#333">Related topics: cross-links for cross-cutting subjects</text>
   <rect x="62" y="646" width="150" height="24" fill="#fff" stroke="#888"/>
   <text x="70" y="662" font-size="9" fill="#555">Responsive images</text>
   <rect x="222" y="646" width="150" height="24" fill="#fff" stroke="#888"/>
@@ -114,7 +114,7 @@
   <text x="52" y="822" font-size="9" fill="#888">Heading hierarchy h1 → h2 → h3, never skipped · unique descriptive page title (WCAG 2.4.2, 2.4.6)</text>
 
   <!-- ================= MOBILE ================= -->
-  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE — 375px</text>
+  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE: 375px</text>
   <rect x="790" y="102" width="290" height="700" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <rect x="802" y="114" width="266" height="36" fill="#eee" stroke="#666"/>
@@ -126,30 +126,30 @@
   <rect x="802" y="158" width="266" height="22" fill="#f4f4f4" stroke="#ccc"/>
   <text x="810" y="173" font-size="8.5" fill="#666">Home › Accessibility</text>
 
-  <text x="802" y="200" font-size="12" font-weight="bold" fill="#333">H1 — Accessibility &amp;</text>
+  <text x="802" y="200" font-size="12" font-weight="bold" fill="#333">H1: Accessibility &amp;</text>
   <text x="802" y="214" font-size="12" font-weight="bold" fill="#333">Inclusive Design</text>
 
   <!-- collapsed TOC -->
   <rect x="802" y="226" width="266" height="30" fill="#f2f2f2" stroke="#666"/>
   <text x="812" y="245" font-size="9.5" fill="#333">▸ On this page (6)</text>
   <text x="990" y="245" font-size="9" fill="#666">expand</text>
-  <text x="802" y="268" font-size="8" fill="#b35505">sidebar collapses to accordion — aria-expanded</text>
+  <text x="802" y="268" font-size="8" fill="#b35505">sidebar collapses to accordion, aria-expanded</text>
 
   <rect x="802" y="278" width="266" height="82" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
-  <text x="812" y="296" font-size="9" font-weight="bold" fill="#b35505">LAYER 1 — Summary</text>
+  <text x="812" y="296" font-size="9" font-weight="bold" fill="#b35505">LAYER 1: Summary</text>
   <rect x="812" y="306" width="240" height="7" fill="#e0d5c5"/>
   <rect x="812" y="318" width="230" height="7" fill="#e0d5c5"/>
   <rect x="812" y="330" width="210" height="7" fill="#e0d5c5"/>
   <rect x="812" y="342" width="180" height="7" fill="#e0d5c5"/>
 
   <rect x="802" y="370" width="266" height="66" fill="#f7f7f7" stroke="#666"/>
-  <text x="812" y="388" font-size="9" font-weight="bold" fill="#333">LAYER 2 — Why it matters</text>
+  <text x="812" y="388" font-size="9" font-weight="bold" fill="#333">LAYER 2: Why it matters</text>
   <rect x="812" y="398" width="240" height="7" fill="#d8d8d8"/>
   <rect x="812" y="410" width="220" height="7" fill="#d8d8d8"/>
   <rect x="812" y="422" width="190" height="7" fill="#d8d8d8"/>
 
   <rect x="802" y="446" width="266" height="164" fill="#f7f7f7" stroke="#666"/>
-  <text x="812" y="464" font-size="9" font-weight="bold" fill="#333">LAYER 3 — Core guidance</text>
+  <text x="812" y="464" font-size="9" font-weight="bold" fill="#333">LAYER 3: Core guidance</text>
   <rect x="812" y="474" width="240" height="7" fill="#d8d8d8"/>
   <rect x="812" y="486" width="215" height="7" fill="#d8d8d8"/>
   <rect x="812" y="502" width="246" height="62" fill="#eaeaea" stroke="#999"/>

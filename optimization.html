@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Website Optimization | CMST 387 Web Design Resource Hub</title>
-<meta name="description" content="Performance budgets, image optimization, caching, the critical rendering path, and Core Web Vitals — a practical introduction to making websites fast.">
+<meta name="description" content="Performance budgets, image optimization, caching, the critical rendering path, and Core Web Vitals, a practical introduction to making websites fast.">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
@@ -81,7 +81,7 @@
         It is mostly about sending less: fewer files, smaller files, and nothing that blocks
         the browser from drawing the page.</p>
         <p>Speed is not a luxury feature. On a slow connection or an old phone, a heavy page
-        is not merely slower — it is unusable. Optimization is what decides whether people on
+        is not merely slower; it is unusable. Optimization is what decides whether people on
         modest hardware get to use your site at all.</p>
       </div>
 
@@ -92,7 +92,7 @@
         over congested mobile networks, sometimes on metered data where every extra megabyte
         has a price.</p>
         <p>The consequences are measurable. Slow pages lose visitors before the content ever
-        appears, and the visitors lost first are the ones with the worst connections — which
+        appears, and the visitors lost first are the ones with the worst connections, which
         makes performance a fairness problem, not only a business one. Treat it as an
         accessibility concern: a page nobody can wait for is a page nobody can perceive.</p>
         <p>Performance also tends to decay. Every sprint adds a script, a font, a tracker, an
@@ -109,13 +109,13 @@
         experience. Google's Core Web Vitals are the common vocabulary:</p>
         <ul>
           <li><strong>Largest Contentful Paint</strong>
-          (<abbr title="Largest Contentful Paint">LCP</abbr>) — when the main content becomes
+          (<abbr title="Largest Contentful Paint">LCP</abbr>): when the main content becomes
           visible. Aim for 2.5 seconds or less.</li>
           <li><strong>Interaction to Next Paint</strong>
-          (<abbr title="Interaction to Next Paint">INP</abbr>) — how quickly the page responds
+          (<abbr title="Interaction to Next Paint">INP</abbr>): how quickly the page responds
           when you tap or click. Aim for 200 milliseconds or less.</li>
           <li><strong>Cumulative Layout Shift</strong>
-          (<abbr title="Cumulative Layout Shift">CLS</abbr>) — how much the page jumps around
+          (<abbr title="Cumulative Layout Shift">CLS</abbr>): how much the page jumps around
           while loading. Aim for 0.1 or less. This one is also an accessibility issue: content
           that moves under a reader's finger or cursor causes mis-taps.</li>
         </ul>
@@ -175,7 +175,7 @@
         <p>Keep the CSS small and send it early. Give scripts <code>defer</code> so they
         download in parallel and run after the document is parsed, or <code>async</code> for
         independent scripts where order does not matter. Self-host fonts if you use them, and
-        set <code>font-display: swap</code> so text is readable while the font loads — or, as
+        set <code>font-display: swap</code> so text is readable while the font loads, or, as
         on this site, use the system font stack and download no font files at all.</p>
 
         <h3 id="caching">Caching and compression</h3>
@@ -198,7 +198,7 @@ GET /styles.8f3c1a.css
 Cache-Control: public, max-age=31536000, immutable
 
 # HTML lives at a stable address, so it must be rechecked. no-cache
-# does NOT mean "do not store" — it means "store, but revalidate".
+# does NOT mean "do not store": it means "store, but revalidate".
 # The ETag makes that revalidation cheap: unchanged content comes back
 # as a 304 with no body.
 GET /index.html
@@ -223,7 +223,7 @@ ETag: "a1b2c3"</code></pre>
         a prerequisite.</p>
         <p><strong>This site as a worked example.</strong> One stylesheet, one deferred
         script, no images in the page furniture, no web fonts, no analytics, and no
-        third-party requests at all. That is not minimalism for its own sake — it is what a
+        third-party requests at all. That is not minimalism for its own sake; it is what a
         performance budget looks like when it is actually enforced.</p>
         <p><strong>Reference material.</strong> web.dev publishes the current Core Web Vitals
         thresholds and measurement guidance; the HTTP Archive's annual Web Almanac shows how

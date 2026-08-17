@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accessibility &amp; Inclusive Design | CMST 387 Web Design Resource Hub</title>
-<meta name="description" content="Semantic HTML, keyboard operation, colour contrast, assistive technology, and WCAG 2.2 conformance — a practical introduction to accessible and inclusive web design.">
+<meta name="description" content="Semantic HTML, keyboard operation, colour contrast, assistive technology, and WCAG 2.2 conformance: a practical introduction to accessible and inclusive web design.">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
@@ -120,7 +120,7 @@
         both <kbd>Enter</kbd> and <kbd>Space</kbd>, and announced as a button, with no extra
         work. A <code>&lt;div&gt;</code> styled to look like a button is none of those things
         until a large amount of ARIA and JavaScript rebuilds what the browser gave you for
-        free — and that rebuild is where bugs live.</p>
+        free, and that rebuild is where bugs live.</p>
         <p>Landmark elements let screen reader users jump straight to a region instead of
         reading from the top. Headings do the same job inside the page, which is why the
         hierarchy must never skip a level: an <code>&lt;h4&gt;</code> directly after an
@@ -181,7 +181,7 @@
 
         <h3 id="contrast">Colour and contrast</h3>
         <p>Body text needs a contrast ratio of at least 4.5 to 1 against its background. Large
-        text — 24 pixels, or 19 pixels bold — needs 3 to 1. User interface components and the
+        text (24 pixels, or 19 pixels bold) needs 3 to 1. User interface components and the
         parts of graphics you must see to understand them also need 3 to 1. Check ratios with
         a contrast checker while you are choosing the palette, not after the site is built.</p>
         <p>Colour must never be the only signal. A form field marked as wrong by turning red
@@ -237,7 +237,7 @@
         <p>Every image needs an <code>alt</code> attribute. What goes in it depends on the
         job the image does. An informative image gets a short description of the information
         it carries. A decorative image gets <code>alt=""</code>, which tells a screen reader
-        to skip it — leaving the attribute off entirely makes some screen readers read the
+        to skip it; leaving the attribute off entirely makes some screen readers read the
         file name instead. An image used as a link describes the destination, not the picture.
         A complex diagram gets a short <code>alt</code> plus a full description in the
         surrounding text, because one line cannot carry an architecture diagram.</p>
@@ -253,7 +253,7 @@
         <p>When validation fails, mark each bad field with <code>aria-invalid="true"</code>,
         put a summary of every problem at the top of the form, move focus to that summary, and
         link each item to its field. The <a href="contact.html">contact form on this site</a>
-        does exactly that — submit it empty to see the pattern work.</p>
+        does exactly that: submit it empty to see the pattern work.</p>
       </section>
 
       <section>
@@ -318,7 +318,7 @@
         </div>
 
         <p class="note">The demo is keyboard-operable in every state, and switching a failure
-        on never traps you — you can always Tab out. When the <code>&lt;div&gt;</code> variant
+        on never traps you: you can always Tab out. When the <code>&lt;div&gt;</code> variant
         is active, that element genuinely becomes unreachable by keyboard, which is exactly the
         problem being demonstrated. Tab past it and the next control still works.</p>
       </section>

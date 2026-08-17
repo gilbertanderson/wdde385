@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 860" width="1120" height="860" font-family="Helvetica, Arial, sans-serif">
   <rect width="1120" height="860" fill="#ffffff"/>
 
-  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 3 — Contact Page (Responsive Form)</text>
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 3: Contact Page (Responsive Form)</text>
   <text x="40" y="60" font-size="13" fill="#555">Required feature · demonstrates accessible form patterns from Section 9</text>
 
   <!-- ================= DESKTOP ================= -->
-  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP — 1280px and above</text>
+  <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP: 1280px and above</text>
   <rect x="40" y="102" width="700" height="700" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <rect x="52" y="112" width="676" height="46" fill="#eee" stroke="#666"/>
@@ -22,7 +22,7 @@
   <rect x="52" y="166" width="676" height="22" fill="#f4f4f4" stroke="#ccc"/>
   <text x="62" y="181" font-size="9.5" fill="#666">Home  ›  Contact</text>
 
-  <text x="52" y="212" font-size="16" font-weight="bold" fill="#333">H1 — Contact</text>
+  <text x="52" y="212" font-size="16" font-weight="bold" fill="#333">H1: Contact</text>
   <rect x="52" y="222" width="480" height="8" fill="#d8d8d8"/>
   <rect x="52" y="236" width="420" height="8" fill="#d8d8d8"/>
   <text x="52" y="260" font-size="8.5" fill="#888">Plain-language intro: what this form is for and when to expect a reply</text>
@@ -40,7 +40,7 @@
   <!-- form fields -->
   <text x="52" y="352" font-size="10" fill="#333">Your name</text>
   <rect x="52" y="358" width="330" height="30" fill="#fff" stroke="#666" stroke-width="1.4"/>
-  <text x="392" y="378" font-size="8.5" fill="#888">single field — no first/last split (Section 6)</text>
+  <text x="392" y="378" font-size="8.5" fill="#888">single field, no first/last split (Section 6)</text>
 
   <text x="52" y="410" font-size="10" fill="#333">Email address</text>
   <rect x="52" y="416" width="330" height="30" fill="#fff" stroke="#c62828" stroke-width="2"/>
@@ -64,17 +64,17 @@
   <rect x="52" y="676" width="150" height="38" fill="#ddd" stroke="#333" stroke-width="1.8"/>
   <text x="86" y="700" font-size="11" font-weight="bold" fill="#222">Send message</text>
   <text x="214" y="694" font-size="8.5" fill="#888">44×44 target · entered data preserved on error</text>
-  <text x="214" y="707" font-size="8.5" fill="#b35505">No CAPTCHA — honeypot + server-side validation instead (Section 9)</text>
+  <text x="214" y="707" font-size="8.5" fill="#b35505">No CAPTCHA: honeypot + server-side validation instead (Section 9)</text>
 
   <!-- alternatives -->
   <rect x="52" y="726" width="676" height="42" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
   <text x="62" y="744" font-size="9.5" font-weight="bold" fill="#b35505">Can't use this form?</text>
-  <text x="62" y="758" font-size="9" fill="#a06030">Email · GitHub issue tracker · alternative contact — a user blocked by the form needs another route to say so (Section 7)</text>
+  <text x="62" y="758" font-size="9" fill="#a06030">Email · GitHub issue tracker · alternative contact. A user blocked by the form needs another route to say so (Section 7)</text>
 
   <text x="52" y="788" font-size="9" fill="#888">Confirmation on success announced via ARIA live region (polite), not a visual-only state change</text>
 
   <!-- ================= MOBILE ================= -->
-  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE — 375px</text>
+  <text x="790" y="92" font-size="13" font-weight="bold" fill="#333">MOBILE: 375px</text>
   <rect x="790" y="102" width="290" height="700" fill="#fafafa" stroke="#333" stroke-width="2"/>
 
   <rect x="802" y="114" width="266" height="36" fill="#eee" stroke="#666"/>
@@ -86,7 +86,7 @@
   <rect x="802" y="158" width="266" height="22" fill="#f4f4f4" stroke="#ccc"/>
   <text x="810" y="173" font-size="8.5" fill="#666">Home › Contact</text>
 
-  <text x="802" y="204" font-size="13" font-weight="bold" fill="#333">H1 — Contact</text>
+  <text x="802" y="204" font-size="13" font-weight="bold" fill="#333">H1: Contact</text>
   <rect x="802" y="212" width="240" height="7" fill="#d8d8d8"/>
   <rect x="802" y="224" width="210" height="7" fill="#d8d8d8"/>
 
@@ -123,7 +123,7 @@
   <!-- legend -->
   <rect x="40" y="812" width="1040" height="34" fill="#fcfcfc" stroke="#ccc"/>
   <rect x="52" y="822" width="16" height="12" fill="#fdecea" stroke="#c62828" stroke-width="1.6"/>
-  <text x="76" y="832" font-size="9.5" fill="#555">Error state (shown here deliberately — error handling is the form's hardest accessibility problem)</text>
+  <text x="76" y="832" font-size="9.5" fill="#555">Error state (shown deliberately: error handling is the form's hardest accessibility problem)</text>
   <rect x="612" y="822" width="16" height="12" fill="#fff8ee" stroke="#e8710a" stroke-width="1.5"/>
   <text x="636" y="832" font-size="9.5" fill="#555">Accessibility-specific feature</text>
   <rect x="852" y="822" width="16" height="12" fill="#fff" stroke="#666" stroke-width="1.4"/>

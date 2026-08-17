@@ -1,8 +1,8 @@
 # Project 1: Project Reflection
 
-**Course:** CMST 387 6300 — Principles of Web Design and Technology III
+**Course:** CMST 387 6300: Principles of Web Design and Technology III
 **Student:** Gilbert Anderson
-**Project:** Web Project Proposal — CMST 387 Web Design Resource Hub
+**Project:** Web Project Proposal for the CMST 387 Web Design Resource Hub
 
 ---
 
@@ -11,14 +11,13 @@
 **Defining the site's scope and audience before anything else could be answered.**
 
 The largest challenge came before any writing. The proposal asks twelve questions about
-navigation, accessibility features, cultural considerations, and information architecture —
-and I found that none of them could be answered honestly without first deciding what the
+navigation, accessibility features, cultural considerations, and information architecture, and I found that none of them could be answered honestly without first deciding what the
 site actually was and who would use it. My first attempt produced answers that were
 technically correct but generic: statements about contrast ratios and semantic HTML that
 would apply equally to any website, which is another way of saying they applied to none.
 
-Settling on a specific subject — a resource hub covering the five CMST 387 topic areas,
-aimed at students and early-career developers — changed the quality of every answer that
+Settling on a specific subject (a resource hub covering the five CMST 387 topic areas,
+aimed at students and early-career developers) changed the quality of every answer that
 followed. Once the audience was concrete, the cultural and language question (Section 6)
 stopped being an abstract nod to translation and became a specific observation: technical
 documentation is read worldwide by non-native English speakers, so idioms and US-centric
@@ -28,7 +27,7 @@ reflow arbitrarily the way prose can.
 
 This connects directly to the Unit 1 material on the UX process. The unit's emphasis on
 research preceding design decisions is easy to accept in the abstract and easy to skip in
-practice. I skipped it, produced weak answers, and had to go back — which turned out to be
+practice. I skipped it, produced weak answers, and had to go back, which turned out to be
 the most useful thing that happened during the project. Defining users first is not a
 preliminary step before the real design work; it is what makes the design work possible.
 
@@ -44,7 +43,7 @@ I resolved this by assigning each question a distinct angle on the shared materi
 than a distinct set of facts. Q4 covers features organized by the impairment they serve; Q8
 covers the *methodology* that produces those features; Q10 covers the *controls* that expose
 them to users. The same underlying commitment appears in three places, examined three ways.
-Deciding this explicitly — rather than discovering the repetition after drafting — would
+Deciding this explicitly, rather than discovering the repetition after drafting, would
 have saved considerable rework, and it is the approach I would start with next time.
 
 A related difficulty was calibrating depth. Each question could support a paper on its own.
@@ -66,7 +65,7 @@ specific design commitments required going to the source for the success criteri
 themselves.
 
 Two things became clear only from the primary documentation. First, the distinction between
-conformance levels is a design decision rather than a technicality — deciding to target
+conformance levels is a design decision rather than a technicality: deciding to target
 Level AA and then deliberately exceeding it on readability (3.1.5, a AAA criterion) was a
 choice I could only make once I understood what each level actually required. Second, the
 *Understanding* documents explain the reasoning behind each criterion, and that reasoning
@@ -75,10 +74,10 @@ Knowing that Reflow (1.4.10) exists to serve users who zoom is what let me recog
 the same problem as mobile layout, rather than treating them as two separate requirements.
 
 I also used WCAG 2.2 specifically rather than the more commonly cited 2.1, which added
-criteria directly relevant to this proposal — Target Size (2.5.8), Dragging Movements
+criteria directly relevant to this proposal: Target Size (2.5.8), Dragging Movements
 (2.5.7), and Focus Not Obscured (2.4.11).
 
-**Nielsen Norman Group — Rohr (2022) on research method selection.**
+**Nielsen Norman Group, Rohr (2022) on research method selection.**
 
 For the usability, feedback, and information architecture questions, I drew on Nielsen
 Norman Group's material, particularly Rohr's (2022) framework organizing twenty UX research
@@ -86,7 +85,7 @@ methods along three dimensions: attitudinal versus behavioral, qualitative versu
 quantitative, and context of use.
 
 This resource changed Section 7 substantially. My first draft simply listed feedback
-mechanisms — a form, a survey, analytics — as though more channels were straightforwardly
+mechanisms (a form, a survey, analytics) as though more channels were straightforwardly
 better. The three-dimensional framework showed that those mechanisms are not
 interchangeable and that a list can have real gaps. Analytics are behavioral and
 quantitative and tell me *what* happened at scale but never *why*. A survey is attitudinal
@@ -98,7 +97,7 @@ NN/g's usability heuristics also gave the navigation principles in Section 1 an 
 framework rather than a list of personal preferences, and its information architecture
 material supplied the card sorting and tree testing methods in Section 11. The most useful
 idea there was organizing a site around user tasks rather than internal structure: my first
-instinct was to group content by format — articles, tutorials, references — which requires
+instinct was to group content by format (articles, tutorials, references), which requires
 the reader to already know what form their answer takes, precisely the knowledge a learner
 lacks.
 
@@ -113,14 +112,14 @@ differ meaningfully in ARIA support is why the proposal now names specific scree
 browser pairings.
 
 The book's treatment of compliance and legislation also reframed how I understood WCAG's
-conformance levels. Compliance is a legal floor, not a design target — which is what made me
+conformance levels. Compliance is a legal floor, not a design target, which is what made me
 comfortable committing to AA overall while deliberately exceeding it on readability, rather
 than treating the standard as a finish line.
 
 **How these resources shaped the outcome.**
 
 The three sources served distinct functions, and I needed all of them. WCAG defined what
-conformance requires — the verifiable floor. Gilbert explained why those requirements exist
+conformance requires, the verifiable floor. Gilbert explained why those requirements exist
 and how the technologies they serve behave. NN/g addressed what usability requires, which
 WCAG does not attempt to specify. A site can satisfy every Level AA criterion and still be
 difficult to use, and the gap between conformance and usability is where most of the design

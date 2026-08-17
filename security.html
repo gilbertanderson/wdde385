@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Web Application Security | CMST 387 Web Design Resource Hub</title>
-<meta name="description" content="HTTPS and TLS, input validation, output encoding, cross-site scripting and request forgery defences, security headers, and safer authentication — a practical introduction.">
+<meta name="description" content="HTTPS and TLS, input validation, output encoding, cross-site scripting and request forgery defences, security headers, and safer authentication, a practical introduction.">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
@@ -79,7 +79,7 @@
         <h2 id="summary">In plain language</h2>
         <p>Web application security is the work of stopping other people from reading,
         changing, or destroying things they should not touch. Most attacks are not clever.
-        They rely on an application trusting something it should not have trusted — a form
+        They rely on an application trusting something it should not have trusted: a form
         field, a URL, a cookie, a file upload.</p>
         <p>The single idea underneath almost everything on this page: <strong>never trust
         input, and never mix data with code</strong>. If you remember nothing else, remember
@@ -93,7 +93,7 @@
         reuse passwords, so your failure becomes their bank's failure.</p>
         <p>The people harmed are rarely the people who wrote the bug. That asymmetry is what
         makes security an ethical obligation rather than a technical preference. When you
-        collect data, you accept responsibility for protecting it — which is also the
+        collect data, you accept responsibility for protecting it, which is also the
         strongest argument for collecting as little as possible. Data you never stored cannot
         leak.</p>
         <p>Security also interacts with accessibility in ways that are easy to get wrong.
@@ -108,8 +108,8 @@
         <h3 id="https">Encrypt everything in transit</h3>
         <p>Serve every page over HTTPS, which is HTTP carried inside
         <abbr title="Transport Layer Security">TLS</abbr> encryption. Without it, anyone
-        between the visitor and your server — a shared network, an internet provider, a
-        compromised router — can read and alter the traffic, including session cookies.
+        between the visitor and your server (a shared network, an internet provider, a
+        compromised router) can read and alter the traffic, including session cookies.
         Certificates are free from Let's Encrypt, so cost is no longer an excuse.</p>
         <p>Redirect all plain HTTP to HTTPS, and then send an HTTP Strict Transport Security
         header so browsers refuse to use plain HTTP for your domain in future. Mark session
@@ -125,7 +125,7 @@
         <p>The defence is context-aware output encoding: escape data at the moment you put it
         into the page, using the escaping appropriate to where it lands, because HTML
         escaping, attribute escaping, URL escaping, and JavaScript escaping are different
-        rules. Modern template engines do this automatically — the vulnerabilities appear
+        rules. Modern template engines do this automatically; the vulnerabilities appear
         where developers deliberately switch it off. In plain JavaScript, the practical rule
         is to use <code>textContent</code> instead of <code>innerHTML</code> for anything a
         user supplied.</p>
@@ -213,7 +213,7 @@ if (typeof input !== 'string' || input.length &gt; 254) {
 
         <h3 id="auth">Authentication and sessions</h3>
         <p>Never store passwords, even encrypted. Store a hash produced by a slow,
-        purpose-built algorithm — bcrypt, scrypt, or Argon2 — with a unique salt per user, so
+        purpose-built algorithm (bcrypt, scrypt, or Argon2) with a unique salt per user, so
         that a stolen database is expensive rather than instantly useful. Never invent your
         own scheme here.</p>
         <p>Length beats complexity. Current guidance from the United States National Institute
@@ -251,7 +251,7 @@ if (typeof input !== 'string' || input.length &gt; 254) {
         by a public web page rarely needs permission to drop tables.</p>
         <p><strong>Dependencies are your attack surface.</strong> Most applications ship far
         more third-party code than their own. Keep a dependency inventory, patch promptly, and
-        prefer fewer dependencies — which is one reason this site has none at all.</p>
+        prefer fewer dependencies, which is one reason this site has none at all.</p>
         <p><strong>Reference material.</strong> The OWASP Top Ten is the standard survey of
         the most common categories of web application risk, and the OWASP Cheat Sheet Series
         gives specific, implementable guidance for each one.</p>

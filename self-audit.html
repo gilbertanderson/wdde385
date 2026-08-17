@@ -70,7 +70,7 @@
       <h1>Self-audit</h1>
 
       <p class="lede">This site teaches accessibility. That creates an obvious obligation: it
-      should be able to show its own work. This page is that evidence — what is checked
+      should be able to show its own work. This page is that evidence: what is checked
       automatically, what I checked by hand, and, more importantly, what nobody has checked
       at all.</p>
 
@@ -91,7 +91,7 @@
         and runs <strong>pa11y-ci</strong> against every page at the <strong>WCAG 2.2 Level
         AA</strong> standard. If a page introduces a violation the scan catches, the check
         fails and I see it.</p>
-        <p>Here is the actual configuration — the whole thing, not an excerpt:</p>
+        <p>Here is the actual configuration, the whole thing, not an excerpt:</p>
         <pre><code>{
   "defaults": {
     "standard": "WCAG2AA",     // the conformance level being tested against
@@ -138,7 +138,7 @@
           </tbody>
         </table>
         <p class="note"><strong>This table is written by hand.</strong> It is not generated
-        from the live run, so it can go stale — if I broke something an hour ago, this page
+        from the live run, so it can go stale: if I broke something an hour ago, this page
         would not know. The authoritative result is the check on the latest commit in
         <a href="https://github.com/gilbertanderson/cmst387/actions">the repository's Actions
         tab</a>. Treat that as the source of truth and this table as a summary.</p>
@@ -156,7 +156,7 @@
           control, never obscured by the sticky header.</li>
           <li><strong>Contrast, computed from rendered styles</strong> rather than from the
           palette I intended. Body text ranges 15.4:1 to 21:1, links 8.0:1 to 11.5:1, UI
-          borders 4.8:1 and above — across all four themes.</li>
+          borders 4.8:1 and above, across all four themes.</li>
           <li><strong>Reflow at 320px.</strong> No page scrolls horizontally. Code blocks
           scroll inside their own container, which is the intended behaviour, since code
           cannot rewrap without changing meaning.</li>
@@ -173,7 +173,7 @@
         <ul>
           <li><strong>No screen reader testing.</strong> Nobody has run this site through NVDA,
           JAWS, VoiceOver, or TalkBack. Automated tools cannot tell you whether an announcement
-          makes sense — only whether a name exists. This is the largest gap on the site, and it
+          makes sense, only whether a name exists. This is the largest gap on the site, and it
           is the reason the accessibility statement claims no conformance.</li>
           <li><strong>No testing with disabled users.</strong> None. Every accessibility claim
           here is a claim about conformance, not about usability. Those are different things,
@@ -193,20 +193,20 @@
         <h2 id="failure">A failure I found and fixed</h2>
         <p>Worth documenting, because it shows what automated scanning misses.</p>
         <p>In the high-contrast theme, the primary button's text resolved to a contrast ratio
-        of <strong>1.66:1</strong> — effectively invisible. The cause was a
+        of <strong>1.66:1</strong>, effectively invisible. The cause was a
         <code>prefers-color-scheme: dark</code> rule leaking into the forced-contrast theme and
         overriding the text colour but not the background.</p>
         <pre><code>/* The bug: the dark-mode rule applied inside the contrast theme,
    so the button kept a light background but got light text too. */
 
 /* The fix: one token, defined in every palette, for text drawn on
-   an accent fill — so the pair can never drift apart again. */
+   an accent fill, so the pair can never drift apart again. */
 :root            { --accent: #1e3a5f; --on-accent: #ffffff; }  /* 11.5:1 */
 :root[data-theme="dark"]     { --accent: #9fc4ea; --on-accent: #0b1622; }  /* 10.0:1 */
 :root[data-theme="contrast"] { --accent: #000000; --on-accent: #ffffff; }  /* 21:1  */</code></pre>
         <p>The point: <strong>pa11y did not catch this.</strong> The scan runs in the default
         theme, and the failure only appeared in a theme a user has to opt into. It was found by
-        computing contrast from rendered styles in every theme — a check I had to write on
+        computing contrast from rendered styles in every theme, a check I had to write on
         purpose. Anything you do not deliberately test, you are not testing.</p>
       </section>
 
@@ -215,7 +215,7 @@
         <p>Do not take any of the above on trust. The fastest checks need no tools at all:</p>
         <ul>
           <li><strong>Press Tab</strong> right now. The first thing to appear should be "Skip
-          to main content". Keep pressing — the focus outline should always be visible.</li>
+          to main content". Keep pressing: the focus outline should always be visible.</li>
           <li><strong>Zoom to 400%</strong> (<kbd>Ctrl</kbd>/<kbd>Cmd</kbd> and <kbd>+</kbd>).
           The layout should reflow to a single column with no horizontal scrolling.</li>
           <li><strong>Narrow the window</strong> to phone width. Same content, same order,

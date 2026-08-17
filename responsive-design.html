@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Responsive Web Design | CMST 387 Web Design Resource Hub</title>
-<meta name="description" content="The mobile-first method, fluid grids, content-driven breakpoints, responsive media, and reflow at 320 pixels — a practical introduction to responsive web design.">
+<meta name="description" content="The mobile-first method, fluid grids, content-driven breakpoints, responsive media, and reflow at 320 pixels, a practical introduction to responsive web design.">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
@@ -78,7 +78,7 @@
       <div class="layer-summary">
         <h2 id="summary">In plain language</h2>
         <p>Responsive web design means one website that rearranges itself to suit whatever
-        screen it is shown on — a phone held in one hand, a tablet, a laptop, a large desktop
+        screen it is shown on: a phone held in one hand, a tablet, a laptop, a large desktop
         monitor, or a browser zoomed to four times its normal size.</p>
         <p>The method is simpler than it sounds. Write the layout for the narrow screen first,
         use flexible sizes instead of fixed pixel widths, and add rules for wider screens only
@@ -96,8 +96,8 @@
         wide without scrolling in two directions. That is the same requirement as supporting
         400 per cent zoom on a 1280-pixel desktop display, because zooming to 400 per cent
         leaves a 320-pixel viewport. One technical solution serves a low-vision desktop user
-        and every phone visitor at once — a clear example of the curb-cut effect.</p>
-        <p>The alternative — a separate mobile site — means two codebases, two sets of
+        and every phone visitor at once, a clear example of the curb-cut effect.</p>
+        <p>The alternative (a separate mobile site) means two codebases, two sets of
         content, and two places for things to fall out of date. Responsive design was invented
         to avoid exactly that.</p>
       </section>
@@ -107,8 +107,7 @@
 
         <h3 id="mobile-first">Start with the small screen</h3>
         <p>Write the single-column, small-screen layout as your base styles, then add
-        <code>min-width</code> media queries to enhance upward. Doing it the other way round —
-        desktop first, with <code>max-width</code> queries subtracting things — produces more
+        <code>min-width</code> media queries to enhance upward. Doing it the other way round (desktop first, with <code>max-width</code> queries subtracting things) produces more
         code and more special cases.</p>
         <p>Mobile-first also enforces honest prioritisation. If a module cannot justify its
         place in a 375-pixel column, it rarely deserves prominence at 1440. The narrow layout
@@ -193,7 +192,7 @@ p  { max-width: 68ch; }
 
         <figure class="code-sample">
           <figcaption>Keeping a wide code sample inside its own box. This is the exact rule
-          this page uses — the block you are reading scrolls independently while the page
+          this page uses: the block you are reading scrolls independently while the page
           around it does not.</figcaption>
           <div class="code-head"><span class="code-lang">CSS and HTML</span></div>
 <pre tabindex="0" role="region" aria-label="Code sample: containing horizontal scroll inside a code block"><code>/* The scroll stays inside the box. Without overflow-x here, a long
@@ -228,7 +227,7 @@ pre {
         <p>Targets need to be big enough to hit. WCAG 2.5.8 sets a minimum of 24 by 24 CSS
         pixels; 44 by 44 is the practical target for anything important, with enough space
         between neighbouring controls that a mis-tap is unlikely. On this site, navigation
-        collapses on narrow screens into a button labelled <strong>Menu</strong> — a word,
+        collapses on narrow screens into a button labelled <strong>Menu</strong>: a word,
         not a bare hamburger icon, because unlabelled icons are guesswork for anyone who has
         not learned that particular convention.</p>
       </section>
@@ -239,8 +238,8 @@ pre {
         how wide the window is. That is usually the question you actually meant: a card in a
         narrow sidebar should stack even on a wide screen. Support is now broad enough to use
         with a viewport-query fallback.</p>
-        <p><strong>Logical properties</strong> — <code>margin-inline</code>,
-        <code>padding-block</code>, <code>inset-inline-start</code> — describe position
+        <p><strong>Logical properties</strong> (<code>margin-inline</code>,
+        <code>padding-block</code>, <code>inset-inline-start</code>) describe position
         relative to the reading direction rather than to the physical screen. They make
         right-to-left support close to free, and they cost nothing to adopt.</p>
         <p><strong>Test the extremes.</strong> Set the browser to 320 pixels wide and confirm

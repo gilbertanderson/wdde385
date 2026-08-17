@@ -1,5 +1,5 @@
 /* =============================================================
-   CMST 387 Web Design Resource Hub — shared stylesheet
+   CMST 387 Web Design Resource Hub - shared stylesheet
    Hand-written. No frameworks, no CDN links, no web fonts.
 
    Organisation:
@@ -30,7 +30,7 @@
   --border:        #59697a;   /*  5.5:1 on --bg (UI components need 3:1) */
   --border-soft:   #c6d0da;
   --accent:        #1e3a5f;   /*  7.0:1 on --bg   */
-  --on-accent:     #ffffff;   /*  7.8:1 on --accent — text drawn on accent fills */
+  --on-accent:     #ffffff;   /*  7.8:1 on --accent - text drawn on accent fills */
   --accent-soft:   #eef3f9;
   --focus:         #1e3a5f;
   --error:         #b3261e;   /*  6.5:1 on --bg   */
@@ -40,7 +40,7 @@
   --code-bg:       #eaeff5;
   --code-text:     #14202e;
 
-  /* Typography scale — clamp() so type is fluid but never below 16px */
+  /* Typography scale - clamp() so type is fluid but never below 16px */
   --step--1: clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
   --step-0:  clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
   --step-1:  clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem);
@@ -65,7 +65,7 @@
 /* Dark palette. Applied when the user's OS asks for dark and the
    site has not been explicitly forced to light, OR when the panel
    sets data-theme="dark". Every token is redefined as a real,
-   contrast-checked colour — not an inverted filter. */
+   contrast-checked colour - not an inverted filter. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="contrast"]) {
     --bg:           #0f1720;
@@ -178,7 +178,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--step-0);
   line-height: 1.6;
-  text-align: left;             /* never justified — rivers hurt dyslexic readers */
+  text-align: left;             /* never justified - rivers hurt dyslexic readers */
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
@@ -343,7 +343,7 @@ th { background: var(--surface); }
   gap: 0.5rem;
 }
 
-/* All buttons carry text labels — never an icon alone. */
+/* All buttons carry text labels - never an icon alone. */
 button {
   font: inherit;
   color: var(--text);
@@ -682,7 +682,7 @@ select { max-width: 32rem; }
   color: var(--error);
   font-weight: 700;
 }
-.field-error::before { content: "\2715\00a0"; }  /* ✕ — paired with text, never colour alone */
+.field-error::before { content: "\2715\00a0"; }  /* ✕ - paired with text, never colour alone */
 
 .error-summary {
   background: var(--error-bg);
@@ -714,7 +714,7 @@ fieldset {
 }
 
 /* Honeypot: off-screen, hidden from assistive technology, skipped by
-   the keyboard. A real person never encounters it — which is why this
+   the keyboard. A real person never encounters it - which is why this
    site needs no CAPTCHA. */
 .honeypot {
   position: absolute;
@@ -762,12 +762,12 @@ fieldset {
    below are placed where the content stops working, not at device
    widths. At 320px nothing here has applied yet. */
 
-@media (min-width: 34em) {          /* ~544px — two cards fit */
+@media (min-width: 34em) {          /* ~544px - two cards fit */
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .card-grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 48em) {          /* ~768px — nav fits on one row */
+@media (min-width: 48em) {          /* ~768px - nav fits on one row */
   .js .primary-nav { display: block; width: auto; }
   .btn-menu { display: none !important; }
   .primary-nav ul { flex-direction: row; flex-wrap: wrap; gap: 0.1rem; }
@@ -785,12 +785,12 @@ fieldset {
   .hero { padding: 2rem 1.75rem; }
 }
 
-@media (min-width: 62em) {          /* ~992px — three cards fit */
+@media (min-width: 62em) {          /* ~992px - three cards fit */
   .card-grid { grid-template-columns: repeat(3, 1fr); }
   .card-grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 64em) {          /* ~1024px — room for a sidebar TOC */
+@media (min-width: 64em) {          /* ~1024px - room for a sidebar TOC */
   .topic-layout {
     display: grid;
     grid-template-columns: 16rem minmax(0, 1fr);
@@ -840,7 +840,7 @@ fieldset {
 /* ============================================================
    Interactive accessibility demo (accessibility.html)
    The "broken" states here are deliberately the kind automated
-   scanners cannot detect — see the copy on the page.
+   scanners cannot detect - see the copy on the page.
    ============================================================ */
 
 .demo {

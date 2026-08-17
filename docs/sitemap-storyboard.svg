@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 980" width="1180" height="980" font-family="Helvetica, Arial, sans-serif">
   <rect width="1180" height="980" fill="#ffffff"/>
 
-  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Site Map &amp; User Flow — Web Design Resource Hub</text>
+  <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Site Map &amp; User Flow: Web Design Resource Hub</text>
   <text x="40" y="60" font-size="13" fill="#555">Page inventory, hierarchy, and the three primary paths users take through the site</text>
 
   <!-- ============ SITE MAP ============ -->
-  <text x="40" y="96" font-size="14" font-weight="bold" fill="#333">A. SITE MAP — page hierarchy</text>
+  <text x="40" y="96" font-size="14" font-weight="bold" fill="#333">A. SITE MAP: page hierarchy</text>
 
   <!-- home -->
   <rect x="470" y="112" width="180" height="46" rx="4" fill="#e8710a" stroke="#b35505" stroke-width="2"/>
@@ -103,10 +103,10 @@
   <text x="52" y="439" font-size="9.5" fill="#555">Persistent on every page: header nav · search · breadcrumbs · footer utility links · "Report an accessibility barrier" · accessibility settings panel</text>
 
   <!-- ============ USER FLOWS ============ -->
-  <text x="40" y="490" font-size="14" font-weight="bold" fill="#333">B. USER FLOWS — three primary paths</text>
+  <text x="40" y="490" font-size="14" font-weight="bold" fill="#333">B. USER FLOWS: three primary paths</text>
 
   <!-- FLOW 1 -->
-  <text x="40" y="518" font-size="11" font-weight="bold" fill="#b35505">Flow 1 — The browser: "I want to learn about accessibility"</text>
+  <text x="40" y="518" font-size="11" font-weight="bold" fill="#b35505">Flow 1, the browser: "I want to learn about accessibility"</text>
   <g font-size="9">
     <rect x="40" y="528" width="118" height="40" rx="3" fill="#e8710a" stroke="#b35505"/>
     <text x="60" y="544" fill="#fff" font-size="9.5" font-weight="bold">Lands on Home</text>
@@ -137,10 +137,10 @@
     <path d="M632 548 L670 548"/><path d="M790 548 L828 548"/>
   </g>
   <path d="M960 548 C 1010 548, 1020 590, 900 590 L 480 590" stroke="#3b7dd8" stroke-width="1.4" fill="none" stroke-dasharray="5 3" marker-end="url(#ahb)"/>
-  <text x="500" y="604" font-size="8.5" fill="#3b7dd8">loops back into another topic — no dead ends</text>
+  <text x="500" y="604" font-size="8.5" fill="#3b7dd8">loops back into another topic, no dead ends</text>
 
   <!-- FLOW 2 -->
-  <text x="40" y="642" font-size="11" font-weight="bold" fill="#b35505">Flow 2 — The searcher: "I need to fix a specific problem"</text>
+  <text x="40" y="642" font-size="11" font-weight="bold" fill="#b35505">Flow 2, the searcher: "I need to fix a specific problem"</text>
   <g font-size="9">
     <rect x="40" y="652" width="130" height="40" rx="3" fill="#ddd" stroke="#333"/>
     <text x="52" y="668" fill="#222" font-size="9.5">Arrives from</text>
@@ -170,13 +170,13 @@
     <path d="M170 672 L208 672"/><path d="M340 672 L378 672"/><path d="M510 672 L548 672"/>
     <path d="M680 672 L718 672"/><path d="M850 672 L888 672"/>
   </g>
-  <text x="40" y="712" font-size="8.5" fill="#888">Most traffic to a reference site lands mid-hierarchy, never on Home — orientation on interior pages is a primary design requirement, not an afterthought.</text>
+  <text x="40" y="712" font-size="8.5" fill="#888">Most traffic to a reference site lands mid-hierarchy, never on Home. Orientation on interior pages is a primary design requirement, not an afterthought.</text>
 
   <!-- FLOW 3 -->
-  <text x="40" y="750" font-size="11" font-weight="bold" fill="#b35505">Flow 3 — The contact / feedback path</text>
+  <text x="40" y="750" font-size="11" font-weight="bold" fill="#b35505">Flow 3: the contact / feedback path</text>
   <g font-size="9">
     <rect x="40" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
-    <text x="52" y="776" fill="#222" font-size="9.5">Any page —</text>
+    <text x="52" y="776" fill="#222" font-size="9.5">Any page,</text>
     <text x="52" y="789" fill="#222" font-size="9.5">nav or footer</text>
 
     <rect x="210" y="760" width="130" height="40" rx="3" fill="#fff8ee" stroke="#e8710a"/>
@@ -196,7 +196,7 @@
     <text x="732" y="789" fill="#222" font-size="9.5">(ARIA live)</text>
 
     <rect x="890" y="760" width="130" height="40" rx="3" fill="#f2f2f2" stroke="#333"/>
-    <text x="902" y="776" fill="#222" font-size="9.5">Onward links —</text>
+    <text x="902" y="776" fill="#222" font-size="9.5">Onward links,</text>
     <text x="902" y="789" fill="#222" font-size="9.5">not a dead end</text>
   </g>
   <g stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#ah)">

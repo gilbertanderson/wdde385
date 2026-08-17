@@ -1,6 +1,6 @@
 # Project 1: Web Project Proposal
 
-**Course:** CMST 387 6300 — Principles of Web Design and Technology III
+**Course:** CMST 387 6300: Principles of Web Design and Technology III
 **Student:** Gilbert Anderson
 **Proposed site:** CMST 387 Web Design Resource Hub
 **Deployment target:** https://cmst387-umgc-ganderson58.azurewebsites.net
@@ -10,9 +10,9 @@
 ## Project Overview
 
 This proposal describes a **Web Design Resource Hub**: an educational site that collects
-practical guidance across the five core areas of this course — **User Experience Design,
+practical guidance across the five core areas of this course (**User Experience Design,
 Accessibility and Inclusive Design, Web Application Security, Website Optimization, and
-Responsive Web Design** — into a single, well-organized reference for students and
+Responsive Web Design**) into a single, well-organized reference for students and
 early-career web developers.
 
 The site has an unusual obligation. A resource hub that teaches accessibility must itself be
@@ -23,7 +23,7 @@ Failing any of these standards would undermine the content directly.
 
 **Intended audience.** Students in web development programs, career-changers learning
 front-end development, and working developers needing a quick reference. This audience is
-global and linguistically diverse — web development draws heavily from non-native English
+global and linguistically diverse. Web development draws heavily from non-native English
 speakers reading English-language documentation. It includes developers with disabilities,
 who are underserved by technical documentation that is itself inaccessible. It spans a wide
 device and bandwidth range: developers read documentation on desktop workstations while
@@ -102,14 +102,14 @@ named device widths, which age poorly as devices change.
 
 The layout must satisfy **WCAG 1.4.10 (Reflow)**: content remains usable at 320 CSS pixels
 wide without two-dimensional scrolling. This is the same requirement as supporting 400% zoom
-on a 1280px desktop display — a single technical solution serving both low-vision desktop
-users and mobile users, a clear instance of the curb-cut effect.
+on a 1280px desktop display: a single technical solution serving both low-vision desktop
+users and mobile users, and a clear instance of the curb-cut effect.
 
 **Desktop-specific optimizations.** Wider viewports gain a persistent sidebar table of
 contents for long technical articles, and a constrained reading measure of 60–75 characters
 rather than full-width text, which becomes difficult to track across a wide monitor.
 
-**Mobile-specific optimizations.** Navigation collapses to a labeled menu button — labeled
+**Mobile-specific optimizations.** Navigation collapses to a labeled menu button, labeled
 "Menu" rather than relying on an unlabeled hamburger icon. Touch targets meet **WCAG 2.5.8
 (Target Size, Minimum)** at 24×24 CSS pixels, with 44×44 for primary actions and adequate
 spacing to prevent mis-taps. Hover-dependent interactions are avoided entirely, since hover
@@ -152,8 +152,8 @@ announced poorly by default.
 **Expert heuristic evaluation** against WCAG 2.2 AA success criteria and Nielsen's ten
 heuristics provides structured expert review at low cost.
 
-**Cognitive walkthrough** would step through core tasks — "find guidance on preventing XSS,"
-"submit a question through the contact form" — asking at each step whether a first-time user
+**Cognitive walkthrough** would step through core tasks ("find guidance on preventing XSS,"
+"submit a question through the contact form"), asking at each step whether a first-time user
 would know what to do and would recognize progress toward the goal.
 
 **Usability testing with participants with disabilities** most directly validates real-world
@@ -169,8 +169,8 @@ text-only zoom, Windows High Contrast Mode, and color-blindness simulators.
 ## 4. Features Supporting Specific Impairments
 
 **Visual impairments.** Semantic HTML with correct heading hierarchy and ARIA landmarks
-provides screen reader structure. Meaningful images — including diagrams explaining
-responsive breakpoints or request flows — receive descriptive alternative text, with complex
+provides screen reader structure. Meaningful images (including diagrams explaining
+responsive breakpoints or request flows) receive descriptive alternative text, with complex
 diagrams additionally described in adjacent body text, since a one-line `alt` cannot carry a
 full architectural diagram. Decorative images receive `alt=""`. Text contrast meets 4.5:1,
 and 3:1 for large text and UI components (1.4.11). Syntax highlighting in code samples will
@@ -194,7 +194,7 @@ manually selecting text across a multi-line block.
 **Cognitive impairments.** Plain language, short paragraphs, and generous white space reduce
 load. Consistent navigation prevents disorientation. Multi-step technical processes are
 broken into numbered steps with visible progress. Technical jargon is defined on first use
-and collected in a glossary — significant on a site whose subject matter is dense with
+and collected in a glossary, significant on a site whose subject matter is dense with
 acronyms (CSRF, TLS, LCP, ARIA). Error messages identify the problem *and* state the fix
 (3.3.3). Autoplay, unexpected motion, and flashing are avoided (2.3.1), and
 `prefers-reduced-motion` is honored. Icons pair with text labels rather than standing alone.
@@ -217,7 +217,7 @@ cares about.
 **In continuous integration,** **Pa11y CI** or **axe-core** would run against every push to
 the project's GitHub repository, wired into the existing GitHub Actions workflow that deploys
 this site to Azure App Service. Configuring the build to fail on new violations prevents
-regressions from reaching production — the decisive advantage of automation over periodic
+regressions from reaching production, the decisive advantage of automation over periodic
 manual audits. This also demonstrates the site's own subject matter, since the same pipeline
 can run **Lighthouse CI** for optimization budgets.
 
@@ -231,7 +231,7 @@ scoring through the **Hemingway Editor** or Flesch-Kincaid analysis.
 
 Two caveats must accompany any automated program. First, these tools verify roughly a third
 of WCAG criteria; a clean scan is a floor, not a certificate of conformance. Second, rule
-sets must be kept current as standards evolve — a stale scanner silently stops testing
+sets must be kept current as standards evolve; a stale scanner silently stops testing
 against the standard it claims to enforce.
 
 ---
@@ -251,7 +251,7 @@ Technical acronyms will be expanded on first use.
 **Formats will not assume a single locale.** Dates appear unambiguously ("March 4, 2026"
 rather than 3/4/26, which reads as April 3 in much of the world). Times state their zone.
 The contact form accepts international name, address, and phone formats rather than enforcing
-US-only patterns — and notably will not require a "first name / last name" split, which
+US-only patterns, and notably will not require a "first name / last name" split, which
 misrepresents naming conventions in much of the world.
 
 **Examples and imagery** will represent a range of ages, ethnicities, abilities, and
@@ -260,8 +260,8 @@ code examples will use varied, non-US-centric names and addresses, since example
 itself a quiet signal about who the material is written for. Icons will be checked for
 culturally specific meanings.
 
-**Structurally,** the design accommodates text expansion — translated German or Spanish text
-can run 30% longer than English — by avoiding fixed-width containers that would clip or
+**Structurally,** the design accommodates text expansion (translated German or Spanish text
+can run 30% longer than English) by avoiding fixed-width containers that would clip or
 overflow. Where translation is offered, professionally translated key pages are preferable to
 machine translation for security guidance, where a mistranslation could produce an insecure
 implementation. Right-to-left support via CSS logical properties is a reasonable enhancement.
@@ -274,7 +274,7 @@ Feedback mechanisms must themselves be accessible, or they systematically exclud
 whose input matters most.
 
 An **accessibility feedback link** will appear in the site footer on every page, offering
-multiple channels — form, email, and an alternative contact method — since a user blocked by
+multiple channels (form, email, and an alternative contact method), since a user blocked by
 an inaccessible form needs a different route to report exactly that problem.
 
 The **contact form** itself doubles as a general feedback channel, with an optional category
@@ -290,17 +290,17 @@ rage-clicks. Analytics reveal *where* users struggle but never *why*, so they ge
 questions rather than answers.
 
 **Selecting methods deliberately rather than by convenience.** Rohr (2022) frames UX research
-methods along three dimensions — *attitudinal vs. behavioral*, *qualitative vs.
-quantitative*, and *context of use* — and that framework explains why no single mechanism
+methods along three dimensions (*attitudinal vs. behavioral*, *qualitative vs.
+quantitative*, and *context of use*), and that framework explains why no single mechanism
 above is sufficient. Analytics are behavioral and quantitative: they record what users did,
 at scale, but cannot explain intent. Surveys and the "was this helpful?" prompt are
 attitudinal: they capture what users *say*, which may diverge from what they do. Usability
 testing is behavioral and qualitative: small samples, but it reveals causes. An inclusive
 feedback program needs coverage across all three dimensions, because a program built only
 from analytics will systematically miss the users whose difficulties cause them to leave
-before generating any signal at all — exactly the users this site most needs to hear from.
+before generating any signal at all, exactly the users this site most needs to hear from.
 
-**Community channels** — a public issue tracker on the project's GitHub repository — suit this
+**Community channels** (a public issue tracker on the project's GitHub repository) suit this
 audience specifically, since developers are already comfortable filing issues and will often
 supply precise reproduction steps and environment details.
 
@@ -317,7 +317,7 @@ demonstrate that input produces change.
 ## 8. Inclusive Design Methodologies
 
 Gilbert (2019) frames inclusive design as a practice spanning compliance, assistive
-technology, and design strategy rather than a checklist applied at the end — the position
+technology, and design strategy rather than a checklist applied at the end, the position
 this proposal adopts throughout. Two of that work's arguments shape the sections above
 directly: that understanding *how assistive technologies actually operate* is a prerequisite
 for designing for them (which is why Section 3 specifies screen reader and browser pairings
@@ -334,9 +334,9 @@ permanent limb difference, a developer with a broken wrist, and a developer hold
 on a train. Designing for the permanent case serves all three and sharply increases the
 population served by any accommodation.
 
-**Universal Design's seven principles** — equitable use, flexibility in use, simple and
+**Universal Design's seven principles** (equitable use, flexibility in use, simple and
 intuitive use, perceptible information, tolerance for error, low physical effort, and
-appropriate size and space — provide a design-stage checklist complementing WCAG's
+appropriate size and space) provide a design-stage checklist complementing WCAG's
 verification-stage criteria.
 
 **POUR** (Perceivable, Operable, Understandable, Robust) organizes the work around WCAG's own
@@ -349,11 +349,11 @@ appropriate experience immediately, with no per-site setup. Site-level controls 
 supplement these defaults rather than replacing them.
 
 **Personalization specific to this hub's purpose:** content is layered so a beginner and a
-practitioner can use the same page differently — a plain-language summary and a
+practitioner can use the same page differently: a plain-language summary and a
 "why this matters" framing above, with implementation detail, specification references, and
 edge cases disclosed progressively below. This is personalization through content structure
 rather than through user profiling, which avoids collecting personal data the site has no
-need to hold — itself a security and privacy decision consistent with the hub's own material.
+need to hold, itself a security and privacy decision consistent with the hub's own material.
 
 Two further commitments: **inclusive research recruitment**, ensuring participants include
 disabled users, ESL speakers, and beginners rather than treating a convenience sample as
@@ -379,8 +379,8 @@ obscured by sticky headers (2.4.11). Opening a modal moves focus into the dialog
 there until dismissal; closing returns focus to the triggering element. Without this,
 keyboard users are silently stranded behind an invisible overlay.
 
-**Custom widgets** — the accordions and tabbed code samples this site will use for
-progressive disclosure — follow **WAI-ARIA Authoring Practices Guide** patterns for expected
+**Custom widgets** (the accordions and tabbed code samples this site will use for
+progressive disclosure) follow **WAI-ARIA Authoring Practices Guide** patterns for expected
 keyboard behavior: arrow keys within a tab list, Escape to close, Home/End for first and last.
 
 **The contact form**, as the site's primary interactive element, receives particular
@@ -391,13 +391,12 @@ the top of the form linking to each problem field, and messages that name the fi
 explain the fix. Autocomplete attributes (1.3.5) let browsers fill known values, reducing
 effort for users with motor and cognitive disabilities.
 
-**Dynamic content** announces itself through appropriately scoped ARIA live regions —
-`polite` for status updates, `assertive` reserved for genuine urgency, since overuse produces
+**Dynamic content** announces itself through appropriately scoped ARIA live regions: `polite` for status updates, `assertive` reserved for genuine urgency, since overuse produces
 an interruption stream users learn to tune out.
 
 **CAPTCHAs will be avoided** in favor of honeypot fields and server-side validation. This is
-both an accessibility decision — CAPTCHAs are broadly hostile to users with visual and
-cognitive disabilities — and a worked example of the security/accessibility tradeoff the
+both an accessibility decision (CAPTCHAs are broadly hostile to users with visual and
+cognitive disabilities) and a worked example of the security/accessibility tradeoff the
 hub's own security section discusses.
 
 ---
@@ -410,8 +409,8 @@ immediately. Honoring `prefers-color-scheme`, `prefers-contrast`, and `prefers-r
 means system-level choices are respected without configuration. The site remains fully usable
 at 200% and 400% zoom and does not defeat browser reader modes or user stylesheets.
 
-On top of that baseline, an **accessibility settings panel** — reachable from every page and
-itself fully keyboard-accessible — would offer:
+On top of that baseline, an **accessibility settings panel**, reachable from every page and
+itself fully keyboard-accessible, would offer:
 
 - **Text size** controls stepping through defined scales, with layout that reflows rather than
   clipping.
@@ -420,7 +419,7 @@ itself fully keyboard-accessible — would offer:
   editors, but it will be implemented as a genuine contrast-checked palette rather than an
   inverted filter.
 - **Reduced motion**, disabling animations, transitions, and parallax.
-- **Line spacing and reading width**, constraining measure to 60–75 characters — a meaningful
+- **Line spacing and reading width**, constraining measure to 60–75 characters, a meaningful
   aid for dyslexic readers working through long technical prose.
 - **Dyslexia-friendly typeface** as an opt-in alternative.
 - **Underlined links** for users who cannot distinguish links by color alone.
@@ -441,14 +440,14 @@ A site that is inaccessible until reconfigured has shifted its own obligation on
 
 The IA is **organized by learning topic rather than by content type**. Grouping everything
 into "Articles," "Tutorials," and "References" would force users to already know what format
-their answer lives in — the precise knowledge a learner lacks. The five course areas provide
+their answer lives in, the precise knowledge a learner lacks. The five course areas provide
 a natural, mutually comprehensible top level.
 
 Structure would be validated through **card sorting** (open sorting to learn users' own mental
 groupings, closed sorting to test the proposed structure) and **tree testing**, which measures
 whether users can locate items in a proposed hierarchy independent of visual design. Tree
-testing is especially valuable here because topic boundaries genuinely blur — image
-optimization is arguably Optimization, Responsive Design, *and* Accessibility — and testing
+testing is especially valuable here because topic boundaries genuinely blur (image
+optimization is arguably Optimization, Responsive Design, *and* Accessibility), and testing
 reveals where users actually expect to find such material.
 
 **Depth will be constrained** to roughly three clicks to any resource, with a broad, shallow
@@ -464,7 +463,7 @@ users use breadcrumbs and a quick-links block.
 **To cater to varying comprehension levels,** every topic page is layered: a plain-language
 summary and a "why this matters" framing first, then core guidance, then advanced detail and
 specification references. This serves a beginner and a practitioner without forcing either to
-read the other's version — the single most important IA decision for an audience whose
+read the other's version, the single most important IA decision for an audience whose
 expertise ranges from first-semester student to working professional.
 
 Page titles and headings will be descriptive and unique (2.4.2, 2.4.6), forming a navigable
@@ -490,8 +489,8 @@ Specific guidelines to be followed:
 
 - **Plain language principles** per plainlanguage.gov: active voice, common words over formal
   alternatives ("use" over "utilize"), concrete rather than abstract phrasing.
-- **Short sentences and paragraphs** — roughly 15–20 words per sentence, 3–4 sentences per
-  paragraph — with one idea per paragraph.
+- **Short sentences and paragraphs** (roughly 15–20 words per sentence, 3–4 sentences per
+  paragraph), with one idea per paragraph.
 - **Front-loaded content**, stating the conclusion first and supporting detail after. Readers
   scan; burying the actual recommendation in the fourth paragraph guarantees it is missed.
 - **Descriptive headings and subheadings** breaking text into scannable sections.
@@ -507,7 +506,7 @@ Specific guidelines to be followed:
   "rivers" of white space that impede dyslexic readers), and mixed case rather than all-caps.
 
 Content would be validated by readability scoring on every substantive page and, ideally, by
-comprehension testing in which readers explain a concept in their own words — the only
+comprehension testing in which readers explain a concept in their own words, the only
 reliable test of whether writing was understood rather than merely scored.
 
 ---
@@ -520,8 +519,8 @@ pass applied before launch. Retrofitting accessibility costs more and produces w
 than designing for it from the start.
 
 The proposed Web Design Resource Hub targets WCAG 2.2 Level AA conformance, verified through
-automated scanning in the deployment pipeline, structured manual testing, and — as a
-recommended extension beyond this project — usability testing with developers who use
+automated scanning in the deployment pipeline, structured manual testing, and, as a
+recommended extension beyond this project, usability testing with developers who use
 assistive technology daily. The site's distinguishing constraint is that it must embody every
 practice it documents. The measure of success is not a passing automated score but whether a
 reader can find and understand what they need on the first attempt, using whatever device,

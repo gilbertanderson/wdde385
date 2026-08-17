@@ -37,7 +37,7 @@ CHROME_CANDIDATES = [
     "/usr/bin/chromium",
 ]
 
-COURSE = "CMST 387 6300 — Principles of Web Design and Technology III"
+COURSE = "CMST 387 6300 - Principles of Web Design and Technology III"
 STUDENT = "Gilbert Anderson"
 
 # Figures inserted into the proposal, in order, with their captions.
@@ -67,7 +67,7 @@ DOCUMENTS = [
         "md": "course-log.md",
         "docx": "CMST387-Course-Log-Anderson.docx",
         "html": "course-log.html",
-        "title": "CMST 387 — Running Course Log",
+        "title": "CMST 387 - Running Course Log",
         "figures": False,
         "optional": True,      # only built once the log exists
     },

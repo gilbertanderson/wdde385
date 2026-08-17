@@ -1,5 +1,5 @@
 /* =============================================================
-   CMST 387 Web Design Resource Hub — shared behaviour
+   CMST 387 Web Design Resource Hub - shared behaviour
    Hand-written, no dependencies. Loaded with `defer`.
 
    Everything here is an enhancement. With JavaScript switched off:
@@ -330,7 +330,7 @@
   }
 
   form.addEventListener('submit', function (event) {
-    event.preventDefault();   // no backend exists — never navigate away
+    event.preventDefault();   // no backend exists - never navigate away
 
     var problems = [];
 
@@ -441,7 +441,7 @@
       if (!fakeBtn) fakeBtn = makeFakeButton();
       if (realBtn.parentNode === btnSlot) btnSlot.replaceChild(fakeBtn, realBtn);
       if (btnNote) {
-        btnNote.textContent = 'Now a <div>. Try to reach it with Tab — you cannot. ' +
+        btnNote.textContent = 'Now a <div>. Try to reach it with Tab - you cannot. ' +
           'It has no role, so a screen reader announces nothing useful.';
       }
     } else {
@@ -458,7 +458,7 @@
     if (linkNote) {
       linkNote.textContent = broken
         ? 'Screen reader users often pull up a list of links alone. In that list this ' +
-          'one reads only "Click here" — with no destination.'
+          'one reads only "Click here" - with no destination.'
         : 'Link text describes its destination without needing the sentence around it.';
     }
   }
@@ -467,7 +467,7 @@
     demo.setAttribute('data-broken-focus', broken ? 'true' : 'false');
     if (focusNote) {
       focusNote.textContent = broken
-        ? 'Focus indicator: removed. Tab through this box — focus still moves, but ' +
+        ? 'Focus indicator: removed. Tab through this box - focus still moves, but ' +
           'nothing shows you where it is.'
         : 'Focus indicator: visible. Press Tab to move through this box and watch the outline.';
     }
@@ -499,7 +499,7 @@
     }
     explain.innerHTML =
       '<p><strong>' + faults.length + ' problem' + (faults.length > 1 ? 's' : '') +
-      ' active — all of which pass an automated scan:</strong></p><ul><li>' +
+      ' active - all of which pass an automated scan:</strong></p><ul><li>' +
       faults.join('</li><li>') + '</li></ul>';
   }
 
