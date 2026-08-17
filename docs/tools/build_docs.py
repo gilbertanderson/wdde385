@@ -169,13 +169,17 @@ def split_inline(text):
     matched only outside bold markers so it does not eat the bold delimiters.
     """
     tokens = []
-    pattern = re.compile(r"(\*\*.+?\*\*|`[^`]+`|(?<![\*\w])\*[^*]+?\*(?![\*\w]))")
+    pattern = re.compile(
+        r"(\[[^\]]+\]\([^)]+\)|\*\*.+?\*\*|`[^`]+`|(?<![\*\w])\*[^*]+?\*(?![\*\w]))")
     pos = 0
     for m in pattern.finditer(text):
         if m.start() > pos:
-            tokens.append((text[pos:m.start()], False, False, False))
+            tokens.append((text[pos:m.start()], False, False, False, None))
         tok = m.group(0)
-        if tok.startswith("**"):
+        if tok.startswith("["):
+            label, href = re.match(r"\[([^\]]+)\]\(([^)]+)\)", tok).groups()
+            tokens.append((label, False, False, False, href))
+        elif tok.startswith("**"):
             inner = tok[2:-2]
             # allow *italic* nested inside bold
             sub = re.split(r"(\*[^*]+\*)", inner)
@@ -183,16 +187,16 @@ def split_inline(text):
                 if not part:
                     continue
                 if part.startswith("*") and part.endswith("*"):
-                    tokens.append((part[1:-1], True, True, False))
+                    tokens.append((part[1:-1], True, True, False, None))
                 else:
-                    tokens.append((part, True, False, False))
+                    tokens.append((part, True, False, False, None))
         elif tok.startswith("`"):
-            tokens.append((tok[1:-1], False, False, True))
+            tokens.append((tok[1:-1], False, False, True, None))
         else:
-            tokens.append((tok[1:-1], False, True, False))
+            tokens.append((tok[1:-1], False, True, False, None))
         pos = m.end()
     if pos < len(text):
-        tokens.append((text[pos:], False, False, False))
+        tokens.append((text[pos:], False, False, False, None))
     return tokens
 
 
@@ -214,8 +218,10 @@ def build_docx(blocks, out_path, title, figures=False):
     style.paragraph_format.line_spacing = 1.15
 
     def add_runs(par, text):
-        for chunk, bold, italic, code in split_inline(text):
+        for chunk, bold, italic, code, href in split_inline(text):
             run = par.add_run(chunk)
+            if href:
+                run.underline = True
             run.bold = bold
             run.italic = italic
             if code:
@@ -334,8 +340,10 @@ def _insert_figures(doc):
 
 def inline_html(text):
     out = []
-    for chunk, bold, italic, code in split_inline(text):
+    for chunk, bold, italic, code, href in split_inline(text):
         esc = html_mod.escape(chunk, quote=False)
+        if href:
+            esc = f'<a href="{html_mod.escape(href, quote=True)}">{esc}</a>'
         if code:
             esc = f"<code>{esc}</code>"
         if italic:
