@@ -66,6 +66,7 @@
               <li><a href="#forms">Forms and errors</a></li>
             </ul>
           </li>
+          <li><a href="#demo">Try it yourself</a></li>
           <li><a href="#further">Going further</a></li>
           <li><a href="#related">Related topics</a></li>
         </ul>
@@ -256,6 +257,73 @@
       </section>
 
       <section>
+        <h2 id="demo">Try it yourself: three failures a scanner will not catch</h2>
+        <p>Reading about accessibility failures is not the same as running into one. Below are
+        three real ones you can switch on and off. Use the controls, then try the examples with
+        your keyboard.</p>
+        <p><strong>Every failure in this demo passes an automated accessibility scan.</strong>
+        That is the point of choosing these three. A tool can tell you an image has no
+        alternative text; it cannot tell you that your focus outline is invisible, that your
+        button is a <code>&lt;div&gt;</code>, or that "click here" means nothing out of context.
+        This site's own scan reports zero errors, and it would still report zero errors with
+        all three of these switched on.</p>
+
+        <div class="demo" id="a11y-demo">
+          <fieldset class="demo-controls">
+            <legend>Demo controls</legend>
+            <p class="demo-hint" id="demo-hint">Switching these changes only the examples in
+            this box. The rest of the page is unaffected.</p>
+            <div class="demo-switches">
+              <label class="switch">
+                <input type="checkbox" id="demo-focus" aria-describedby="demo-hint">
+                <span>Remove the focus indicator</span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" id="demo-button" aria-describedby="demo-hint">
+                <span>Use a <code>&lt;div&gt;</code> instead of a <code>&lt;button&gt;</code></span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" id="demo-link" aria-describedby="demo-hint">
+                <span>Use vague link text</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="demo-stage">
+            <h3 class="demo-h">Example interface</h3>
+
+            <p class="demo-row">
+              <button type="button" class="demo-btn" id="demo-real-btn">Save changes</button>
+              <span class="demo-note" id="demo-btn-note" role="status">A real
+              <code>&lt;button&gt;</code>: reachable with Tab, fires on Enter and Space.</span>
+            </p>
+
+            <p class="demo-row">
+              <a class="demo-link" href="#demo" id="demo-real-link">Read the guidance on
+              contrast ratios</a>
+              <span class="demo-note" id="demo-link-note" role="status">Link text describes its
+              destination without needing the sentence around it.</span>
+            </p>
+
+            <p class="demo-row demo-focus-hint">
+              <span class="demo-note" id="demo-focus-note" role="status">Focus indicator:
+              visible. Press Tab to move through this box and watch the outline.</span>
+            </p>
+          </div>
+
+          <div class="demo-explain" id="demo-explain" role="region" aria-live="polite"
+               aria-label="What is currently broken">
+            <p><strong>Nothing is broken.</strong> Switch something on to see what changes.</p>
+          </div>
+        </div>
+
+        <p class="note">The demo is keyboard-operable in every state, and switching a failure
+        on never traps you — you can always Tab out. When the <code>&lt;div&gt;</code> variant
+        is active, that element genuinely becomes unreachable by keyboard, which is exactly the
+        problem being demonstrated. Tab past it and the next control still works.</p>
+      </section>
+
+      <section>
         <h2 id="further">Going further</h2>
         <p><strong>Automated tools find about a third of the problems.</strong> axe DevTools,
         WAVE, and the Lighthouse accessibility audit reliably catch missing alternative text,
@@ -314,12 +382,16 @@
         <li><a href="about.html#glossary">Glossary</a></li>
         <li><a href="about.html#sitemap">Site map</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="self-audit.html">Self-audit</a></li>
+        <li><a href="https://github.com/gilbertanderson/cmst387">Source on GitHub</a></li>
       </ul>
     </nav>
     <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
-    <p class="colophon">CMST 387, Principles of Web Design and Technology III · University
-    of Maryland Global Campus · Gilbert Anderson. Last reviewed August 16, 2026 (all times
-    US Eastern). Hand-written HTML, CSS, and JavaScript with no external dependencies.</p>
+    <p class="colophon">Learning notes by <strong>Gilbert Anderson</strong> for CMST 387,
+    Principles of Web Design and Technology III · University of Maryland Global Campus ·
+    Last reviewed August 16, 2026 (all times US Eastern). Hand-written HTML, CSS, and
+    JavaScript with no external dependencies.
+    <a href="https://github.com/gilbertanderson/cmst387">Read the source</a>.</p>
   </div>
 </footer>
 

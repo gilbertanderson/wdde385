@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-audit | CMST 387 Web Design Resource Hub</title>
+<meta name="description" content="How this site scores against the accessibility criteria it teaches, what is verified, and what is not.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-course">CMST 387</span>
+      <span class="brand-name">Web Design Resource Hub</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="nav-toggle" class="btn-menu" aria-expanded="false" aria-controls="primary-nav" hidden>Menu</button>
+      <button type="button" id="a11y-toggle" class="btn-quiet" aria-expanded="false" aria-controls="a11y-panel" hidden>Accessibility settings</button>
+    </div>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ux-design.html">UX Design</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="optimization.html">Optimization</a></li>
+        <li><a href="responsive-design.html">Responsive Design</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="a11y-panel" class="a11y-panel" hidden></div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="self-audit.html" aria-current="page">Self-audit</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main" class="page" tabindex="-1">
+  <div class="wrap topic-layout">
+
+    <details class="toc" open>
+      <summary>On this page</summary>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#why">Why this page exists</a></li>
+          <li><a href="#automated">What the automated scan checks</a></li>
+          <li><a href="#results">Current results</a></li>
+          <li><a href="#manual">What I checked by hand</a></li>
+          <li><a href="#not-verified">What is not verified</a></li>
+          <li><a href="#failure">A failure I found and fixed</a></li>
+          <li><a href="#verify-yourself">Verify it yourself</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <article>
+      <h1>Self-audit</h1>
+
+      <p class="lede">This site teaches accessibility. That creates an obvious obligation: it
+      should be able to show its own work. This page is that evidence — what is checked
+      automatically, what I checked by hand, and, more importantly, what nobody has checked
+      at all.</p>
+
+      <section>
+        <h2 id="why">Why this page exists</h2>
+        <p>It is easy to write a page about contrast ratios. It is harder to publish the
+        contrast ratios of the page you wrote it on. A resource that explains accessibility
+        while quietly failing it is worse than useless, because it teaches by example that the
+        rules are for other people.</p>
+        <p>So this page exists to make the claim falsifiable. Everything below can be checked
+        against the source, and the automated portion re-runs on every change whether I want
+        it to or not.</p>
+      </section>
+
+      <section>
+        <h2 id="automated">What the automated scan checks</h2>
+        <p>Every push to the repository triggers a GitHub Actions workflow that serves the site
+        and runs <strong>pa11y-ci</strong> against every page at the <strong>WCAG 2.2 Level
+        AA</strong> standard. If a page introduces a violation the scan catches, the check
+        fails and I see it.</p>
+        <p>Here is the actual configuration — the whole thing, not an excerpt:</p>
+        <pre><code>{
+  "defaults": {
+    "standard": "WCAG2AA",     // the conformance level being tested against
+    "timeout": 30000,
+    "wait": 500,               // let JavaScript settle before testing
+    "concurrency": 1           // serial: parallel runs hit Chrome protocol errors
+  },
+  "urls": [
+    "http://localhost:8080/index.html",
+    "http://localhost:8080/ux-design.html",
+    "http://localhost:8080/accessibility.html",
+    "http://localhost:8080/security.html",
+    "http://localhost:8080/optimization.html",
+    "http://localhost:8080/responsive-design.html",
+    "http://localhost:8080/contact.html",
+    "http://localhost:8080/about.html",
+    "http://localhost:8080/self-audit.html"
+  ]
+}</code></pre>
+        <p>A deliberate choice worth naming: the accessibility job does <em>not</em> block
+        deployment. A failure shows up as a red check, not a blocked release. That is a weaker
+        policy than the one I would defend in a proposal, and I would rather say so plainly
+        than let the green badge imply something stricter than what is running.</p>
+      </section>
+
+      <section>
+        <h2 id="results">Current results</h2>
+        <p>Last full run: <strong>9 pages, 0 errors</strong>, WCAG 2.2 AA.</p>
+        <table class="data-table">
+          <caption>pa11y-ci results by page, most recent run</caption>
+          <thead>
+            <tr><th scope="col">Page</th><th scope="col">Errors</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Home</th><td>0</td></tr>
+            <tr><th scope="row">UX Design</th><td>0</td></tr>
+            <tr><th scope="row">Accessibility &amp; Inclusive Design</th><td>0</td></tr>
+            <tr><th scope="row">Web Application Security</th><td>0</td></tr>
+            <tr><th scope="row">Website Optimization</th><td>0</td></tr>
+            <tr><th scope="row">Responsive Web Design</th><td>0</td></tr>
+            <tr><th scope="row">Contact</th><td>0</td></tr>
+            <tr><th scope="row">About</th><td>0</td></tr>
+            <tr><th scope="row">Self-audit (this page)</th><td>0</td></tr>
+          </tbody>
+        </table>
+        <p class="note"><strong>This table is written by hand.</strong> It is not generated
+        from the live run, so it can go stale — if I broke something an hour ago, this page
+        would not know. The authoritative result is the check on the latest commit in
+        <a href="https://github.com/gilbertanderson/cmst387/actions">the repository's Actions
+        tab</a>. Treat that as the source of truth and this table as a summary.</p>
+      </section>
+
+      <section>
+        <h2 id="manual">What I checked by hand</h2>
+        <p>Automated tools find roughly a third of WCAG issues. The rest needs a person. These
+        I verified myself, in a browser:</p>
+        <ul>
+          <li><strong>Keyboard operability.</strong> Every interactive element reachable with
+          Tab, in an order matching the visual layout, with no trap. The skip link is the first
+          focusable element on every page.</li>
+          <li><strong>Focus visibility.</strong> A 3px outline with 2px offset on every focused
+          control, never obscured by the sticky header.</li>
+          <li><strong>Contrast, computed from rendered styles</strong> rather than from the
+          palette I intended. Body text ranges 15.4:1 to 21:1, links 8.0:1 to 11.5:1, UI
+          borders 4.8:1 and above — across all four themes.</li>
+          <li><strong>Reflow at 320px.</strong> No page scrolls horizontally. Code blocks
+          scroll inside their own container, which is the intended behaviour, since code
+          cannot rewrap without changing meaning.</li>
+          <li><strong>Heading structure.</strong> One <code>h1</code> per page, no skipped
+          levels, landmarks on every page.</li>
+          <li><strong>No-JavaScript fallback.</strong> With scripting off, the full navigation
+          is visible and every page is readable.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="not-verified">What is not verified</h2>
+        <p>This is the section that matters most, and the one most sites omit.</p>
+        <ul>
+          <li><strong>No screen reader testing.</strong> Nobody has run this site through NVDA,
+          JAWS, VoiceOver, or TalkBack. Automated tools cannot tell you whether an announcement
+          makes sense — only whether a name exists. This is the largest gap on the site, and it
+          is the reason the accessibility statement claims no conformance.</li>
+          <li><strong>No testing with disabled users.</strong> None. Every accessibility claim
+          here is a claim about conformance, not about usability. Those are different things,
+          and only the second one actually matters to the person using the site.</li>
+          <li><strong>Windows High Contrast Mode / forced-colors</strong> is untested. The site
+          ships a manual high-contrast theme and honours <code>prefers-contrast</code>, which is
+          not the same as supporting forced-colors properly.</li>
+          <li><strong>Cognitive load and readability</strong> are unmeasured beyond readability
+          scoring. Whether a beginner can actually follow these explanations is untested.</li>
+        </ul>
+        <p>A clean automated scan is a floor, not a certificate. The honest summary of this
+        site's accessibility is: it passes the checks a machine can run, and nobody has yet
+        confirmed that a person using assistive technology can get anything done here.</p>
+      </section>
+
+      <section>
+        <h2 id="failure">A failure I found and fixed</h2>
+        <p>Worth documenting, because it shows what automated scanning misses.</p>
+        <p>In the high-contrast theme, the primary button's text resolved to a contrast ratio
+        of <strong>1.66:1</strong> — effectively invisible. The cause was a
+        <code>prefers-color-scheme: dark</code> rule leaking into the forced-contrast theme and
+        overriding the text colour but not the background.</p>
+        <pre><code>/* The bug: the dark-mode rule applied inside the contrast theme,
+   so the button kept a light background but got light text too. */
+
+/* The fix: one token, defined in every palette, for text drawn on
+   an accent fill — so the pair can never drift apart again. */
+:root            { --accent: #1e3a5f; --on-accent: #ffffff; }  /* 11.5:1 */
+:root[data-theme="dark"]     { --accent: #9fc4ea; --on-accent: #0b1622; }  /* 10.0:1 */
+:root[data-theme="contrast"] { --accent: #000000; --on-accent: #ffffff; }  /* 21:1  */</code></pre>
+        <p>The point: <strong>pa11y did not catch this.</strong> The scan runs in the default
+        theme, and the failure only appeared in a theme a user has to opt into. It was found by
+        computing contrast from rendered styles in every theme — a check I had to write on
+        purpose. Anything you do not deliberately test, you are not testing.</p>
+      </section>
+
+      <section>
+        <h2 id="verify-yourself">Verify it yourself</h2>
+        <p>Do not take any of the above on trust. The fastest checks need no tools at all:</p>
+        <ul>
+          <li><strong>Press Tab</strong> right now. The first thing to appear should be "Skip
+          to main content". Keep pressing — the focus outline should always be visible.</li>
+          <li><strong>Zoom to 400%</strong> (<kbd>Ctrl</kbd>/<kbd>Cmd</kbd> and <kbd>+</kbd>).
+          The layout should reflow to a single column with no horizontal scrolling.</li>
+          <li><strong>Narrow the window</strong> to phone width. Same content, same order,
+          nothing truncated.</li>
+          <li><strong>Turn JavaScript off</strong> and reload. The site should still work.</li>
+        </ul>
+        <p>To run the automated scan yourself, clone
+        <a href="https://github.com/gilbertanderson/cmst387">the repository</a>, serve it, and
+        run the same command CI runs:</p>
+        <pre><code># serve the site on port 8080
+python3 -m http.server 8080
+
+# in another terminal, run the same scan CI runs
+npx pa11y-ci --config .github/pa11yci.json</code></pre>
+        <p>If you find something wrong, I would genuinely like to know:
+        <a href="contact.html#category">report an accessibility barrier</a>.</p>
+      </section>
+
+      <nav class="related" aria-label="Related pages">
+        <h2>Related</h2>
+        <ul>
+          <li><a href="accessibility.html">Accessibility &amp; Inclusive Design</a></li>
+          <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+          <li><a href="optimization.html">Website Optimization</a></li>
+        </ul>
+      </nav>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About this hub</a></li>
+        <li><a href="about.html#accessibility-statement">Accessibility statement</a></li>
+        <li><a href="about.html#glossary">Glossary</a></li>
+        <li><a href="about.html#sitemap">Site map</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="self-audit.html">Self-audit</a></li>
+        <li><a href="https://github.com/gilbertanderson/cmst387">Source on GitHub</a></li>
+      </ul>
+    </nav>
+    <p><a class="barrier-link" href="contact.html#category">Report an accessibility barrier</a></p>
+    <p class="colophon">Learning notes by <strong>Gilbert Anderson</strong> for CMST 387,
+    Principles of Web Design and Technology III · University of Maryland Global Campus ·
+    Last reviewed August 16, 2026 (all times US Eastern). Hand-written HTML, CSS, and
+    JavaScript with no external dependencies.
+    <a href="https://github.com/gilbertanderson/cmst387">Read the source</a>.</p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

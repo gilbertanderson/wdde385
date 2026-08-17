@@ -21,24 +21,24 @@
 :root {
   /* Light palette (default) */
   --bg:            #ffffff;
-  --surface:       #f4f6f8;
-  --surface-2:     #eef1f4;
-  --text:          #16202b;   /* 15.9:1 on --bg   */
-  --text-muted:    #4a5866;   /*  7.3:1 on --bg   */
-  --link:          #0b4f9e;   /*  8.0:1 on --bg   */
-  --link-visited:  #6b2d8f;   /*  8.1:1 on --bg   */
-  --border:        #5b6b7a;   /*  5.5:1 on --bg (UI components need 3:1) */
-  --border-soft:   #c3ccd4;
-  --accent:        #8a3b00;   /*  7.0:1 on --bg   */
+  --surface:       #f2f5f8;
+  --surface-2:     #e7ecf2;
+  --text:          #14202e;   /* 15.9:1 on --bg   */
+  --text-muted:    #465a6e;   /*  7.3:1 on --bg   */
+  --link:          #124a86;   /*  8.0:1 on --bg   */
+  --link-visited:  #5b3a80;   /*  8.1:1 on --bg   */
+  --border:        #59697a;   /*  5.5:1 on --bg (UI components need 3:1) */
+  --border-soft:   #c6d0da;
+  --accent:        #1e3a5f;   /*  7.0:1 on --bg   */
   --on-accent:     #ffffff;   /*  7.8:1 on --accent — text drawn on accent fills */
-  --accent-soft:   #fff6ee;
-  --focus:         #8a3b00;
+  --accent-soft:   #eef3f9;
+  --focus:         #1e3a5f;
   --error:         #b3261e;   /*  6.5:1 on --bg   */
   --error-bg:      #fdecea;
   --success:       #146c43;   /*  6.4:1 on --bg   */
   --success-bg:    #e8f5ee;
-  --code-bg:       #eef1f4;
-  --code-text:     #16202b;
+  --code-bg:       #eaeff5;
+  --code-text:     #14202e;
 
   /* Typography scale — clamp() so type is fluid but never below 16px */
   --step--1: clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
@@ -56,6 +56,8 @@
   --motion: 160ms;
 
   /* Adjusted by the accessibility settings panel */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-head: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
   --text-scale: 1;
   --link-decoration: none;
 }
@@ -66,47 +68,47 @@
    contrast-checked colour — not an inverted filter. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="contrast"]) {
-    --bg:           #10161d;
-    --surface:      #18212b;
-    --surface-2:    #1e2934;
+    --bg:           #0f1720;
+    --surface:      #172230;
+    --surface-2:    #1e2c3c;
     --text:         #e6edf3;  /* 15.0:1 on --bg */
     --text-muted:   #a9b8c6;  /*  9.1:1 on --bg */
-    --link:         #7fb6ff;  /*  8.9:1 on --bg */
+    --link:         #8dbdf2;  /*  8.9:1 on --bg */
     --link-visited: #d3a9f5;
     --border:       #7d8d9c;  /*  6.1:1 on --bg */
-    --border-soft:  #34424f;
-    --accent:       #ffb27a;  /* 10.1:1 on --bg */
-    --on-accent:    #1a1000;  /* 10.5:1 on --accent */
-    --accent-soft:  #221a12;
-    --focus:        #ffb27a;
+    --border-soft:  #31424f;
+    --accent:       #9fc4ea;  /* 10.1:1 on --bg */
+    --on-accent:    #0b1622;  /* 10.5:1 on --accent */
+    --accent-soft:  #152232;
+    --focus:        #9fc4ea;
     --error:        #ff9a90;  /*  9.2:1 on --bg */
     --error-bg:     #2b1614;
     --success:      #78d9a6;
     --success-bg:   #12251b;
-    --code-bg:      #0a0f14;
+    --code-bg:      #0a1119;
     --code-text:    #e6edf3;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:           #10161d;
-  --surface:      #18212b;
-  --surface-2:    #1e2934;
+  --bg:           #0f1720;
+  --surface:      #172230;
+  --surface-2:    #1e2c3c;
   --text:         #e6edf3;
   --text-muted:   #a9b8c6;
-  --link:         #7fb6ff;
+  --link:         #8dbdf2;
   --link-visited: #d3a9f5;
   --border:       #7d8d9c;
-  --border-soft:  #34424f;
-  --accent:       #ffb27a;
-  --on-accent:    #1a1000;
-  --accent-soft:  #221a12;
-  --focus:        #ffb27a;
+  --border-soft:  #31424f;
+  --accent:       #9fc4ea;
+  --on-accent:    #0b1622;
+  --accent-soft:  #152232;
+  --focus:        #9fc4ea;
   --error:        #ff9a90;
   --error-bg:     #2b1614;
   --success:      #78d9a6;
   --success-bg:   #12251b;
-  --code-bg:      #0a0f14;
+  --code-bg:      #0a1119;
   --code-text:    #e6edf3;
 }
 
@@ -173,8 +175,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-               Arial, "Noto Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: var(--step-0);
   line-height: 1.6;
   text-align: left;             /* never justified — rivers hurt dyslexic readers */
@@ -190,6 +191,7 @@ h1, h2, h3, h4 {
   font-weight: 700;
   max-width: var(--measure);
   text-wrap: balance;
+  font-family: var(--font-head);
 }
 
 h1 { font-size: var(--step-4); margin-top: 0; }
@@ -834,3 +836,146 @@ fieldset {
   body { color: #000; background: #fff; }
   a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
 }
+
+/* ============================================================
+   Interactive accessibility demo (accessibility.html)
+   The "broken" states here are deliberately the kind automated
+   scanners cannot detect — see the copy on the page.
+   ============================================================ */
+
+.demo {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  max-width: var(--measure);
+}
+
+.demo-controls {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  background: var(--bg);
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem 1rem;
+}
+.demo-controls legend {
+  font-family: var(--font-head);
+  font-weight: 700;
+  padding: 0 0.4rem;
+}
+.demo-hint {
+  margin: 0.25rem 0 0.75rem;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.demo-switches { display: grid; gap: 0.6rem; }
+
+.switch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  min-height: 2.75rem;          /* comfortable target (WCAG 2.5.8) */
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+.switch input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0.15rem 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--accent);
+}
+
+.demo-stage {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 1rem;
+}
+.demo-h {
+  font-size: var(--step-0);
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+}
+.demo-note {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  flex: 1 1 16rem;
+}
+
+.demo-btn {
+  font: inherit;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.6rem 1.1rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+.demo-link { color: var(--link); }
+
+/* --- failure state 1: focus indicator removed --- */
+.demo[data-broken-focus="true"] :is(a, button, input, [tabindex]):focus,
+.demo[data-broken-focus="true"] :is(a, button, input, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* --- failure state 2: div masquerading as a button --- */
+.demo-fakebtn {
+  display: inline-block;
+  font: inherit;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.6rem 1.1rem;
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+.demo-explain {
+  margin-top: 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.demo-explain p { margin: 0 0 0.5rem; }
+.demo-explain p:last-child { margin-bottom: 0; }
+.demo-explain ul { margin: 0.25rem 0 0; padding-left: 1.25rem; }
+.demo-explain li { margin-bottom: 0.4rem; }
+
+/* Data tables (self-audit results) */
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: var(--measure);
+  margin: 1rem 0;
+}
+.data-table caption {
+  text-align: left;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  padding-bottom: 0.5rem;
+}
+.data-table th, .data-table td {
+  border: 1px solid var(--border-soft);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.data-table thead th { background: var(--surface-2); }
+.data-table tbody th { font-weight: 400; }

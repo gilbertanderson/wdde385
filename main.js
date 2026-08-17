@@ -398,3 +398,119 @@
     });
   });
 }());
+
+/* ============================================================
+   Interactive accessibility demo (accessibility.html only)
+   Lets the reader switch on three failures that automated
+   scanners cannot detect, and explains what changed.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var demo = document.getElementById('a11y-demo');
+  if (!demo) return;                       // not on this page
+
+  var cbFocus  = document.getElementById('demo-focus');
+  var cbButton = document.getElementById('demo-button');
+  var cbLink   = document.getElementById('demo-link');
+  var explain  = document.getElementById('demo-explain');
+  var btnNote  = document.getElementById('demo-btn-note');
+  var linkNote = document.getElementById('demo-link-note');
+  var focusNote = document.getElementById('demo-focus-note');
+  if (!cbFocus || !cbButton || !cbLink || !explain) return;
+
+  var realBtn  = document.getElementById('demo-real-btn');
+  var realLink = document.getElementById('demo-real-link');
+  var btnSlot  = realBtn ? realBtn.parentNode : null;
+  var fakeBtn  = null;
+
+  function makeFakeButton() {
+    // Deliberately wrong: a div with a click handler and no role,
+    // no tabindex, and no keyboard handling. Unreachable by keyboard.
+    var d = document.createElement('div');
+    d.className = 'demo-fakebtn';
+    d.id = 'demo-fake-btn';
+    d.textContent = 'Save changes';
+    d.addEventListener('click', function () { /* mouse only, by design */ });
+    return d;
+  }
+
+  function setButtonBroken(broken) {
+    if (!btnSlot || !realBtn) return;
+    if (broken) {
+      if (!fakeBtn) fakeBtn = makeFakeButton();
+      if (realBtn.parentNode === btnSlot) btnSlot.replaceChild(fakeBtn, realBtn);
+      if (btnNote) {
+        btnNote.textContent = 'Now a <div>. Try to reach it with Tab — you cannot. ' +
+          'It has no role, so a screen reader announces nothing useful.';
+      }
+    } else {
+      if (fakeBtn && fakeBtn.parentNode === btnSlot) btnSlot.replaceChild(realBtn, fakeBtn);
+      if (btnNote) {
+        btnNote.textContent = 'A real <button>: reachable with Tab, fires on Enter and Space.';
+      }
+    }
+  }
+
+  function setLinkBroken(broken) {
+    if (!realLink) return;
+    realLink.textContent = broken ? 'Click here' : 'Read the guidance on contrast ratios';
+    if (linkNote) {
+      linkNote.textContent = broken
+        ? 'Screen reader users often pull up a list of links alone. In that list this ' +
+          'one reads only "Click here" — with no destination.'
+        : 'Link text describes its destination without needing the sentence around it.';
+    }
+  }
+
+  function setFocusBroken(broken) {
+    demo.setAttribute('data-broken-focus', broken ? 'true' : 'false');
+    if (focusNote) {
+      focusNote.textContent = broken
+        ? 'Focus indicator: removed. Tab through this box — focus still moves, but ' +
+          'nothing shows you where it is.'
+        : 'Focus indicator: visible. Press Tab to move through this box and watch the outline.';
+    }
+  }
+
+  function describe() {
+    var faults = [];
+    if (cbFocus.checked) {
+      faults.push('<strong>No focus indicator.</strong> Focus still moves, but a keyboard ' +
+        'user cannot see where they are. Fails WCAG 2.4.7 (Focus Visible). An automated ' +
+        'scan does not flag this, because the element is still focusable.');
+    }
+    if (cbButton.checked) {
+      faults.push('<strong>A <code>&lt;div&gt;</code> instead of a <code>&lt;button&gt;</code>.</strong> ' +
+        'It looks identical and works with a mouse, so it passes a visual review. It is ' +
+        'not focusable, not operable by keyboard, and announced as nothing. Fails WCAG ' +
+        '2.1.1 (Keyboard) and 4.1.2 (Name, Role, Value).');
+    }
+    if (cbLink.checked) {
+      faults.push('<strong>Vague link text.</strong> "Click here" carries no meaning out of ' +
+        'context, and screen reader users frequently navigate by link list. Fails WCAG ' +
+        '2.4.4 (Link Purpose). A scanner sees a link with an accessible name and moves on.');
+    }
+
+    if (!faults.length) {
+      explain.innerHTML = '<p><strong>Nothing is broken.</strong> Switch something on to ' +
+        'see what changes.</p>';
+      return;
+    }
+    explain.innerHTML =
+      '<p><strong>' + faults.length + ' problem' + (faults.length > 1 ? 's' : '') +
+      ' active — all of which pass an automated scan:</strong></p><ul><li>' +
+      faults.join('</li><li>') + '</li></ul>';
+  }
+
+  cbFocus.addEventListener('change', function () { setFocusBroken(cbFocus.checked); describe(); });
+  cbButton.addEventListener('change', function () { setButtonBroken(cbButton.checked); describe(); });
+  cbLink.addEventListener('change', function () { setLinkBroken(cbLink.checked); describe(); });
+
+  // Start from a known-good state even if the browser restored checkbox values.
+  cbFocus.checked = cbButton.checked = cbLink.checked = false;
+  setFocusBroken(false);
+  setButtonBroken(false);
+  setLinkBroken(false);
+  describe();
+})();
