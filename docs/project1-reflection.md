@@ -1,8 +1,8 @@
 # Project 1 Reflection
 
-Gilbert Anderson, CMST 387 6300, Principles of Web Design and Technology III
+Gilbert Anderson, WDDE 385, Principles of Web Design and Technology III
 
-Proposed site: CMST 387 Web Design Resource Hub
+Proposed site: WDDE 385 Web Design Resource Hub
 
 Live site: https://cmst387-umgc-ganderson58.azurewebsites.net
 

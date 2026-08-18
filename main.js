@@ -1,5 +1,5 @@
 /* =============================================================
-   CMST 387 Web Design Resource Hub - shared behaviour
+   WDDE 385 Web Design Resource Hub - shared behaviour
    Hand-written, no dependencies. Loaded with `defer`.
 
    Everything here is an enhancement. With JavaScript switched off:

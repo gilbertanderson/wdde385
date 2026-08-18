@@ -1,10 +1,10 @@
 # Project 1: Web Project Proposal
 
-CMST 387 Web Design Resource Hub
+WDDE 385 Web Design Resource Hub
 
 Gilbert Anderson
 
-CMST 387 6300: Principles of Web Design and Technology III
+WDDE 385: Principles of Web Design and Technology III
 
 University of Maryland Global Campus
 

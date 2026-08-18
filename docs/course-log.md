@@ -1,4 +1,4 @@
-# CMST 387 Running Course Log
+# WDDE 385 Running Course Log
 
 Working notes I am keeping across the course so that the material for later project
 reflections is already written down instead of being reconstructed from memory weeks after the

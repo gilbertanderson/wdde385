@@ -2,7 +2,7 @@
   <rect width="1120" height="900" fill="#ffffff"/>
 
   <text x="40" y="38" font-size="22" font-weight="bold" fill="#111">Wireframe 1: Home Page</text>
-  <text x="40" y="60" font-size="13" fill="#555">CMST 387 Web Design Resource Hub · low-fidelity structural wireframe</text>
+  <text x="40" y="60" font-size="13" fill="#555">WDDE 385 Web Design Resource Hub · low-fidelity structural wireframe</text>
 
   <!-- ================= DESKTOP ================= -->
   <text x="40" y="92" font-size="13" font-weight="bold" fill="#333">DESKTOP: 1280px and above</text>
