@@ -1,0 +1,36 @@
+// =============================================================
+// Turns a Sass color-role map into CSS custom properties.
+//
+// This is the actual "theming" mechanism: three near-identical
+// 20-line blocks in the old hand-written CSS become three short
+// @include calls here. Sass computes at compile time; the browser
+// still only ever sees plain custom properties, so runtime theme
+// switching (the data-theme attribute, prefers-color-scheme) keeps
+// working exactly as it did before.
+// =============================================================
+
+@use "sass:map";
+@use "sass:color";
+@use "tokens" as t;
+
+@mixin emit-theme($role-map) {
+  @each $name, $value in $role-map {
+    --#{$name}: #{$value};
+  }
+  // Elevation shadows need the ink colour as an R,G,B triplet so
+  // rgba() can apply per-level alpha to it.
+  $ink: map.get($role-map, "shadow-ink");
+  --shadow-ink-rgb: #{color.channel($ink, "red", $space: rgb)}, #{color.channel($ink, "green", $space: rgb)}, #{color.channel($ink, "blue", $space: rgb)};
+}
+
+@mixin emit-shape($shape-map) {
+  @each $name, $value in $shape-map {
+    --shape-#{$name}: #{$value};
+  }
+}
+
+@mixin emit-elevation() {
+  @for $level from 0 through 3 {
+    --elevation-#{$level}: #{t.elevation-shadow($level)};
+  }
+}

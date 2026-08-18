@@ -133,13 +133,23 @@
 
       <section>
         <h2 id="how-built">How the site is built</h2>
-        <p>Hand-written HTML, one stylesheet, and one small JavaScript file. There is no build
-        step, no package manager, no framework, no content delivery network, no web font, and
-        no third-party request of any kind. The deployment pipeline is a GitHub Actions
-        workflow that zips the repository and publishes it to Azure App Service.</p>
-        <p>That is a deliberate demonstration rather than an aesthetic preference. A hub that
-        teaches optimization should not ship a bloated page, and a hub that teaches security
-        should be able to point at its own dependency count.</p>
+        <p>Hand-written HTML, one stylesheet, and one small JavaScript file. There is no
+        content delivery network, no web font, no client-side framework, and no third-party
+        request of any kind once the page loads. The deployment pipeline is a GitHub Actions
+        workflow that compiles the stylesheet, zips the repository, and publishes it to Azure
+        App Service.</p>
+        <p>I want to be precise about that word "compiles," since I used to say there was no
+        build step at all, and that stopped being true once I moved the CSS to Sass. The
+        stylesheet source is SCSS, organised around design tokens in the Material Design 3
+        sense, meaning color roles, a shape scale, and an elevation scale, each one compiled
+        into a plain CSS custom property. The output is still a single static
+        <code>styles.css</code> file with nothing else attached to it, so the build step is a
+        compiler running once in CI, not a framework the visitor's browser has to load.</p>
+        <p>That distinction matters to me because a hub that teaches optimization should not
+        ship a bloated page, and a hub that teaches security should be able to point at its
+        own dependency count. Compiling Sass in CI does not compromise either claim, since
+        nothing shipped to the browser changed. Pulling in an actual component library would
+        have.</p>
         <p>All content on the site works without JavaScript. The script adds the collapsible
         navigation, the accessibility settings panel, the copy buttons on code samples, and
         the contact form's validation. With scripting switched off the navigation list simply

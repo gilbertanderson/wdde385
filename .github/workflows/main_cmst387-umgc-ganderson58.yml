@@ -27,8 +27,17 @@ jobs:
             echo "No package.json, deploying static files as-is."
           fi
 
+      # Compiles scss/styles.scss -> styles.css. This is the one build step
+      # the site has (see about.html#how-built): a single compiler run, not
+      # a framework the browser has to load. The compiled file is also
+      # committed to the repo so the site still renders correctly for
+      # anyone viewing it without a Sass toolchain; CI recompiles here so a
+      # forgotten local recompile can never ship stale CSS.
+      - name: Compile SCSS
+        run: npx --yes sass scss/styles.scss:styles.css --no-source-map --style=expanded
+
       - name: Zip artifact for deployment
-        run: zip -r release.zip . -x '.git/*' '.github/*' 'docs/*'
+        run: zip -r release.zip . -x '.git/*' '.github/*' 'docs/*' 'scss/*'
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -49,6 +58,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+
+      - name: Compile SCSS
+        run: npx --yes sass scss/styles.scss:styles.css --no-source-map --style=expanded
 
       - name: Serve the site
         run: |
