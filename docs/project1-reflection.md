@@ -1,7 +1,9 @@
 # Project 1 Reflection
 
 Gilbert Anderson, CMST 387 6300, Principles of Web Design and Technology III
+
 Proposed site: CMST 387 Web Design Resource Hub
+
 Live site: https://cmst387-umgc-ganderson58.azurewebsites.net
 
 ## What issues or challenges did you face completing this project?

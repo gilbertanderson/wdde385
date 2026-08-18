@@ -1,9 +1,13 @@
 # Project 1: Web Project Proposal
 
 CMST 387 Web Design Resource Hub
+
 Gilbert Anderson
+
 CMST 387 6300: Principles of Web Design and Technology III
+
 University of Maryland Global Campus
+
 Deployment target: https://cmst387-umgc-ganderson58.azurewebsites.net
 
 ## Project Overview
