@@ -226,12 +226,14 @@ about anyway.
 
 In continuous integration, Pa11y CI or axe-core would run against every push to the project's
 GitHub repository, wired into the same GitHub Actions workflow that already deploys this site
-to Azure App Service. Configuring the build to fail on new violations is what prevents
-regressions from reaching production, and in my opinion that is the decisive advantage
-automation has over periodic manual audits, since a manual audit only catches what broke
-between audits while a build check catches it the moment it happens. It also demonstrates the
-site's own subject matter, since the same pipeline can run Lighthouse CI for optimization
-budgets.
+to Azure App Service. I am deliberately leaving that check non-blocking rather than gating the
+deploy job on it, since a scanner failure landing close to a deadline should not by itself hold
+up a release, and a weaker policy stated honestly is better than a stronger one I would end up
+quietly overriding. It is still a real advance over periodic manual audits even without gating
+the release, since a manual audit only catches what broke between audits while a build check
+surfaces the regression the moment it happens, and the failed check stays visible on the commit
+either way. It also demonstrates the site's own subject matter, since the same pipeline can run
+Lighthouse CI for optimization budgets.
 
 For ongoing monitoring, the IBM Equal Access Accessibility Checker and ARC Toolkit add rule
 coverage beyond what axe catches, and crawlers like Siteimprove or Tenon.io can scan the full

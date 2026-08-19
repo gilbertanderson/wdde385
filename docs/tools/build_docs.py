@@ -29,6 +29,7 @@ from pathlib import Path
 
 DOCS = Path(__file__).resolve().parent.parent
 FIGURES = DOCS / "figures"
+UPLOAD = DOCS / "upload"
 
 CHROME_CANDIDATES = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -465,7 +466,8 @@ def main():
                 print(f"  ! missing source {spec['md']}", file=sys.stderr)
             continue
         blocks = parse_blocks(md_path.read_text())
-        out = build_docx(blocks, DOCS / spec["docx"], spec["title"], spec.get("figures", False))
+        UPLOAD.mkdir(exist_ok=True)
+        out = build_docx(blocks, UPLOAD / spec["docx"], spec["title"], spec.get("figures", False))
         print(f"  {spec['md']} -> {Path(out).name}  ({Path(out).stat().st_size:,} bytes)")
         if args.html:
             hout = build_html(blocks, DOCS / spec["html"], spec["title"])
