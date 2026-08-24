@@ -1062,12 +1062,13 @@ fieldset {
   padding: 0.55rem 0.85rem;
   color: var(--accent) !important;
   font-weight: 700;
-  text-decoration: underline;
+  text-decoration: none;
   min-height: 2.5rem;
 }
 
 .barrier-link:hover {
   background: var(--accent-soft);
+  text-decoration: none;
 }
 
 .site-footer .colophon {
