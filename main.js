@@ -20,7 +20,7 @@
     theme: 'system',
     textsize: 'default',
     motion: 'system',
-    underline: 'on'
+    underline: 'off'
   };
 
   /* ---------- preference storage ---------------------------- */
@@ -63,8 +63,8 @@
       root.removeAttribute('data-motion');
     }
 
-    if (prefs.underline === 'off') {
-      root.setAttribute('data-underline', 'off');
+    if (prefs.underline === 'on') {
+      root.setAttribute('data-underline', 'on');
     } else {
       root.removeAttribute('data-underline');
     }
@@ -125,7 +125,7 @@
 
     '<fieldset><legend>Motion and links</legend><div class="opt-grid">',
     '<label><input type="checkbox" name="pref-motion"> Reduce motion</label>',
-    '<label><input type="checkbox" name="pref-underline"> Remove underline from links</label>',
+    '<label><input type="checkbox" name="pref-underline"> Underline all links</label>',
     '</div></fieldset>',
 
     '</div>',
@@ -146,7 +146,7 @@
       var themeInput = panel.querySelector('input[name="pref-theme"][value="' + prefs.theme + '"]');
       if (themeInput) { themeInput.checked = true; }
       panel.querySelector('input[name="pref-motion"]').checked = prefs.motion === 'reduced';
-      panel.querySelector('input[name="pref-underline"]').checked = prefs.underline === 'off';
+      panel.querySelector('input[name="pref-underline"]').checked = prefs.underline === 'on';
     }
 
     function announce(message) {

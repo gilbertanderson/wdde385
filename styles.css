@@ -72,11 +72,12 @@
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-head: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
   --text-scale: 1;
-  /* Underlined by default: an in-text link distinguished from its
-     surrounding paragraph by colour alone fails WCAG 1.4.1 (Use of
-     Color) and is exactly what axe's link-in-text-block rule and the
-     WAVE tool both flag. The settings panel lets a user remove it. */
-  --link-decoration: underline;
+  /* No underline by default, at Gilbert's explicit request, made with
+     the WCAG 1.4.1 tradeoff understood: an in-text link distinguished
+     from its surrounding paragraph by colour alone is what axe's
+     link-in-text-block rule and WAVE both flag. The settings panel
+     still lets a user opt into underlines if they want them. */
+  --link-decoration: none;
 }
 
 /* Dark palette. Applied when the user's OS asks for dark and the
@@ -180,8 +181,8 @@
   --text-scale: 1.25;
 }
 
-:root[data-underline=off] {
-  --link-decoration: none;
+:root[data-underline=on] {
+  --link-decoration: underline;
 }
 
 /* ---------- 2. Base elements -------------------------------- */

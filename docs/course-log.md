@@ -148,3 +148,38 @@ somebody checking whether the thing being pointed at actually exists.
 
 This feeds Reflection Question 1, and anything about documentation practice, version control,
 or quality assurance.
+
+## 2026-08-24: Two tools, two different answers on the same link
+
+Running the site through WAVE and Lighthouse for Project 4 turned up a real disagreement
+between the tools rather than a clean pass or fail, and I want to record how I resolved it
+because the resolution came down to my own judgment call, not a tool's verdict.
+
+WAVE reported zero errors and zero contrast errors on every page, with an AIM score of 10 out
+of 10 across the board. Lighthouse's accessibility audit, which runs axe under the hood, was
+stricter: it flagged in-text links as relying on colour alone to be distinguishable from the
+surrounding paragraph, since the site's default styling underlined links only on hover, the
+same way the primary navigation already behaved. That single finding was enough to drop the
+Lighthouse accessibility score from 100 to 95 on pages with prose links in them.
+
+My first fix was to make every link underlined by default site-wide, which cleared the finding
+and brought every page back to 100. I did not sit with that decision, and once I looked at a
+real page with it applied, I did not like it. This site's whole design is dense with in-text
+links, since every topic page cross-links related concepts constantly, and a paragraph with
+five or six underlined phrases in it is genuinely harder to read than one where the links are
+distinguished by colour and by a hover state, the same convention the navigation already used
+successfully.
+
+So I reverted the default back to colour-plus-hover-underline, the same pattern the nav uses,
+and accepted the Lighthouse finding as a known, deliberate tradeoff rather than an unaddressed
+defect. The settings panel still offers underlined links as an opt-in for anyone who wants or
+needs that stronger cue, which is the same principle Section 10 of the proposal describes:
+customization supplements the default instead of the default being weakened to avoid ever
+needing customization. I am comfortable defending this specific choice because WAVE, the tool
+the assignment specifically names, did not flag it at all, and Lighthouse's own rule is
+phrased as identifying links that rely on colour ALONE, which is not quite true here once
+hover and focus states are counted.
+
+This feeds the Project 4 reflection, specifically the question about issues the tools
+identified and how I addressed them, since "addressed" here means "evaluated and made a
+deliberate call," not only "silenced the finding."
