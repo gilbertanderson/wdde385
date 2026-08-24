@@ -20,7 +20,7 @@
     theme: 'system',
     textsize: 'default',
     motion: 'system',
-    underline: 'off'
+    underline: 'on'
   };
 
   /* ---------- preference storage ---------------------------- */
@@ -63,8 +63,8 @@
       root.removeAttribute('data-motion');
     }
 
-    if (prefs.underline === 'on') {
-      root.setAttribute('data-underline', 'on');
+    if (prefs.underline === 'off') {
+      root.setAttribute('data-underline', 'off');
     } else {
       root.removeAttribute('data-underline');
     }
@@ -125,7 +125,7 @@
 
     '<fieldset><legend>Motion and links</legend><div class="opt-grid">',
     '<label><input type="checkbox" name="pref-motion"> Reduce motion</label>',
-    '<label><input type="checkbox" name="pref-underline"> Underline all links</label>',
+    '<label><input type="checkbox" name="pref-underline"> Remove underline from links</label>',
     '</div></fieldset>',
 
     '</div>',
@@ -146,7 +146,7 @@
       var themeInput = panel.querySelector('input[name="pref-theme"][value="' + prefs.theme + '"]');
       if (themeInput) { themeInput.checked = true; }
       panel.querySelector('input[name="pref-motion"]').checked = prefs.motion === 'reduced';
-      panel.querySelector('input[name="pref-underline"]').checked = prefs.underline === 'on';
+      panel.querySelector('input[name="pref-underline"]').checked = prefs.underline === 'off';
     }
 
     function announce(message) {
@@ -163,7 +163,7 @@
       if (target.name === 'pref-textsize') { prefs.textsize = target.value; }
       if (target.name === 'pref-theme') { prefs.theme = target.value; }
       if (target.name === 'pref-motion') { prefs.motion = target.checked ? 'reduced' : 'system'; }
-      if (target.name === 'pref-underline') { prefs.underline = target.checked ? 'on' : 'off'; }
+      if (target.name === 'pref-underline') { prefs.underline = target.checked ? 'off' : 'on'; }
       applyPrefs(prefs);
       writePrefs(prefs);
       announce('Setting saved.');
@@ -241,11 +241,14 @@
 
   /* ---------- table of contents: open wide, collapsed narrow -- */
 
+  // The initial open/closed state is set synchronously by a tiny inline
+  // script right after the <details> element itself, before first paint,
+  // so there is no post-load layout shift. This only has to handle the
+  // element being resized live across the breakpoint after that.
   var toc = document.querySelector('.toc');
   if (toc && window.matchMedia) {
     var wide = window.matchMedia('(min-width: 64em)');
     var setToc = function (query) { toc.open = query.matches; };
-    setToc(wide);
     if (wide.addEventListener) { wide.addEventListener('change', setToc); }
   }
 
