@@ -72,6 +72,21 @@ DOCUMENTS = [
         "figures": False,
         "optional": True,      # only built once the log exists
     },
+    {
+        "md": "project2-memo.md",
+        "docx": "Project2-Memo-Anderson.docx",
+        "html": "project2-memo.html",
+        "title": "Project 2: Industry-Specific Web Application Security Analysis and Recommendations",
+        "figures": False,
+    },
+    {
+        "md": "project2-reflection.md",
+        "docx": "Project2-Reflection-Anderson.docx",
+        "html": "project2-reflection.html",
+        "title": "Project 2: Project Reflection",
+        "figures": False,
+        "optional": True,      # only built once Gilbert has answered question 1
+    },
 ]
 
 
