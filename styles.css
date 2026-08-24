@@ -454,7 +454,7 @@ th {
 }
 
 .brand:hover .brand-name {
-  text-decoration: underline;
+  color: var(--accent);
 }
 
 .header-actions {
@@ -527,7 +527,6 @@ button:hover {
 
 .primary-nav a:hover {
   background: var(--surface-2);
-  text-decoration: underline;
 }
 
 .primary-nav a[aria-current=page] {
@@ -701,7 +700,7 @@ button:hover {
 
 .card .card-link {
   font-weight: 700;
-  text-decoration: underline;
+  text-decoration: var(--link-decoration);
 }
 
 /* Layered content: summary / why it matters / core guidance. */
