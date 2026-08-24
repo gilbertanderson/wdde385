@@ -453,6 +453,10 @@ th {
   font-size: var(--step-1);
 }
 
+.brand:hover {
+  text-decoration: none;
+}
+
 .brand:hover .brand-name {
   color: var(--accent);
 }
