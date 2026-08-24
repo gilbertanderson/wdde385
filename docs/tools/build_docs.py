@@ -87,6 +87,13 @@ DOCUMENTS = [
         "figures": False,
         "optional": True,      # only built once Gilbert has answered question 1
     },
+    {
+        "md": "project4-reflection.md",
+        "docx": "Project4-Reflection-Anderson.docx",
+        "html": "project4-reflection.html",
+        "title": "Project 4: Project Reflection",
+        "figures": False,
+    },
 ]
 
 
