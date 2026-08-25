@@ -14,8 +14,9 @@ AIM score of 10 out of 10 across the board. Lighthouse, which runs the same audi
 PageSpeed Insights uses, was stricter in one specific place: it flagged in-text links as
 distinguishable from the surrounding paragraph by colour alone, since the site's original
 styling underlined a link only on hover rather than by default. That single finding was enough
-to drop the Lighthouse accessibility score from 100 to 95 on every page with prose links in it,
-which is most of them.
+to drop the Lighthouse accessibility score to 95 or 96 on six of the site's nine pages, since
+those are the six that have prose links running through their paragraphs, while the three pages
+without that pattern still score a full 100.
 
 My first move was to just fix the finding, so I made every link underlined by default site-wide
 and every page went back to a perfect 100. I did not stay satisfied with that once I actually
