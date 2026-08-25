@@ -6,7 +6,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Responsive Web Design | WDDE 385 Web Design Resource Hub</title>
 <meta name="description" content="The mobile-first method, fluid grids, content-driven breakpoints, responsive media, and reflow at 320 pixels, a practical introduction to responsive web design.">
-<link rel="stylesheet" href="styles.css">
+<!-- static asset version: bump ?v= here AND on main.min.js's <script>
+     tag below whenever styles.css or main.js changes; keep both
+     numbers equal (see optimization.html "One tradeoff, disclosed rather than hidden") -->
+<link rel="stylesheet" href="styles.min.css?v=1">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
 </script>
@@ -331,6 +334,7 @@ pre {
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<!-- keep this ?v= in sync with styles.min.css's <link> tag above -->
+<script src="main.min.js?v=1" defer></script>
 </body>
 </html>

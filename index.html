@@ -6,7 +6,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Home | WDDE 385 Web Design Resource Hub</title>
 <meta name="description" content="Practical guidance on user experience design, accessibility, web application security, website optimization, and responsive design, written for students and early-career web developers.">
-<link rel="stylesheet" href="styles.css">
+<!-- static asset version: bump ?v= here AND on main.min.js's <script>
+     tag below whenever styles.css or main.js changes; keep both
+     numbers equal (see optimization.html "One tradeoff, disclosed rather than hidden") -->
+<link rel="stylesheet" href="styles.min.css?v=1">
 <!-- Applies saved accessibility settings before the first paint, so the
      page never flashes in the wrong theme or text size. -->
 <script>
@@ -166,6 +169,7 @@
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<!-- keep this ?v= in sync with styles.min.css's <link> tag above -->
+<script src="main.min.js?v=1" defer></script>
 </body>
 </html>

@@ -2,13 +2,16 @@
 /* =============================================================
    WDDE 385 Web Design Resource Hub - shared stylesheet
 
-   Compiled from SCSS with a Material Design 3 token structure:
-   color roles, a shape scale, and an elevation scale, each emitted
-   as plain CSS custom properties. No component library, no client
+   Hand-written plain CSS with a Material Design 3 token structure:
+   color roles, a shape scale, and an elevation scale, each written
+   directly as CSS custom properties. No component library, no client
    framework, no CDN, no web font - see /about.html#how-built.
 
-   Source: scss/styles.scss  ->  compiled: styles.css (checked in,
-   also rebuilt in CI before every deploy - see the workflow).
+   This file used to be compiled from scss/styles.scss; that build
+   step was dropped because it meant a change here was invisible
+   until a compile ran. This file is the source now - edit it
+   directly. See docs/tools/minify_assets.py for the one place a
+   generated twin of this file still exists, and why.
 
    Organisation:
      1. Design tokens (light default, dark / high-contrast overrides)

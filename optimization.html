@@ -6,7 +6,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Website Optimization | WDDE 385 Web Design Resource Hub</title>
 <meta name="description" content="Performance budgets, image optimization, caching, the critical rendering path, and Core Web Vitals, a practical introduction to making websites fast.">
-<link rel="stylesheet" href="styles.css">
+<!-- static asset version: bump ?v= here AND on main.min.js's <script>
+     tag below whenever styles.css or main.js changes; keep both
+     numbers equal (see optimization.html "One tradeoff, disclosed rather than hidden") -->
+<link rel="stylesheet" href="styles.min.css?v=1">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{var p=JSON.parse(localStorage.getItem('hubPrefs')||'{}');if(p.theme&&p.theme!=='system'){d.setAttribute('data-theme',p.theme);}if(p.textsize&&p.textsize!=='default'){d.setAttribute('data-textsize',p.textsize);}if(p.motion==='reduced'){d.setAttribute('data-motion','reduced');}if(p.underline==='on'){d.setAttribute('data-underline','on');}}catch(e){}})();
 </script>
@@ -228,13 +231,30 @@ ETag: "a1b2c3"</code></pre>
         script, no images in the page furniture, no web fonts, no analytics, and no
         third-party requests at all. That is not minimalism for its own sake; it is what a
         performance budget looks like when it is actually enforced.</p>
-        <p><strong>One tradeoff, disclosed rather than hidden.</strong> That stylesheet and
-        script are not minified, and this is deliberate rather than an oversight: minification
-        needs a build step, and this site has none on purpose, so every file a browser
-        downloads is exactly the file in the repository, readable in dev tools without a
-        source map. On a stylesheet this size the saving is a few kilobytes, measured, not
-        assumed. A larger project would make the opposite call, and that tradeoff point moves
-        with project size, not with principle.</p>
+        <p><strong>One tradeoff, disclosed rather than hidden.</strong> The stylesheet and
+        script the browser actually downloads are minified twins,
+        <code>styles.min.css</code> and <code>main.min.js</code>, regenerated on demand by a
+        small local script (<code>docs/tools/minify_assets.py</code>) and committed like any
+        other file. The deploy pipeline itself never compiles anything; it still only zips and
+        ships whatever is already in the repository. The hand-edited originals,
+        <code>styles.css</code> and <code>main.js</code>, stay in the repository, fully
+        readable, and are what actually gets edited day to day. The real, disclosed narrowing
+        of this site's otherwise-strict no-compile-step rule is that a change to either one is
+        not visible in a browser until the script is rerun and the version query string on
+        every page is bumped to match, which is confined to one command run right before a
+        push, not to every edit-and-refresh cycle. On a stylesheet this size the saving is
+        real, measured at just over a third of the file, not assumed.</p>
+        <p>Shipping a change to <code>styles.css</code> or <code>main.js</code> means three
+        steps, in order:</p>
+        <ol>
+          <li>Run <code>python3 docs/tools/minify_assets.py</code> and check the size delta it
+          prints.</li>
+          <li>Bump <code>?v=</code> to the same new number in all 18 places across the nine
+          pages. <code>grep -on 'v=[0-9]*' *.html | sort -u</code> should print exactly one
+          number.</li>
+          <li>Reload against the regenerated minified file, not just the source, before
+          pushing.</li>
+        </ol>
         <p><strong>Reference material.</strong> web.dev publishes the current Core Web Vitals
         thresholds and measurement guidance; the HTTP Archive's annual Web Almanac shows how
         real sites compare.</p>
@@ -300,6 +320,7 @@ ETag: "a1b2c3"</code></pre>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<!-- keep this ?v= in sync with styles.min.css's <link> tag above -->
+<script src="main.min.js?v=1" defer></script>
 </body>
 </html>
