@@ -88,3 +88,6 @@ Sometimes the honest answer is genuinely the right one to stop at, and sometimes
 signal that I found the boundary of what I had already built and stopped looking for a way
 past it, and the only way to tell the difference is to actually try solving it before deciding
 which one it was.
+
+AI assistance disclosure: Claude (Opus and Sonnet models) and Cursor's Composer and Grok
+models were used throughout this project for research and code review.
