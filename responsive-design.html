@@ -186,6 +186,22 @@ p  { max-width: 68ch; }
         <code>srcset</code> and <code>sizes</code> to let the browser download the smallest
         file that will still look sharp, and always declare <code>width</code> and
         <code>height</code> so space is reserved and the page does not jump.</p>
+
+        <figure class="code-sample responsive-image-demo">
+          <figcaption>A live example, not just a code sample: this is the site's own Project 1
+          wireframe, served as three real WebP files at 400, 800, and 1200 pixels wide. Resize
+          the browser and check the network panel; the browser picks the smallest file that
+          still covers its rendered width, not the largest one available.</figcaption>
+          <img
+            src="images/wireframe-home-800.webp"
+            srcset="images/wireframe-home-400.webp 400w,
+                    images/wireframe-home-800.webp 800w,
+                    images/wireframe-home-1200.webp 1200w"
+            sizes="(min-width: 64em) 40rem, 90vw"
+            width="1120" height="900"
+            alt="Low-fidelity wireframe of the home page, shown at both a desktop width of 1280 pixels and a mobile width of 375 pixels, with the mobile version collapsing the navigation to a single labeled Menu button and stacking the five topic cards into one column">
+        </figure>
+
         <p>Some content genuinely cannot reflow. Code samples are the clearest example: wrap a
         line of code in a different place and you can change what it means. The answer is to
         let the code block scroll horizontally inside its own container while the page itself

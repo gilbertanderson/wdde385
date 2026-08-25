@@ -756,6 +756,17 @@ button:hover {
   margin-bottom: 0.4rem;
 }
 
+.responsive-image-demo {
+  max-width: none;
+}
+
+.responsive-image-demo img {
+  display: block;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  background: #ffffff; /* the wireframe is drawn on a white canvas */
+}
+
 .code-head {
   display: flex;
   flex-wrap: wrap;
