@@ -63,3 +63,28 @@ encounter it in. I plan to check the rendered result of a fix before considering
 every project after this one, not just when something looks suspicious, and to keep treating
 every tool on this list, WAVE, Lighthouse, PageSpeed Insights, or anything else, as a means of
 checking my own judgment rather than a replacement for having any.
+
+There was a third thing worth writing down, and it came from pushing past what I first
+thought was good enough. PageSpeed Insights was still flagging two real, specific issues
+after everything above was settled: no browser caching on the stylesheet and script, and no
+minification on either one. My first instinct was to disclose both as deliberate tradeoffs of
+building this site with no compile step at all and leave it there, which is a defensible
+answer, but it is also the easier answer, and I decided the assignment asked me to actually
+address what the tool identified, not just explain why I was choosing not to. Caching turned
+out to be the safer fix: I could give the stylesheet and script a full year of cache life
+without any real risk, as long as I changed the file name every time I actually edited one of
+them, since a browser treats a new query string as a completely different file to fetch.
+Minification was the harder call, because doing it for real meant the file the browser
+downloads is no longer the exact file I hand-edit, which is the same kind of tradeoff I
+already made once this term when I dropped a Sass build step for the opposite reason, that it
+put a compile step between me and seeing my own change. I decided the two situations were not
+actually the same: the Sass step meant I could not see a change at all without compiling
+first, while this only means the browser will not see it until I run one script and update a
+version number, so I wrote a small script that generates a minified copy on demand, kept the
+original file as the one I actually edit, and wrote both the reasoning and the exact steps
+directly onto the page a reader of the code would land on. What I am taking from this part is
+that a disclosed tradeoff is not automatically the finish line just because it is honest.
+Sometimes the honest answer is genuinely the right one to stop at, and sometimes it is a
+signal that I found the boundary of what I had already built and stopped looking for a way
+past it, and the only way to tell the difference is to actually try solving it before deciding
+which one it was.
