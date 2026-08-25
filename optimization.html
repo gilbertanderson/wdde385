@@ -228,6 +228,13 @@ ETag: "a1b2c3"</code></pre>
         script, no images in the page furniture, no web fonts, no analytics, and no
         third-party requests at all. That is not minimalism for its own sake; it is what a
         performance budget looks like when it is actually enforced.</p>
+        <p><strong>One tradeoff, disclosed rather than hidden.</strong> That stylesheet and
+        script are not minified, and this is deliberate rather than an oversight: minification
+        needs a build step, and this site has none on purpose, so every file a browser
+        downloads is exactly the file in the repository, readable in dev tools without a
+        source map. On a stylesheet this size the saving is a few kilobytes, measured, not
+        assumed. A larger project would make the opposite call, and that tradeoff point moves
+        with project size, not with principle.</p>
         <p><strong>Reference material.</strong> web.dev publishes the current Core Web Vitals
         thresholds and measurement guidance; the HTTP Archive's annual Web Almanac shows how
         real sites compare.</p>
